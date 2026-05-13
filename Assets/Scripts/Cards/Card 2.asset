@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c59b105c1691049a986277d5517f59, type: 3}
   m_Name: Card 2
   m_EditorClassIdentifier: Assembly-CSharp::CardsDataSO
-  Type: 
-  Name: 
-  Description: 
   CardType: 0
+  Name: Reforzamiento
+  Description: "Da\xF1o recibido es reducido un 30% por 3 turnos"

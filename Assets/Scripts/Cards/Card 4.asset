@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c59b105c1691049a986277d5517f59, type: 3}
   m_Name: Card 4
   m_EditorClassIdentifier: Assembly-CSharp::CardsDataSO
-  Type: 
-  Name: 
-  Description: 
   CardType: 0
+  Name: Toda Maquina
+  Description: Incrementa tu velocidad un 20%
