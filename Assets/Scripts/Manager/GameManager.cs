@@ -34,15 +34,12 @@ public class GameManager : MonoBehaviour
     //Game State
 
     [BoxGroup("Game State")]
-    [ReadOnly]
     public bool gameStarted;
 
     [BoxGroup("Game State")]
-    [ReadOnly]
     public bool gameFinished;
 
     [BoxGroup("Game State")]
-    [ReadOnly]
     public int currentTurn = 1;
 
 
