@@ -17,7 +17,27 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 47ac9dc943359d24fa40ce12c42fb6aa, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 5037363200
+    m_Localized: NAVAL WARRIOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7650414592
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10045362176
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11819552768
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13593743360
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

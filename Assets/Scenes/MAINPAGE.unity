@@ -746,9 +746,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:ad6ff202afa903d4db95da172a173c60
+      m_TableCollectionName: GUID:47ac9dc943359d24fa40ce12c42fb6aa
     m_TableEntryReference:
-      m_KeyId: 11261710336
+      m_KeyId: 5037363200
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1315,9 +1315,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:ad6ff202afa903d4db95da172a173c60
+      m_TableCollectionName: GUID:47ac9dc943359d24fa40ce12c42fb6aa
     m_TableEntryReference:
-      m_KeyId: 82166419456
+      m_KeyId: 7650414592
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1630,9 +1630,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:ad6ff202afa903d4db95da172a173c60
+      m_TableCollectionName: GUID:47ac9dc943359d24fa40ce12c42fb6aa
     m_TableEntryReference:
-      m_KeyId: 237594742784
+      m_KeyId: 13593743360
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -2127,9 +2127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:ad6ff202afa903d4db95da172a173c60
+      m_TableCollectionName: GUID:47ac9dc943359d24fa40ce12c42fb6aa
     m_TableEntryReference:
-      m_KeyId: 107437101056
+      m_KeyId: 11819552768
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -2397,9 +2397,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:ad6ff202afa903d4db95da172a173c60
+      m_TableCollectionName: GUID:47ac9dc943359d24fa40ce12c42fb6aa
     m_TableEntryReference:
-      m_KeyId: 94690611200
+      m_KeyId: 10045362176
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

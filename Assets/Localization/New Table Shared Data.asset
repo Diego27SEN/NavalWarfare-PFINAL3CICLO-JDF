@@ -13,8 +13,52 @@ MonoBehaviour:
   m_Name: New Table Shared Data
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: New Table
-  m_TableCollectionNameGuidString: 00000000000000000000000000000000
-  m_Entries: []
+  m_TableCollectionNameGuidString: 47ac9dc943359d24fa40ce12c42fb6aa
+  m_Entries:
+  - m_Id: 5037363200
+    m_Key: TITLE CARD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7650414592
+    m_Key: PLAY OPTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10045362176
+    m_Key: OPTIONS OPTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11819552768
+    m_Key: QUIT OPTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13593743360
+    m_Key: LANGUAGE OPTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16965963776
+    m_Key: VOLUME OPTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18421387264
+    m_Key: New Entry 6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19776147456
+    m_Key: New Entry 7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20501762048
+    m_Key: New Entry 8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21512589312
+    m_Key: New Entry 9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22192066560
+    m_Key: New Entry 10
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
