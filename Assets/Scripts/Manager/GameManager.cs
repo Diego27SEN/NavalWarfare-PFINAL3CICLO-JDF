@@ -33,12 +33,15 @@ public class GameManager : MonoBehaviour
     }
 
     #region Metodos Linq
+
+    [Button("Primer jugador en peligro")]
     public void FindPlayerInDanger()
     {
         var playerdanger = jugadoresActivos.FirstOrDefault(j => j.npcsVivos == 1 && !j.barcoDestruido);
         Debug.Log(playerdanger != null ? $"El: {playerdanger.IDJugador} esta peligro." : "Todos los barcos tienen a sus tripulantes");
     }
 
+    [Button("Barcos de alto daño")]
     public void FilterPowerfulShips()
     {
         var nameShip = catalogoBarcos.Values
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
           Debug.Log($"{name}");
     }
 
+    [Button("Mostrar Ranking Top")]
     public void ShowRankingTop()
     {
         var lider = jugadoresActivos
@@ -63,6 +67,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("No hay jugadores activos para mostrar ranking.");
     }
 
+    [Button("Mostrar Estado de la partida")]
     public void ShowMatchStatus()
     {
         int eliminados = jugadoresActivos.Count(j => j.barcoDestruido || j.npcsVivos == 0);
