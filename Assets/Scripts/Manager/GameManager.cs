@@ -1,77 +1,74 @@
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
 
-    public static GameManager Instance;
+    [Header("Array de Biomas")]
+    public BiomaData[] biomasDisponibles;
 
+    [Header("List Jugadores")]
+    public List<PlayerGame> jugadoresActivos = new List<PlayerGame>();
 
-    [BoxGroup("Managers")]
-    [SerializeField] private TurnManager turnManager;
+    [Header("Dictionary Búsqueda por Catálogo)")]
+    public Dictionary<string, DataShipBase> catalogoBarcos = new Dictionary<string, DataShipBase>();
 
-    [BoxGroup("Managers")]
-    [SerializeField] private UIManager uiManager;
+    [Header("Colección Personalizada LinkedList - Turnos")]
+    public QueueTurn sistemaDeTurnos = new QueueTurn();
 
-    [BoxGroup("Managers")]
-    [SerializeField] private AudioManager audioManager;
-
-    [BoxGroup("Managers")]
-    [SerializeField] private DadoSystem diceSystem;
-
-    [BoxGroup("Managers")]
-    [SerializeField] private TurnManager Cannon;
-
-    [BoxGroup("Managers")]
-    [SerializeField] private UIManager Ships;
-
-    [BoxGroup("Managers")]
-    [SerializeField] private AudioManager CardData;
-
-    [BoxGroup("Managers")]
-    [SerializeField] private DadoSystem MapData;
-
-    //Game State
-
-    [BoxGroup("Game State")]
-    public bool gameStarted;
-
-    [BoxGroup("Game State")]
-    public bool gameFinished;
-
-    [BoxGroup("Game State")]
-    public int currentTurn = 1;
-
-
-
-    private void Awake()
-    {
-        
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-
-        DontDestroyOnLoad(gameObject);
+    private void Awake() 
+    { 
+        Instance = this; 
     }
 
-    private void Start()
+    public void RegisterPlayer(PlayerGame newPlayer)
     {
-        StartGame();
+        jugadoresActivos.Add(newPlayer);
+        sistemaDeTurnos.AddShift(newPlayer);
+        if (newPlayer.SelectedShip != null)
+            catalogoBarcos[newPlayer.SelectedShip.nombreBarco] = newPlayer.SelectedShip;
     }
 
-    [Button]
-    public void StartGame()
+    #region Metodos Linq
+    public void FindPlayerInDanger()
     {
-        gameStarted = true;
-
-        Debug.Log("GAME STARTED");
-
-        
+        var playerdanger = jugadoresActivos.FirstOrDefault(j => j.npcsVivos == 1 && !j.barcoDestruido);
+        Debug.Log(playerdanger != null ? $"El: {playerdanger.IDJugador} esta peligro." : "Todos los barcos tienen a sus tripulantes");
     }
 
+    public void FilterPowerfulShips()
+    {
+        var nameShip = catalogoBarcos.Values
+            .Where(b => b.cañonEquipado.dañoPorDisparo > 30.00f)
+            .Select(b => b.nombreBarco);
 
+        Debug.Log("Barcos de alto daño detectados");
+        foreach (var name in nameShip)
+          Debug.Log($"{name}");
+    }
+
+    public void ShowRankingTop()
+    {
+        var lider = jugadoresActivos
+            .OrderByDescending(j => j.scoreActual)
+            .Take(1)
+            .FirstOrDefault();
+
+        if (lider != null)
+            Debug.Log($"EL Primer puesto es: {lider.IDJugador} con {lider.scoreActual} puntos.");
+        else
+            Debug.Log("No hay jugadores activos para mostrar ranking.");
+    }
+
+    public void ShowMatchStatus()
+    {
+        int eliminados = jugadoresActivos.Count(j => j.barcoDestruido || j.npcsVivos == 0);
+        bool hayKraken = biomasDisponibles.Any(b => b.peligroAmbiental == "Kraken");
+
+        Debug.Log($"Total flotas eliminadas: {eliminados} | ¿Presencia de Kraken?: {hayKraken}");
+    }
+    #endregion 
 }

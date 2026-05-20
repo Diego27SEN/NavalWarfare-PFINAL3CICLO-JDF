@@ -11,4 +11,8 @@ public class PlayerGame : MonoBehaviour
     public int scoreActual;
     public int npcsVivos = 4; 
     public bool barcoDestruido = false;
+    void Start()
+    {
+        GameManager.Instance.RegisterPlayer(this);
+    }
 }
