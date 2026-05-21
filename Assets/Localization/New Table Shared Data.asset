@@ -40,11 +40,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 18421387264
-    m_Key: New Entry 6
+    m_Key: 'MAP SELECTION OPTION
+
+'
     m_Metadata:
       m_Items: []
   - m_Id: 19776147456
-    m_Key: New Entry 7
+    m_Key: RETURN OPTION
     m_Metadata:
       m_Items: []
   - m_Id: 20501762048
