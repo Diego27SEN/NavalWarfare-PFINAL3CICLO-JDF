@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour
     [Header("List Jugadores")]
     public List<PlayerGame> jugadoresActivos = new List<PlayerGame>();
 
-    [Header("Dictionary Búsqueda por Catálogo)")]
+    [Header("Dictionary Busqueda por Catalogo)")]
     public Dictionary<string, DataShipBase> catalogoBarcos = new Dictionary<string, DataShipBase>();
 
-    [Header("Colección Personalizada LinkedList - Turnos")]
+    [Header("Coleccion Personalizada LinkedList - Turnos")]
     public QueueTurn sistemaDeTurnos = new QueueTurn();
 
     private void Awake() 

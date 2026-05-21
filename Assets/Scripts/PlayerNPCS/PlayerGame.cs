@@ -7,7 +7,7 @@ public class PlayerGame : MonoBehaviour
     public DataShipBase SelectedShip;
     public TripulanteData soldierNPC;
 
-    [Header("Estado Dinámico en Partida")]
+    [Header("Estado Dinamico en Partida")]
     public int scoreActual;
     public int npcsVivos = 4; 
     public bool barcoDestruido = false;

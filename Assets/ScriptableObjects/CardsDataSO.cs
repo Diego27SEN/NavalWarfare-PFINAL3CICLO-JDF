@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardsDataSO : ScriptableObject
 {
-    public CardData.CardType CardType;
+    public CardType CardType;
     public string Name;
     public string Description;
 }
