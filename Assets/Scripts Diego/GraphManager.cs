@@ -2,9 +2,9 @@ using James.Collections.Graphs;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GraphManager : MonoBehaviour
 {
-  public NonOrientedGraph <string> graph = new();
+    public NonOrientedGraph<string> graph = new();
 
     void Start()
     {
@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
         James.Collections.Graphs.Node<string> c = graph.AddNode("C");
         James.Collections.Graphs.Node<string> d = graph.AddNode("D");
 
-            graph.AddEdges(a, b);
-            graph.AddEdges(a, c);
-            graph.AddEdges(b, c);
-            graph.AddEdges(b, d);
-            graph.AddEdges(c, d);
-            
+        graph.AddEdges(a, b);
+        graph.AddEdges(a, c);
+        graph.AddEdges(b, c);
+        graph.AddEdges(b, d);
+        graph.AddEdges(c, d);
+
         graph.PrintAdjancencyList();
         graph.PrintAdjacencyMatrix();
     }
