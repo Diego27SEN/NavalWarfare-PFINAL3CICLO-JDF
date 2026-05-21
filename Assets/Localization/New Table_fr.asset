@@ -38,6 +38,36 @@ MonoBehaviour:
     m_Localized: GUERRIER DE LA MARINE
     m_Metadata:
       m_Items: []
+  - m_Id: 20501762048
+    m_Localized: 'Mer tropicale
+
+      
+
+      
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 396760924225536
+    m_Localized: Ruines sous-marines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22192066560
+    m_Localized: Triangle des Bermudes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21512589312
+    m_Localized: Glace antarctique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19776147456
+    m_Localized: Retour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18421387264
+    m_Localized: Choisissez votre carte
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

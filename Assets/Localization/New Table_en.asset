@@ -38,6 +38,36 @@ MonoBehaviour:
     m_Localized: Language
     m_Metadata:
       m_Items: []
+  - m_Id: 19776147456
+    m_Localized: Return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18421387264
+    m_Localized: Choose your Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20501762048
+    m_Localized: 'Tropical Sea
+
+      
+
+      
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 396760924225536
+    m_Localized: Marine Ruins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22192066560
+    m_Localized: The Bermuda Triangle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21512589312
+    m_Localized: Antarctic Ice
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
