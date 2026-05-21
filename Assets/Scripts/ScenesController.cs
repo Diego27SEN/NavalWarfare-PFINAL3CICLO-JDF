@@ -11,7 +11,7 @@ public class ScenesController : MonoBehaviour
 
     public void MenuScene()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("SelectScene");
     }
 
     public void ModeScene()
