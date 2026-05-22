@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     public void ShowMatchStatus()
     {
         int eliminados = jugadoresActivos.Count(j => j.barcoDestruido || j.npcsVivos == 0);
-        bool hayKraken = biomasDisponibles.Any(b => b.peligroAmbiental == "Kraken");
+        bool hayKraken = biomasDisponibles.Any(b => b.environmentalHazard == "Kraken");
 
         Debug.Log($"Total flotas eliminadas: {eliminados} | ¿Presencia de Kraken?: {hayKraken}");
     }
