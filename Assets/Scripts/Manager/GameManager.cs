@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("Array de Biomas")]
-    public BiomaData[] AvailableBiomes;
+    public BiomeData[] AvailableBiomes;
 
     [Header("List Jugadores")]
     public List<PlayerGame> PlayersActive = new List<PlayerGame>();
@@ -37,8 +37,8 @@ public class GameManager : MonoBehaviour
     [Button("Primer jugador en peligro")]
     public void FindPlayerInDanger()
     {
-        var playerdanger = PlayersActive.FirstOrDefault(j => j.npcsVivos == 1 && !j.barcoDestruido);
-        Debug.Log(playerdanger != null ? $"El: {playerdanger.IDJugador} esta peligro." : "Todos los barcos tienen a sus tripulantes");
+        var playerdanger = PlayersActive.FirstOrDefault(j => j.npcsLive == 1 && !j.shipDestroyed);
+        Debug.Log(playerdanger != null ? $"El: {playerdanger.PlayerID} esta peligro." : "Todos los barcos tienen a sus tripulantes");
     }
 
     [Button("Barcos de alto daño")]
@@ -57,12 +57,12 @@ public class GameManager : MonoBehaviour
     public void ShowRankingTop()
     {
         var lider = PlayersActive
-            .OrderByDescending(j => j.scoreActual)
+            .OrderByDescending(j => j.currentScore)
             .Take(1)
             .FirstOrDefault();
 
         if (lider != null)
-            Debug.Log($"EL Primer puesto es: {lider.IDJugador} con {lider.scoreActual} puntos.");
+            Debug.Log($"EL Primer puesto es: {lider.PlayerID} con {lider.currentScore} puntos.");
         else
             Debug.Log("No hay jugadores activos para mostrar ranking.");
     }
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     [Button("Mostrar Estado de la partida")]
     public void ShowMatchStatus()
     {
-        int eliminados = PlayersActive.Count(j => j.barcoDestruido || j.npcsVivos == 0);
+        int eliminados = PlayersActive.Count(j => j.shipDestroyed || j.npcsLive == 0);
         bool hayKraken = AvailableBiomes.Any(b => b.EnvironmentalHazard == "Kraken");
 
         Debug.Log($"Total flotas eliminadas: {eliminados} | ¿Presencia de Kraken?: {hayKraken}");

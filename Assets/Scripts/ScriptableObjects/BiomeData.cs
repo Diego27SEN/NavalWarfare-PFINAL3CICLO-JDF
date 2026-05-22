@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BiomaData", menuName = "NavalWarfare/BiomaData")]
-public class BiomaData : ScriptableObject
+[CreateAssetMenu(fileName = "BiomeData", menuName = "NavalWarfare/BiomaData")]
+public class BiomeData : ScriptableObject
 {
     public string NameBiome;
     public string EnvironmentalHazard;

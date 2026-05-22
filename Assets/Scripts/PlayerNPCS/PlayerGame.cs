@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerGame : MonoBehaviour
 {
     [Header("Datos del Jugador")]
-    public string IDJugador;
+    public string PlayerID;
     public DataShipBase SelectedShip;
-    public TripulanteData soldierNPC;
+    public CrewmanData soldierNPC;
 
     [Header("Estado Dinamico en Partida")]
-    public int scoreActual;
-    public int npcsVivos = 4; 
-    public bool barcoDestruido = false;
+    public int currentScore;
+    public int npcsLive = 4; 
+    public bool shipDestroyed = false;
     void Start()
     {
         GameManager.Instance.RegisterPlayer(this);

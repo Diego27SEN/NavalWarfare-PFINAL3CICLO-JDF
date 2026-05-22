@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3635d5d9c6e0ef749a3ccc6b7c11c767, type: 3}
-  m_Name: RuinasMaritimas
-  m_EditorClassIdentifier: Assembly-CSharp::BiomaData
-  nombreBioma: Ruinas Maritimas
-  peligroAmbiental: 8
-  factorVientoMaximo: 6
+  m_Script: {fileID: 11500000, guid: b0056605838370f45a2723716a697fe8, type: 3}
+  m_Name: BiomeData 1
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeData
+  NameBiome: 
+  EnvironmentalHazard: 
+  WindMaximum: 6
