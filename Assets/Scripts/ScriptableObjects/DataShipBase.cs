@@ -3,8 +3,8 @@ using UnityEngine;
 public class DataShipBase : ScriptableObject
 {
     [Header("NameShip")]
-    public string nombreBarco;
-    public CanonData cañonEquipado;
+    public string NameBoat;
+    public CanonData EquippedCannon;
 
     [Header("Identifiacion")]
     public string NameColor;
@@ -12,6 +12,6 @@ public class DataShipBase : ScriptableObject
     public GameObject Ship;
 
     [Header("Estadisticas")]
-    public float hpMaximo = 400.00f;
+    public float hpMaximum = 400.00f;
   
 }

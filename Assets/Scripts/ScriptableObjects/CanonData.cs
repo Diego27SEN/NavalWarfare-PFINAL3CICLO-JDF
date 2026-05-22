@@ -4,7 +4,7 @@ using UnityEngine;
 public class CanonData : ScriptableObject
 {
     [Header("Stats")]
-    public GameObject modeloCañon;
-    public float dañoPorDisparo;
-    public float rangoMaximo;
+    public GameObject ModelCannon;
+    public float ShotDamage;
+    public float RangeMaximun;
 }
