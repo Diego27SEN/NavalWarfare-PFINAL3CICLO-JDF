@@ -36,7 +36,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 16965963776
-    m_Key: VOLUME OPTION
+    m_Key: SOUND
     m_Metadata:
       m_Items: []
   - m_Id: 18421387264
@@ -63,6 +63,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 396760924225536
     m_Key: MAP 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2150852839944192
+    m_Key: SPANISH LETTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2150895072391168
+    m_Key: ENGLISH LETTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2150932057763840
+    m_Key: FRENCH LETTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2151009325232128
+    m_Key: VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2151022688284672
+    m_Key: CONTROLS
     m_Metadata:
       m_Items: []
   m_Metadata:
