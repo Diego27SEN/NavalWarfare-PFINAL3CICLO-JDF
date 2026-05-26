@@ -26,25 +26,17 @@ public class targetShips : MonoBehaviour
         Transform target = waypoints[currentWaypoint];
 
         // Movimiento
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            target.position,
-            speed * Time.deltaTime
+        transform.position = Vector3.MoveTowards(transform.position,target.position,speed * Time.deltaTime
         );
 
-        // Rotación suave
-        Vector3 direction = target.position - transform.position;
+    
+        Vector3 direction = target.position - transform.position; // Rotación 
 
         if (direction != Vector3.zero)
         {
-            Quaternion targetRotation =
-                Quaternion.LookRotation(direction);
+            Quaternion targetRotation =Quaternion.LookRotation(direction);
 
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime
-            );
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
         // Llegó al waypoint
