@@ -7,17 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("Lista de Biomas")]
-    public List<BiomeData> AvailableBiomes = new List<BiomeData>();
-
-    [Header("List Jugadores")]
-    public List<PlayerGame> PlayersActive = new List<PlayerGame>();
-
-    [Header("Dictionary Busqueda por Catalogo)")]
-    public Dictionary<string, DataShipBase> CatalogBoats = new Dictionary<string, DataShipBase>();
-
-    [Header("Coleccion Personalizada LinkedList - Turnos")]
-    public QueueTurn SistemShift = new QueueTurn();
+    [Header("Arquitectura de Datos")]
+    public BiomeCollectionSO biomeDataContainer;
+    public PlayerRuntimeSetSO playerDataContainer;
+    public ShipCatalogSO shipDataContainer;
+    public TurnSystemSO turnDataContainer;
 
     [FoldoutGroup("Control de Turno")]
     public PlayerGame currentPlayer; 
@@ -32,22 +26,34 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null) 
         { 
-            Instance = this; 
+            Instance = this;
+            InitializeContainers();
         }
         else 
         { 
             Destroy(gameObject); 
         }
     }
-
+    private void InitializeContainers()
+    {
+        if (playerDataContainer != null) playerDataContainer.Initialize();
+        if (shipDataContainer != null) shipDataContainer.Initialize();
+        if (turnDataContainer != null) turnDataContainer.Initialize();
+    }
     public void RegisterPlayer(PlayerGame newPlayer)
     {
-        PlayersActive.Add(newPlayer);
-        SistemShift.AddShift(newPlayer);
-        if (newPlayer.SelectedShip != null)
-            CatalogBoats[newPlayer.SelectedShip.NameBoat] = newPlayer.SelectedShip;
+        playerDataContainer.AddPlayer(newPlayer);
+        turnDataContainer.SistemShift.AddShift(newPlayer);
 
-        if (currentPlayer == null) currentPlayer = SistemShift.GetCurrentPlayer();
+        if (newPlayer.SelectedShip != null)
+        {
+            shipDataContainer.RegisterShip(newPlayer.SelectedShip.NameBoat, newPlayer.SelectedShip);
+        }
+
+        if (currentPlayer == null)
+        {
+            currentPlayer = turnDataContainer.SistemShift.GetCurrentPlayer();
+        }
     }
 
     #region Lógica de Turnos (Dado De 8 caras)
@@ -89,7 +95,7 @@ public class GameManager : MonoBehaviour
     [Button("Terminar Turno", ButtonSizes.Medium)]
     public void EndTurn()
     {
-        currentPlayer = SistemShift.AdvanceShift(); // Pasa al siguiente en la lista
+        currentPlayer = turnDataContainer.SistemShift.AdvanceShift();
         remainingShots = 0;
         hasRolledDice = false;
         Debug.Log($"¡Nuevo turno para: {currentPlayer.PlayerID}!");
@@ -101,14 +107,17 @@ public class GameManager : MonoBehaviour
     [Button("Primer jugador en peligro")]
     public void FindPlayerInDanger()
     {
-        var playerdanger = PlayersActive.FirstOrDefault(j => j.npcsLive == 1 && !j.shipDestroyed);
+        //Consulta LINQ apunta al contenedor de jugadores
+        var playerdanger = playerDataContainer.PlayersActive
+           .FirstOrDefault(j => j.npcsLive == 1 && !j.shipDestroyed);
         Debug.Log(playerdanger != null ? $"El: {playerdanger.PlayerID} esta peligro." : "Todos los barcos tienen a sus tripulantes");
     }
 
     [Button("Barcos de alto daño")]
     public void FilterPowerfulShips()
     {
-        var nameShip = CatalogBoats.Values
+        // Consulta LINQ apunta al contenedor del catálogo de barcos
+        var nameShip = shipDataContainer.CatalogBoats.Values
             .Where(b => b.EquippedCannon != null && b.EquippedCannon.ShotDamage > 30.00f)
             .Select(b => b.NameBoat);
 
@@ -120,7 +129,7 @@ public class GameManager : MonoBehaviour
     [Button("Mostrar Ranking Top")]
     public void ShowRankingTop()
     {
-        var leader = PlayersActive
+        var leader = playerDataContainer.PlayersActive
             .OrderByDescending(j => j.currentScore)
             .Take(1)
             .FirstOrDefault();
@@ -134,8 +143,8 @@ public class GameManager : MonoBehaviour
     [Button("Mostrar Estado de la partida")]
     public void ShowMatchStatus()
     {
-        int eliminated = PlayersActive.Count(j => j.shipDestroyed || j.npcsLive == 0);
-        bool hayKraken = AvailableBiomes.Any(b => b.EnvironmentalHazard == "Kraken");
+        int eliminated = playerDataContainer.PlayersActive.Count(j => j.shipDestroyed || j.npcsLive == 0);
+        bool hayKraken = biomeDataContainer.AvailableBiomes.Any(b => b.EnvironmentalHazard == "Kraken");
 
         Debug.Log($"Total flotas eliminadas: {eliminated} | ¿Presencia de Kraken?: {hayKraken}");
     }
