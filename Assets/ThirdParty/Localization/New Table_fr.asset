@@ -92,6 +92,18 @@ MonoBehaviour:
     m_Localized: Son
     m_Metadata:
       m_Items: []
+  - m_Id: 2523173980794880
+    m_Localized: "Se d\xE9placer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2523176933584896
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2523178007326720
+    m_Localized: Canon a feu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

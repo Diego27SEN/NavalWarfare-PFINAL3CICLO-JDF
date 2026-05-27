@@ -85,6 +85,18 @@ MonoBehaviour:
     m_Key: CONTROLS
     m_Metadata:
       m_Items: []
+  - m_Id: 2523173980794880
+    m_Key: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2523176933584896
+    m_Key: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2523178007326720
+    m_Key: Shoot Cannon
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
