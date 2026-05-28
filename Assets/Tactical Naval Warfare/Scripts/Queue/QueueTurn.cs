@@ -1,12 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QueueTurn : MonoBehaviour
+[System.Serializable]
+public class QueueTurn
 {
-    public LinkedList<PlayerGame> orderTurns = new LinkedList<PlayerGame>();
+    public LinkedList<PlayerGame> orderShifts = new LinkedList<PlayerGame>();
 
-    public void AddShift(PlayerGame jugador)
+    public void AddShift(PlayerGame player)
     {
-        orderTurns.AddLast(jugador);
+        orderShifts.AddLast(player);
+    }
+
+    public PlayerGame AdvanceShift()
+    {
+        if (orderShifts.Count == 0) return null;
+
+        var currentPlayer = orderShifts.First.Value;
+        orderShifts.RemoveFirst();
+        orderShifts.AddLast(currentPlayer);
+
+        return orderShifts.First.Value;
+    }
+
+    public PlayerGame GetCurrentPlayer()
+    {
+        return orderShifts.Count > 0 ? orderShifts.First.Value : null;
     }
 }

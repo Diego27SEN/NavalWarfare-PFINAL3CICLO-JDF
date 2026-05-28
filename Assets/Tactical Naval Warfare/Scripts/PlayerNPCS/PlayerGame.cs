@@ -13,6 +13,14 @@ public class PlayerGame : MonoBehaviour
     public bool shipDestroyed = false;
     void Start()
     {
-        GameManager.Instance.RegisterPlayer(this);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RegisterPlayer(this);
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró el GameManager para registrar a " + PlayerID);
+        }
+
     }
 }
