@@ -41,9 +41,9 @@ MonoBehaviour:
   - m_Id: 20501762048
     m_Localized: 'Mer tropicale
 
-      
 
-      
+
+
 
 '
     m_Metadata:
@@ -66,6 +66,42 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 18421387264
     m_Localized: Choisissez votre carte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2151022688284672
+    m_Localized: Commandes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2151009325232128
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2150852839944192
+    m_Localized: Espagnol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2150895072391168
+    m_Localized: Anglais
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2150932057763840
+    m_Localized: Francais
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16965963776
+    m_Localized: Son
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2523173980794880
+    m_Localized: "Se d\xE9placer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2523176933584896
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2523178007326720
+    m_Localized: Canon a feu
     m_Metadata:
       m_Items: []
   references:
