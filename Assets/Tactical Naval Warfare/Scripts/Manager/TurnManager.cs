@@ -22,6 +22,16 @@ public class TurnManager : MonoBehaviour
         inputs = new InputSystem_Actions();
     }
 
+    private void Update()
+    {
+        currentTime -= Time.deltaTime;
+
+        if (currentTime <= 0)
+        {
+            NextTurn();
+            currentTime = turnDuration;
+        }
+    }
     private void OnEnable()
     {
         inputs.Enable();
@@ -39,7 +49,6 @@ public class TurnManager : MonoBehaviour
     {
         CreateCircularList();
 
-        StartTurn();
     }
 
     private void OnNextTurn(InputAction.CallbackContext context)
@@ -83,9 +92,16 @@ public class TurnManager : MonoBehaviour
     {
         currentNode.ship.StartTurn();
 
+        currentTime = turnDuration;
+
         ChangeCameraTarget();
+
     }
 
+    public void StartGame()
+    {
+        StartTurn();
+    }
     [Button]
     public void NextTurn()
     {
