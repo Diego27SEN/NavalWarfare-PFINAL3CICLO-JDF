@@ -181,6 +181,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShipMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""cedf5f91-7c31-4ab3-bd09-4fc375558b9b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -579,6 +588,61 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""6f441a9a-f7ae-4eee-a6ba-4f2aeab8ecc9"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""f386377c-cfe8-4b61-b5ca-1bed18929502"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b707faf3-9938-4729-bc4d-aa7bf4000484"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e7791edd-0d57-4d1e-8776-06e7094ea61b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""df8e09b3-5219-44f6-97c5-f27f3e4bd69c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -1174,6 +1238,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_ToggleMouse = m_Player.FindAction("ToggleMouse", throwIfNotFound: true);
+        m_Player_ShipMove = m_Player.FindAction("ShipMove", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1277,6 +1342,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Next;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_ToggleMouse;
+    private readonly InputAction m_Player_ShipMove;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1328,6 +1394,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/ToggleMouse".
         /// </summary>
         public InputAction @ToggleMouse => m_Wrapper.m_Player_ToggleMouse;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ShipMove".
+        /// </summary>
+        public InputAction @ShipMove => m_Wrapper.m_Player_ShipMove;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1384,6 +1454,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ToggleMouse.started += instance.OnToggleMouse;
             @ToggleMouse.performed += instance.OnToggleMouse;
             @ToggleMouse.canceled += instance.OnToggleMouse;
+            @ShipMove.started += instance.OnShipMove;
+            @ShipMove.performed += instance.OnShipMove;
+            @ShipMove.canceled += instance.OnShipMove;
         }
 
         /// <summary>
@@ -1425,6 +1498,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ToggleMouse.started -= instance.OnToggleMouse;
             @ToggleMouse.performed -= instance.OnToggleMouse;
             @ToggleMouse.canceled -= instance.OnToggleMouse;
+            @ShipMove.started -= instance.OnShipMove;
+            @ShipMove.performed -= instance.OnShipMove;
+            @ShipMove.canceled -= instance.OnShipMove;
         }
 
         /// <summary>
@@ -1795,6 +1871,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleMouse(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ShipMove" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShipMove(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

@@ -16,13 +16,17 @@ public class CinematicController : MonoBehaviour
 
     [SerializeField] private CinemachineCamera camD;
 
+    [SerializeField] private CinemachineCamera camE;
+
     [Header("Gameplay Camera")]
     [SerializeField] private CinemachineCamera gameplayCam;
 
     [Header("Settings")]
     [SerializeField] private float timePerCamera = 5f;
 
+    [SerializeField] private TurnManager turnManager;
     private int currentCam = 0;
+
 
     private void Start()
     {
@@ -51,6 +55,7 @@ public class CinematicController : MonoBehaviour
         camB.Priority = 0;
         camC.Priority = 0;
         camD.Priority = 0;
+        camE.Priority = 0;
 
         switch (index) // Activar solo una
  
@@ -70,6 +75,11 @@ public class CinematicController : MonoBehaviour
             case 3:
                 camD.Priority = 20;
                 break;
+
+            case 4:
+                camE.Priority = 20;
+                break;
+
         }
     }
 
@@ -90,21 +100,25 @@ public class CinematicController : MonoBehaviour
         ActivateCamera(3);
         yield return new WaitForSeconds(timePerCamera);
 
- 
+        ActivateCamera(4);
+        yield return new WaitForSeconds(timePerCamera);
+
+
+
         camA.Priority = 0;
         camB.Priority = 0;
         camC.Priority = 0;
         camD.Priority = 0;
+        camE.Priority = 0;
 
-     
+
         gameplayCam.Priority = 50;
 
-        // Devolver control jugador
-        //Ship.canMove = true;
+        turnManager.StartGame();
 
         Debug.Log("Start");
 
-      
+
         enabled = false;
     }
 }
