@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7123834101609688123, guid: 52586cc156e7429478c98993b59684d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e9931f4717cbf9e4d91d1e091f1a9c9b, type: 2}
+    - target: {fileID: 7123834101609688123, guid: 52586cc156e7429478c98993b59684d1, type: 3}
       propertyPath: 'm_Materials.Array.data[5]'
       value: 
       objectReference: {fileID: 2100000, guid: e9931f4717cbf9e4d91d1e091f1a9c9b, type: 2}
@@ -58,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8780907869515927022, guid: 52586cc156e7429478c98993b59684d1, type: 3}
       propertyPath: m_Name
-      value: Ship Variant Green
+      value: Ship Variant green
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
