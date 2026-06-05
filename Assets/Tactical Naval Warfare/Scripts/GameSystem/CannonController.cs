@@ -11,13 +11,17 @@ public class CannonController : MonoBehaviour
     public float mouseSensitivity = 0.1f;
 
     [Header("Límites de Rotacion Vertical")]
-    public float minVerticalAngle = -10f;
-    public float maxVerticalAngle = 45f;
+    public float minVerticalAngle = -60f;
+    public float maxVerticalAngle = 20f;
+    public bool invertVerticalAim = false;
 
     private bool isCannonActive = false;
     private float rotationX = 0f;
     private float rotationY = 0f;
     private Vector2 currentLookInput = Vector2.zero;
+
+    private Quaternion initialBaseRotation;
+    private Quaternion initialPivotRotation;
 
     private InputSystem_Actions inputs;
     private void Awake()
@@ -49,6 +53,9 @@ public class CannonController : MonoBehaviour
     #endregion
     void Start()
     {
+        initialBaseRotation = baseCannon.localRotation;
+        initialPivotRotation = pivotCannon.localRotation;
+
         UpdateMouseVisibility();
     }
     void Update()
@@ -59,24 +66,16 @@ public class CannonController : MonoBehaviour
     public void HandleRotation()
     {
         if (!isCannonActive) return;
-
         float mouseX = currentLookInput.x * mouseSensitivity;
         float mouseY = currentLookInput.y * mouseSensitivity;
 
         rotationY += mouseX;
-        rotationX -= mouseY;
+        rotationX -= mouseY * (invertVerticalAim ? -1f : 1f);
 
         rotationX = Mathf.Clamp(rotationX, minVerticalAngle, maxVerticalAngle);
 
-        if (baseCannon != null)
-        {
-            baseCannon.localRotation = Quaternion.Euler(0f, rotationY, 0f);
-        }
-
-        if (pivotCannon != null)
-        {
-            pivotCannon.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
-        }
+        baseCannon.localRotation = initialBaseRotation * Quaternion.Euler(0f, rotationY, 0f);
+        pivotCannon.localRotation = initialPivotRotation * Quaternion.Euler(rotationX, 0f, 0f);
     }
     public void UpdateMouseVisibility()
     {
@@ -102,4 +101,5 @@ public class CannonController : MonoBehaviour
         UpdateMouseVisibility();
     }
     #endregion
+
 }
