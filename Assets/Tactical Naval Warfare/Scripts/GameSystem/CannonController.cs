@@ -1,71 +1,84 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(CannonInputs))]
 public class CannonController : MonoBehaviour
 {
-    [Header("Referencias de la Torreta")]
+    [Header("Refèrencies de la Torreta")]
     public Transform baseCannon;
     public Transform pivotCannon;
 
-    [Header("Configuracion de Sensibilidad")]
+    [Header("Configuració de Sensibilitat")]
     public float mouseSensitivity = 0.1f;
 
-    [Header("Límites de Rotacion Vertical")]
+    [Header("Límits de Rotació Vertical")]
     public float minVerticalAngle = -60f;
     public float maxVerticalAngle = 20f;
     public bool invertVerticalAim = false;
 
     private bool isCannonActive = false;
+    private Vector2 currentLookInput = Vector2.zero;
     private float rotationX = 0f;
     private float rotationY = 0f;
-    private Vector2 currentLookInput = Vector2.zero;
 
     private Quaternion initialBaseRotation;
     private Quaternion initialPivotRotation;
 
-    private InputSystem_Actions inputs;
+    private CannonInputs inputsSystem;
+
     private void Awake()
     {
-        inputs = new InputSystem_Actions();
+        inputsSystem = GetComponent<CannonInputs>();
     }
-    #region InputsActions
+
     private void OnEnable()
     {
-        inputs.Enable();
-
-        inputs.Player.Look.performed += OnLookPerformed;
-        inputs.Player.Look.canceled += OnLookCanceled;
-
-        inputs.Player.ToggleMouse.performed += OnAimPerformed;
-        inputs.Player.ToggleMouse.canceled += OnAimCanceled;
+        if (inputsSystem != null)
+        {
+            inputsSystem.OnLook += UpdateLookInput;
+            inputsSystem.OnAimStateChanged += UpdateAimState;
+        }
     }
 
     private void OnDisable()
     {
-        inputs.Player.Look.performed -= OnLookPerformed;
-        inputs.Player.Look.canceled -= OnLookCanceled;
-
-        inputs.Player.ToggleMouse.performed -= OnAimPerformed;
-        inputs.Player.ToggleMouse.canceled -= OnAimCanceled;
-
-        inputs.Disable();
+        if (inputsSystem != null)
+        {
+            inputsSystem.OnLook -= UpdateLookInput;
+            inputsSystem.OnAimStateChanged -= UpdateAimState;
+        }
     }
-    #endregion
+
     void Start()
     {
-        initialBaseRotation = baseCannon.localRotation;
-        initialPivotRotation = pivotCannon.localRotation;
-
+        if (baseCannon != null) initialBaseRotation = baseCannon.localRotation;
+        if (pivotCannon != null) initialPivotRotation = pivotCannon.localRotation;
         UpdateMouseVisibility();
     }
+
     void Update()
     {
         HandleRotation();
     }
-    #region Funcion de la Rotacion y la visibilidad del Mouse
+
+    #region Recibir Eventos
+    private void UpdateLookInput(Vector2 lookData)
+    {
+        currentLookInput = lookData;
+    }
+
+    private void UpdateAimState(bool isActive)
+    {
+        isCannonActive = isActive;
+        UpdateMouseVisibility();
+    }
+    #endregion
+
+    #region Rotacion y Visbilidad
     public void HandleRotation()
     {
-        if (!isCannonActive) return;
+        if (!isCannonActive || baseCannon == null || pivotCannon == null) return;
+
         float mouseX = currentLookInput.x * mouseSensitivity;
         float mouseY = currentLookInput.y * mouseSensitivity;
 
@@ -77,29 +90,11 @@ public class CannonController : MonoBehaviour
         baseCannon.localRotation = initialBaseRotation * Quaternion.Euler(0f, rotationY, 0f);
         pivotCannon.localRotation = initialPivotRotation * Quaternion.Euler(rotationX, 0f, 0f);
     }
+
     public void UpdateMouseVisibility()
     {
         Cursor.lockState = isCannonActive ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !isCannonActive;
     }
     #endregion
-
-    #region Callback de Inputs
-    private void OnLookPerformed(InputAction.CallbackContext ctx) => currentLookInput = ctx.ReadValue<Vector2>();
-    private void OnLookCanceled(InputAction.CallbackContext ctx) => currentLookInput = Vector2.zero;
-
-    private void OnAimPerformed(InputAction.CallbackContext ctx)
-    {
-        isCannonActive = true;
-        UpdateMouseVisibility();
-    }
-
-    private void OnAimCanceled(InputAction.CallbackContext ctx)
-    {
-        isCannonActive = false;
-        currentLookInput = Vector2.zero;
-        UpdateMouseVisibility();
-    }
-    #endregion
-
 }
