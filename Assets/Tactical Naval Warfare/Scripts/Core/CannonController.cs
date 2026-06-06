@@ -4,14 +4,14 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CannonInputs))]
 public class CannonController : MonoBehaviour
 {
-    [Header("Refèrencies de la Torreta")]
+    [Header("Referencies de la Torreta")]
     public Transform baseCannon;
     public Transform pivotCannon;
 
-    [Header("Configuració de Sensibilitat")]
+    [Header("Configuracion de Sensibilidad")]
     public float mouseSensitivity = 0.1f;
 
-    [Header("Límits de Rotació Vertical")]
+    [Header("Limites de Rotacion Vertical")]
     public float minVerticalAngle = -60f;
     public float maxVerticalAngle = 20f;
     public bool invertVerticalAim = false;
