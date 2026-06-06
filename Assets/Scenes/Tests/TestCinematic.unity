@@ -1364,6 +1364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 635109538}
   - component: {fileID: 635109539}
+  - component: {fileID: 635109540}
   m_Layer: 0
   m_Name: Base_Cannon
   m_TagString: Untagged
@@ -1404,8 +1405,20 @@ MonoBehaviour:
   pivotCannon: {fileID: 1041273304}
   mouseSensitivity: 0.1
   minVerticalAngle: -60
-  maxVerticalAngle: 10
+  maxVerticalAngle: 20
   invertVerticalAim: 0
+--- !u!114 &635109540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635109537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec22cc9a3392cd142b9c0aeb117ebdf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CannonInputs
 --- !u!1001 &646047132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3007,6 +3020,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1535800790}
   - component: {fileID: 1535800791}
+  - component: {fileID: 1535800792}
   m_Layer: 0
   m_Name: Base_Cannon_Blue
   m_TagString: Untagged
@@ -3049,6 +3063,18 @@ MonoBehaviour:
   minVerticalAngle: -60
   maxVerticalAngle: 20
   invertVerticalAim: 0
+--- !u!114 &1535800792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535800789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec22cc9a3392cd142b9c0aeb117ebdf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CannonInputs
 --- !u!1001 &1539862687
 PrefabInstance:
   m_ObjectHideFlags: 0

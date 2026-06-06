@@ -1,8 +1,8 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TurnSystemSO", menuName = "NavalWarfare/TurnSystemSO")]
-public class TurnSystemSO : ScriptableObject
+[CreateAssetMenu(fileName = "TurnSystemSO", menuName = "TacticalNavalWarfare/TurnSystemSO")]
+public class TurnSystemData : SerializedScriptableObject
 {
     [ShowInInspector]
     public QueueTurn SistemShift = new QueueTurn();

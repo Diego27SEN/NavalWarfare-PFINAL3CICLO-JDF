@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CanonData", menuName = "NavalWarfare/CañonData")]
-public class CanonData : ScriptableObject
+[CreateAssetMenu(fileName = "CanonData", menuName = "TacticalNavalWarfare/CannonData")]
+public class CannonData : ScriptableObject
 {
     [Header("Stats")]
     public GameObject ModelCannon;

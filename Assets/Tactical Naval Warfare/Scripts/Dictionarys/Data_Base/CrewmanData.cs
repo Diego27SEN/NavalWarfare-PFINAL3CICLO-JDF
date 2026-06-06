@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CrewmanData", menuName = "NavalWarfare/TripulanteData")]
+[CreateAssetMenu(fileName = "CrewmanData", menuName = "TacticalNavalWarfare/CrewmanData")]
 public class CrewmanData : ScriptableObject
 {
     public string NameCrewman; //Stumble
