@@ -1,10 +1,10 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "DataShip", menuName = "NavalWarfare/DataShip")]
+[CreateAssetMenu(fileName = "DataShipBase", menuName = "TacticalNavalWarfare/DataShipBase")]
 public class DataShipBase : ScriptableObject
 {
     [Header("NameShip")]
     public string NameBoat;
-    public CanonData EquippedCannon;
+    public CannonData EquippedCannon;
 
     [Header("Identifiacion")]
     public string NameColor;

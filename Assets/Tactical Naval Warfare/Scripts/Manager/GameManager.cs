@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("Arquitectura de Datos")]
-    public BiomeCollectionSO biomeDataContainer;
-    public PlayerRuntimeSetSO playerDataContainer;
-    public ShipCatalogSO shipDataContainer;
-    public TurnSystemSO turnDataContainer;
+    public BiomeCollectionData biomeDataContainer;
+    public PlayerRuntimeSetData playerDataContainer;
+    public ShipCatalogData shipDataContainer;
+    public TurnSystemData turnDataContainer;
 
     [FoldoutGroup("Control de Turno")]
     public PlayerGame currentPlayer; 
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
     public void FindPlayerInDanger()
     {
         //Consulta LINQ apunta al contenedor de jugadores
-        var playerdanger = playerDataContainer.PlayersActive
+        var playerdanger = playerDataContainer.PlayersActive.Values
            .FirstOrDefault(j => j.npcsLive == 1 && !j.shipDestroyed);
         Debug.Log(playerdanger != null ? $"El: {playerdanger.PlayerID} esta peligro." : "Todos los barcos tienen a sus tripulantes");
     }
@@ -129,9 +129,8 @@ public class GameManager : MonoBehaviour
     [Button("Mostrar Ranking Top")]
     public void ShowRankingTop()
     {
-        var leader = playerDataContainer.PlayersActive
+        var leader = playerDataContainer.PlayersActive.Values
             .OrderByDescending(j => j.currentScore)
-            .Take(1)
             .FirstOrDefault();
 
         if (leader != null)
@@ -143,8 +142,8 @@ public class GameManager : MonoBehaviour
     [Button("Mostrar Estado de la partida")]
     public void ShowMatchStatus()
     {
-        int eliminated = playerDataContainer.PlayersActive.Count(j => j.shipDestroyed || j.npcsLive == 0);
-        bool hayKraken = biomeDataContainer.AvailableBiomes.Any(b => b.EnvironmentalHazard == "Kraken");
+        int eliminated = playerDataContainer.PlayersActive.Values.Count(j => j.shipDestroyed || j.npcsLive == 0);
+        bool hayKraken = biomeDataContainer.AvailableBiomes.Values.Any(b => b.EnvironmentalHazard == "Kraken");
 
         Debug.Log($"Total flotas eliminadas: {eliminated} | ¿Presencia de Kraken?: {hayKraken}");
     }
