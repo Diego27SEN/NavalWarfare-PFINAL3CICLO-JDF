@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace James.Collections.Graphs
+namespace TacticalNavalWarfare.Collections.Graphs
 {
     public class Node<T>//->vertices
     {
