@@ -4,8 +4,8 @@ public class PlayerGame : MonoBehaviour
 {
     [Header("Datos del Jugador")]
     public string PlayerID;
-    public DataShipBase SelectedShip;
-    public CrewmanData soldierNPC;
+    public ShipDatabase SelectedShip;
+    public CrewmanDatabase soldierNPC;
 
     [Header("Estado Dinamico en Partida")]
     public int currentScore;

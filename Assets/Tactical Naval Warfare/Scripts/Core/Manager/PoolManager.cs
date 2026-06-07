@@ -6,7 +6,7 @@ public class PoolManager : MonoBehaviour
     public static PoolManager Instance { get; private set; }
 
     [Header("Pool Configurations")]
-    public List<PoolConfigData> poolConfigurations;
+    public List<PoolConfigDatabase> poolConfigurations;
 
     private Dictionary<string, Queue<GameObject>> poolDictionary;
 

@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public PlayerRuntimeSetData playerDataContainer;
     public ShipCatalogData shipDataContainer;
     public TurnSystemData turnDataContainer;
+    public PoolConfigCollectionData poolDataContainer;
+    public CardDeckData cardDataContainer;
+    public CrewmanCollectionData crewmanDataContainer;
 
     private DiceTurnController turnController;
     private MatchAnalyzer matchAnalyzer;
