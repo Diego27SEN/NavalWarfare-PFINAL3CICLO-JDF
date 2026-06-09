@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ShipController : MonoBehaviour
 {
@@ -11,22 +11,20 @@ public class ShipController : MonoBehaviour
     [Header("Turn System")]
     public bool InTurn = false;
 
-    private Vector3 moveDirection;
-    private InputSystem_Actions inputs;
+    [SerializeField] private PlayerInputSystem playerInputSystem;
 
-    private void Awake()
-    {
-        inputs = new InputSystem_Actions();
-    }
+    private Vector2 moveInput;
+    private Vector3 moveDirection;
+
 
     private void OnEnable()
     {
-        inputs.Enable();
+        playerInputSystem.OnMove += SetMoveInput;
     }
 
     private void OnDisable()
     {
-        inputs.Disable();
+        playerInputSystem.OnMove -= SetMoveInput;
     }
 
     private void Update()
@@ -36,10 +34,13 @@ public class ShipController : MonoBehaviour
         HandleMovement();
     }
 
+    public void SetMoveInput(Vector2 input)
+    {
+        moveInput = input;
+    }
+
     private void HandleMovement()
     {
-        Vector2 moveInput = inputs.Player.Move.ReadValue<Vector2>();
-
         moveDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
 
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
@@ -48,7 +49,10 @@ public class ShipController : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                rotationSpeed * Time.deltaTime);
         }
     }
     public void StartTurn()
