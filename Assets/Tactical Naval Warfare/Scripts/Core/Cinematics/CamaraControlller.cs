@@ -42,7 +42,7 @@ public class CinematicController : MonoBehaviour
     {
         currentCam++;
 
-        if (currentCam > 3)
+        if (currentCam > 4)
             currentCam = 0;
 
         ActivateCamera(currentCam);
