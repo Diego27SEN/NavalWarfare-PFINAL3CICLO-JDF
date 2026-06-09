@@ -9,21 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 881d42f770cd7d946bb21ad866a100e2, type: 3}
-  m_Name: BiomeCollectionSO
-  m_EditorClassIdentifier: Assembly-CSharp::BiomeCollectionData
+  m_Script: {fileID: 11500000, guid: 99cd7c8a06886e74ebd836897e529440, type: 3}
+  m_Name: ShipCatalogSO
+  m_EditorClassIdentifier: Assembly-CSharp::ShipCatalogData
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 6cb34fd8f4550c04aa560720b159957a, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: AvailableBiomes
+    - Name: CatalogBoats
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[BiomeDatabase,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ShipDatabase,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
@@ -42,8 +43,8 @@ MonoBehaviour:
       Entry: 1
       Data: 1
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 

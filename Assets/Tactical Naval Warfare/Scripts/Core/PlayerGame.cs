@@ -9,7 +9,7 @@ public class PlayerGame : MonoBehaviour
 
     [Header("Estado Dinamico en Partida")]
     public int currentScore;
-    public int npcsLive = 4; 
+    public int npcsLive = 6; 
     public bool shipDestroyed = false;
     void Start()
     {
