@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PoolConfigCollectionData", menuName = "TacticalNavalWarfare/PoolConfigCollectionSO")]
+[CreateAssetMenu(fileName = "PoolConfigCollectionSO", menuName = "TacticalNavalWarfare/PoolConfigCollectionSO")]
 public class PoolConfigCollectionData : SerializedScriptableObject
 {
     [ShowInInspector]

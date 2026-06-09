@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CardsDatabase", menuName = "NavalWarfare/CardsDataSO")]
+[CreateAssetMenu(fileName = "CardsDatabase", menuName = "TacticalNavalWarfare/CardsDataSO")]
 
 public class CardsDatabase : ScriptableObject
 {

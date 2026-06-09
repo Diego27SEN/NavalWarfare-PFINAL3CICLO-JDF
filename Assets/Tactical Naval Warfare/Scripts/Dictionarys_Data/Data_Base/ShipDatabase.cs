@@ -6,7 +6,7 @@ public class ShipDatabase : ScriptableObject
     public string NameBoat;
     public CannonDatabase EquippedCannon;
 
-    [Header("Identifiacion")]
+    [Header("Identificacion")]
     public string NameColor;
     public Color color;
     public GameObject Ship;
