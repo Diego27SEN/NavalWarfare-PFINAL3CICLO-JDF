@@ -6,7 +6,7 @@ public class ScenesController : MonoBehaviour
 {
     public void MainPage()
     {
-        SceneManager.LoadScene("MAINPAGE");
+        SceneManager.LoadScene("OpeningMainScene");
     }
 
     public void MenuScene()
@@ -14,9 +14,19 @@ public class ScenesController : MonoBehaviour
         SceneManager.LoadScene("SelectScene");
     }
 
+    public void SelectorScene()
+    {
+        SceneManager.LoadScene("SelectorScene");
+    }
+
     public void ModeScene()
     {
         SceneManager.LoadScene("ModeSelector");
+    }
+
+    public void CreditsScene()
+    {
+        SceneManager.LoadScene("CreditsScene");
     }
 
     public void Quitgame()

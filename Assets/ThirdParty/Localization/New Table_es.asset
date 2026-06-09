@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19776147456
-    m_Localized: Regresar
+    m_Localized: <-- Regresar
     m_Metadata:
       m_Items: []
   - m_Id: 18421387264
@@ -77,7 +77,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2150852839944192
-    m_Localized: "Espa\xF1ol"
+    m_Localized: Espanol
     m_Metadata:
       m_Items: []
   - m_Id: 2150895072391168
@@ -101,7 +101,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2523178007326720
-    m_Localized: "Disparar Ca\xF1on"
+    m_Localized: Disparar Canon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7199117562163200
+    m_Localized: Escoge un idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7221355829080064
+    m_Localized: Integrantes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7221347599855616
+    m_Localized: PROGRAMAS USADOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7221344315715584
+    m_Localized: CREDITS
     m_Metadata:
       m_Items: []
   references:

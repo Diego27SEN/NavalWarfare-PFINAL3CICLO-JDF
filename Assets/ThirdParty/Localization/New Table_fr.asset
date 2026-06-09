@@ -61,7 +61,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19776147456
-    m_Localized: Retour
+    m_Localized: <-- Retour
     m_Metadata:
       m_Items: []
   - m_Id: 18421387264
@@ -93,7 +93,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2523173980794880
-    m_Localized: "Se d\xE9placer"
+    m_Localized: Se deplacer
     m_Metadata:
       m_Items: []
   - m_Id: 2523176933584896
@@ -102,6 +102,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2523178007326720
     m_Localized: Canon a feu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7199117562163200
+    m_Localized: Choisir une langue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7221355829080064
+    m_Localized: Membres
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7221347599855616
+    m_Localized: PROGRAMMES UTILISES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7221344315715584
+    m_Localized: CREDITS
     m_Metadata:
       m_Items: []
   references:
