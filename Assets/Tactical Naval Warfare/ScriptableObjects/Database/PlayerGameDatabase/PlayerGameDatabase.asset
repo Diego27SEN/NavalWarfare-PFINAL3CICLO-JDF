@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbbf8bab0268ce48a74e4c94ba62dfc, type: 3}
+  m_Name: PlayerGameDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGameDatabase
+  PlayerID: 1
+  SelectedShip: {fileID: 11400000, guid: ef1ef06ebadcbe0409b8101c537eb756, type: 2}
+  soldierNPC: {fileID: 11400000, guid: 9a9db86a30aa3414f8bc2de84f6acf6a, type: 2}
+  currentScore: 0
+  npcsLive: 8
+  shipDestroyed: 0

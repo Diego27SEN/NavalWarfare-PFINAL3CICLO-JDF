@@ -6,6 +6,6 @@ using UnityEngine;
 public class BiomeCollectionData : SerializedScriptableObject
 {
     [ShowInInspector]
-    public Dictionary<string, BiomeData> AvailableBiomes = new Dictionary<string, BiomeData>();
+    public Dictionary<string, BiomeDatabase> AvailableBiomes = new Dictionary<string, BiomeDatabase>();
 }
 

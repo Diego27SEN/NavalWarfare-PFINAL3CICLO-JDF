@@ -7,10 +7,10 @@ public class CannonBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Detecta si chocó contra el agua o contra un barco
+        // Detecta si choco contra el agua o contra un barco
         if (other.CompareTag("Water") || other.CompareTag("Ship"))
         {
-            // Elegimos qué partícula pedir dependiendo de contra qué chocamos
+            // Elegimos que partícula pedir dependiendo de contra qué chocamos
             string particleId = other.CompareTag("Water") ? "WaterExplosion" : "WoodExplosion";
 
             if (PoolManager.Instance != null)

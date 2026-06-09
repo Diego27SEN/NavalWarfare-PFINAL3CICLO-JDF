@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShipCatalogData : SerializedScriptableObject
 {
     [ShowInInspector]
-    public Dictionary<string, DataShipBase> CatalogBoats = new();
+    public Dictionary<string, ShipDatabase> CatalogBoats = new();
 
     // Método para limpiar el diccionario al iniciar
     public void Initialize()
@@ -14,7 +14,7 @@ public class ShipCatalogData : SerializedScriptableObject
         CatalogBoats.Clear();
     }
 
-    public void RegisterShip(string name, DataShipBase ship)
+    public void RegisterShip(string name, ShipDatabase ship)
     {
         CatalogBoats[name] = ship;
     }

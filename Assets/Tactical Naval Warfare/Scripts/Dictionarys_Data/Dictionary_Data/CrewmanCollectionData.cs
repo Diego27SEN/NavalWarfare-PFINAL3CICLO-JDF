@@ -7,11 +7,11 @@ public class CrewmanCollectionData : SerializedScriptableObject
 {
     [Header("Lista Global de Tripulantes")]
     [ShowInInspector]
-    public Dictionary<string, CrewmanData> AvailableCrew = new ();
+    public Dictionary<string, CrewmanDatabase> AvailableCrew = new ();
 
-    public CrewmanData GetCrewmanByName(string name)
+    public CrewmanDatabase GetCrewmanByName(string name)
     {
-        if (AvailableCrew.TryGetValue(name, out CrewmanData crewman))
+        if (AvailableCrew.TryGetValue(name, out CrewmanDatabase crewman))
         {
             return crewman;
         }

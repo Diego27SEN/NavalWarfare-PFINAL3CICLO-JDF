@@ -4,7 +4,7 @@ public class DiceTurnController
 {
     private TurnSystemData turnData;
 
-    public PlayerGame currentPlayer;
+    public PlayerGameDatabase currentPlayer;
     public int remainingShots = 0;
     public bool hasRolledDice = false;
 
@@ -56,7 +56,7 @@ public class DiceTurnController
         Debug.Log($"¡Nuevo turno para: {currentPlayer?.PlayerID}!");
     }
 
-    public bool CanExecuteShot(PlayerGame player)
+    public bool CanExecuteShot(PlayerGameDatabase player)
     {
         return currentPlayer == player && hasRolledDice && remainingShots > 0;
     }

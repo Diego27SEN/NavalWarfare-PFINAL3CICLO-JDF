@@ -6,5 +6,5 @@ using UnityEngine;
 public class CardDeckData : SerializedScriptableObject
 {
     [ShowInInspector]
-    public Dictionary<string, CardsDataSO> AvailableCards = new ();
+    public Dictionary<string, CardsDatabase> AvailableCards = new ();
 }

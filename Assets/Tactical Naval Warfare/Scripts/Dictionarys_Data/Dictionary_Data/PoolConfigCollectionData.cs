@@ -6,5 +6,5 @@ using UnityEngine;
 public class PoolConfigCollectionData : SerializedScriptableObject
 {
     [ShowInInspector]
-    public Dictionary<string, PoolConfigData> PoolConfigurations = new ();
+    public Dictionary<string, PoolConfigDatabase> PoolConfigurations = new ();
 }

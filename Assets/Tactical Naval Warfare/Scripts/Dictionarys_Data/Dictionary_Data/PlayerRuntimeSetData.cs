@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerRuntimeSetData : SerializedScriptableObject
 {
     [ShowInInspector]
-    public Dictionary<string, PlayerGame> PlayersActive = new ();
+    public Dictionary<string, PlayerGameDatabase> PlayersActive = new ();
 
     // Limpiar la lista al iniciar la escena
     public void Initialize()
@@ -14,7 +14,7 @@ public class PlayerRuntimeSetData : SerializedScriptableObject
         PlayersActive.Clear();
     }
 
-    public void AddPlayer(PlayerGame player)
+    public void AddPlayer(PlayerGameDatabase player)
     {
         if (!PlayersActive.ContainsKey(player.PlayerID))
         {
