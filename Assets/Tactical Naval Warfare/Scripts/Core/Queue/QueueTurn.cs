@@ -4,14 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class QueueTurn
 {
-    public LinkedList<PlayerGame> orderShifts = new LinkedList<PlayerGame>();
+    public LinkedList<PlayerGameDatabase> orderShifts = new LinkedList<PlayerGameDatabase>();
 
-    public void AddShift(PlayerGame player)
+    public void AddShift(PlayerGameDatabase player)
     {
         orderShifts.AddLast(player);
     }
 
-    public PlayerGame AdvanceShift()
+    public PlayerGameDatabase AdvanceShift()
     {
         if (orderShifts.Count == 0) return null;
 
@@ -22,7 +22,7 @@ public class QueueTurn
         return orderShifts.First.Value;
     }
 
-    public PlayerGame GetCurrentPlayer()
+    public PlayerGameDatabase GetCurrentPlayer()
     {
         return orderShifts.Count > 0 ? orderShifts.First.Value : null;
     }

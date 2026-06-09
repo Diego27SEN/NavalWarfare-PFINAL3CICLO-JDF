@@ -5,7 +5,7 @@ public class ShootController : MonoBehaviour
 {
     [Header("Referencias de Disparo")]
     [Tooltip("Script PlayerGame")]
-    public PlayerGame ownerShip;
+    public PlayerGameDatabase ownerShip;
 
     [Tooltip("El objeto vacío en la punta del cañón")]
     public Transform firePoint;

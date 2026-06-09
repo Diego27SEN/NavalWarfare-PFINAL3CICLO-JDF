@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: PlayersActive
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[PlayerGame,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[PlayerGameDatabase,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7

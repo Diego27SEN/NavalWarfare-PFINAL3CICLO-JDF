@@ -154,6 +154,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1800938747}
+  - {fileID: 821596312}
   m_Father: {fileID: 1938213676}
   m_LocalEulerAnglesHint: {x: -0.005, y: -89.736, z: 0.078}
 --- !u!1001 &50853424
@@ -1574,6 +1575,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1031184966}
+  - {fileID: 1607715480}
   m_Father: {fileID: 1535800790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &464361953
@@ -2688,6 +2690,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 425581998}
+  - {fileID: 2113211766}
   m_Father: {fileID: 214534744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &721828739
@@ -3182,7 +3185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 790917970}
   m_Layer: 0
-  m_Name: FirePoint
+  m_Name: FirePointYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3241,6 +3244,37 @@ Transform:
   - {fileID: 1607816446}
   - {fileID: 641167860}
   m_Father: {fileID: 514636598}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &821596311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821596312}
+  m_Layer: 0
+  m_Name: FirePointGreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &821596312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821596311}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03, y: -0, z: 28.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 38009872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &823561089
 PrefabInstance:
@@ -3334,7 +3368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoolManager
   poolConfigurations:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 99e4bcb30e8b324498095942dcb85be3, type: 2}
 --- !u!4 &823890958
 Transform:
   m_ObjectHideFlags: 0
@@ -5807,6 +5841,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1978532799669955143, guid: d0daad51db173944ea9bacb09ea0d310, type: 3}
   m_PrefabInstance: {fileID: 1539862687}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1607715479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1607715480}
+  m_Layer: 0
+  m_Name: FirePointBlue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1607715480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607715479}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.51, y: 0.91, z: 30.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 460911597}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1607816445
 GameObject:
   m_ObjectHideFlags: 0
@@ -5875,6 +5940,7 @@ MonoBehaviour:
   poolDataContainer: {fileID: 11400000, guid: aa81d6a0058189c419024267f0da14e3, type: 2}
   cardDataContainer: {fileID: 11400000, guid: 87f48c80382ed1146ab49b15b3c1a17e, type: 2}
   crewmanDataContainer: {fileID: 11400000, guid: e5a51fe8879f0404ca1605e2c082320f, type: 2}
+  jugadoresDeEstaPartida: []
 --- !u!4 &1656215779
 Transform:
   m_ObjectHideFlags: 0
@@ -313800,6 +313866,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e6836608919ce443bdefa2a3c6b9136, type: 3}
   m_PrefabInstance: {fileID: 269136832}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2113211765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2113211766}
+  m_Layer: 0
+  m_Name: FirePointRed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2113211766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113211765}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8, z: -30.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 720071680}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2131608452
 GameObject:
   m_ObjectHideFlags: 0

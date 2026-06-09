@@ -19,8 +19,10 @@ public class GameManager : MonoBehaviour
     private DiceTurnController turnController;
     private MatchAnalyzer matchAnalyzer;
 
+    public PlayerGameDatabase[] jugadoresDeEstaPartida;
+
     [FoldoutGroup("Control de Turno"), ShowInInspector, ReadOnly]
-    public PlayerGame currentPlayer => turnController?.currentPlayer;
+    public PlayerGameDatabase currentPlayer => turnController?.currentPlayer;
 
     [FoldoutGroup("Control de Turno"), ShowInInspector, ReadOnly]
     public int remainingShots => turnController != null ? turnController.remainingShots : 0;
@@ -43,13 +45,23 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); 
         }
     }
+    void Start()
+    {
+        playerDataContainer.Initialize();
+
+        foreach (var jugador in jugadoresDeEstaPartida)
+        {
+            playerDataContainer.AddPlayer(jugador);
+        }
+
+    }
     private void InitializeContainers()
     {
         if (playerDataContainer != null) playerDataContainer.Initialize();
         if (shipDataContainer != null) shipDataContainer.Initialize();
         if (turnDataContainer != null) turnDataContainer.Initialize();
     }
-    public void RegisterPlayer(PlayerGame newPlayer)
+    public void RegisterPlayer(PlayerGameDatabase newPlayer)
     {
         playerDataContainer.AddPlayer(newPlayer);
         turnDataContainer.SistemShift.AddShift(newPlayer);
@@ -70,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void RegisterShotEfectuated() => turnController.RegisterShotEfectuated();
 
-    public bool CanExecuteShot(PlayerGame player) => turnController != null && turnController.CanExecuteShot(player);
+    public bool CanExecuteShot(PlayerGameDatabase player) => turnController != null && turnController.CanExecuteShot(player);
 
     [FoldoutGroup("Control de Turno")]
     [Button("Terminar Turno Dado", ButtonSizes.Medium)]

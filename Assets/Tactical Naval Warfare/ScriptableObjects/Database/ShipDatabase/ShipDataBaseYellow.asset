@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShipDataBaseYellow
   m_EditorClassIdentifier: Assembly-CSharp::ShipDatabase
   NameBoat: Colonizador
-  EquippedCannon: {fileID: 11400000, guid: e22583bac40c459409d0497e5ebde51b, type: 2}
+  EquippedCannon: {fileID: 11400000, guid: ec544fc5e21561547809a909ae421d88, type: 2}
   NameColor: Yellow
   color: {r: 0.9696431, g: 1, b: 0, a: 0}
   Ship: {fileID: 0}
