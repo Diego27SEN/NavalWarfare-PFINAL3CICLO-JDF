@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743cbe567f58f7a47bd815a995548e48, type: 3}
   m_Name: CardsDatabase
   m_EditorClassIdentifier: Assembly-CSharp::CardsDatabase
-  CardType: 0
-  NameCart: 
-  Description: 
+  CardType: 2
+  NameCart: Al Rescate
+  Description: Agrega un soldado A tu Barco
