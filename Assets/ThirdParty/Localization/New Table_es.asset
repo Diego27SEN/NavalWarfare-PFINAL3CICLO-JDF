@@ -49,23 +49,19 @@ MonoBehaviour:
   - m_Id: 20501762048
     m_Localized: 'Mar Tropical
 
-
-
-
-
 '
     m_Metadata:
       m_Items: []
   - m_Id: 396760924225536
-    m_Localized: "Ruinas Mar\xEDtimas"
+    m_Localized: Ruinas Maritimas
     m_Metadata:
       m_Items: []
   - m_Id: 22192066560
-    m_Localized: "El Tri\xE1ngulo de Las Bermudas "
+    m_Localized: 'El Triangulo de Las Bermudas '
     m_Metadata:
       m_Items: []
   - m_Id: 21512589312
-    m_Localized: "Hielos Ant\xE1rticos"
+    m_Localized: Hielos Antarticos
     m_Metadata:
       m_Items: []
   - m_Id: 2151022688284672
