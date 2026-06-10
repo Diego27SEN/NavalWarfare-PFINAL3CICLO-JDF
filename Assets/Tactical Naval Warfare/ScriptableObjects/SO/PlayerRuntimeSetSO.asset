@@ -16,10 +16,10 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: f474675b74f3def478e9b5dbef154045, type: 2}
-    - {fileID: 11400000, guid: 325581f7d1c01f2489d0c2c89bcb5ebb, type: 2}
-    - {fileID: 11400000, guid: 8172c880b5a754644913d8562b73500f, type: 2}
     - {fileID: 11400000, guid: d87a13d723bbc094fad58ccddf742c14, type: 2}
+    - {fileID: 11400000, guid: f474675b74f3def478e9b5dbef154045, type: 2}
+    - {fileID: 11400000, guid: 8172c880b5a754644913d8562b73500f, type: 2}
+    - {fileID: 11400000, guid: 325581f7d1c01f2489d0c2c89bcb5ebb, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []

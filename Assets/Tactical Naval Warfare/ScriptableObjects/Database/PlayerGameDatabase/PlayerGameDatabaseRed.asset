@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfbbf8bab0268ce48a74e4c94ba62dfc, type: 3}
-  m_Name: PlayerGameDatabase 1
+  m_Name: PlayerGameDatabaseRed
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGameDatabase
-  PlayerID: 2
-  SelectedShip: {fileID: 11400000, guid: 73d7aaaa259ef5743b4a66b1448d9720, type: 2}
-  soldierNPC: {fileID: 11400000, guid: d50e0a995587df54c8dcf849b8d447f5, type: 2}
+  PlayerID: 3
+  SelectedShip: {fileID: 11400000, guid: 092fd61eef7972d4789b7082113b841b, type: 2}
+  soldierNPC: {fileID: 11400000, guid: ec3a442f816fbc4409274739e67d3833, type: 2}
   currentScore: 0
   npcsLive: 8
   shipDestroyed: 0

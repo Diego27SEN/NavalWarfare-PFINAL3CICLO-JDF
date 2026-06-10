@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9de90309caa2fa438afa84c744ffe4d, type: 3}
   m_Name: PoolConfigDatabase
   m_EditorClassIdentifier: Assembly-CSharp::PoolConfigDatabase
-  poolID: 1
+  poolID: CannonBall
   prefab: {fileID: 134055103974233099, guid: 5acf129933eb1e54bb4725118658bfe7, type: 3}
   initialSize: 1
