@@ -25,23 +25,28 @@ public class DiceTurnController
         if (currentPlayer == null) return;
 
         hasRolledDice = true;
-        int diceResult = Random.Range(1, 9);
+
+        // Generamos un número entre 1 y 6 (dado de 6 caras)
+        int diceResult = Random.Range(1, 7);
         Debug.Log($"El Dado {currentPlayer.PlayerID} obtuvo un: {diceResult}");
 
-        if (diceResult == 1 || diceResult == 3 || diceResult == 5)
+        if (diceResult <= 3)
         {
+            // Caras 1, 2, 3 -> 1 disparo (3 caras)
             remainingShots = 1;
         }
-        else if (diceResult == 4 || diceResult == 6)
+        else if (diceResult <= 5)
         {
+            // Caras 4, 5 -> 2 disparos (2 caras)
             remainingShots = 2;
         }
         else
         {
-            remainingShots = 0;
-            Debug.Log($"{currentPlayer.PlayerID} obtuvo una CARTA. Fin de fase de disparo.");
-            EndTurn();
+            // Cara 6 -> 3 disparos (1 cara)
+            remainingShots = 3;
         }
+
+        Debug.Log($"{currentPlayer.PlayerID} obtuvo {remainingShots} disparos.");
     }
     public void RegisterShotEfectuated()
     {

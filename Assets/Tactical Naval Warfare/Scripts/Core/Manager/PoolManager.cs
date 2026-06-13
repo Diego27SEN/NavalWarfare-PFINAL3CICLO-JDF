@@ -47,9 +47,18 @@ public class PoolManager : MonoBehaviour
             obj = poolDictionary[id].Dequeue();
         }
         else
-        {
-            Debug.LogWarning($"¡Te quedaste sin objetos en el pool '{id}'!.");
-            return null;
+        {           
+            Debug.Log($"Pool '{id}' vacío. Expandiendo pool dinámicamente.");
+
+            var config = poolConfigurations.Find(x => x.poolID == id);
+            if (config != null)
+            {
+                obj = Instantiate(config.prefab, transform);
+            }
+            else
+            {
+                return null; 
+            }
         }
 
         obj.transform.position = position;

@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ship Variant Red
       objectReference: {fileID: 0}
+    - target: {fileID: 7900645854394743695, guid: 52586cc156e7429478c98993b59684d1, type: 3}
+      propertyPath: m_TagString
+      value: Ship
+      objectReference: {fileID: 0}
     - target: {fileID: 8549037139138173530, guid: 52586cc156e7429478c98993b59684d1, type: 3}
       propertyPath: 'm_Materials.Array.data[4]'
       value: 

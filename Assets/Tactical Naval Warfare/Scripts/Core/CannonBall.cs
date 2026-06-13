@@ -4,7 +4,13 @@ public class CannonBall : MonoBehaviour
 {
     [Header("Pool Configuration")]
     public string myPoolId = "CannonBall";
+    public float lifeTime = 3.0f;
 
+    private void OnEnable()
+    {
+        //Regresa al pool tras X segundos si no colisionó
+        Invoke(nameof(ReturnToPool), lifeTime);
+    }
     private void OnTriggerEnter(Collider other)
     {
         // Detecta si choco contra el agua o contra un barco
@@ -16,20 +22,21 @@ public class CannonBall : MonoBehaviour
             if (PoolManager.Instance != null)
             {               
                 PoolManager.Instance.GetObject(particleId, transform.position, Quaternion.identity);
-                PoolManager.Instance.ReturnObject(myPoolId, this.gameObject);
             }
-            else
-            {
-                Debug.LogWarning("CannonBall de PoolManager no se ha encontrado en la escena.");
-            }
+
+            ReturnToPool();
         }
     }
-
-    private void OnBecameInvisible()
+    private void ReturnToPool()
     {
+        CancelInvoke(nameof(ReturnToPool));
         if (PoolManager.Instance != null && this.gameObject.activeInHierarchy)
         {
             PoolManager.Instance.ReturnObject(myPoolId, this.gameObject);
         }
+    }
+    private void OnDisable()
+    {
+        CancelInvoke(nameof(ReturnToPool));
     }
 }

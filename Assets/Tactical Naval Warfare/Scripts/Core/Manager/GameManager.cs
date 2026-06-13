@@ -1,7 +1,5 @@
 using Sirenix.OdinInspector;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -51,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var jugador in jugadoresDeEstaPartida)
         {
-            playerDataContainer.AddPlayer(jugador);
+            RegisterPlayer(jugador);
         }
 
     }

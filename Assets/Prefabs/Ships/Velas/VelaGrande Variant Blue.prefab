@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VelaGrande Variant Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 3662416071163644798, guid: a7886368512d887489f428e1b30148c8, type: 3}
+      propertyPath: m_TagString
+      value: Ship
+      objectReference: {fileID: 0}
     - target: {fileID: 4150160170302067140, guid: a7886368512d887489f428e1b30148c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
