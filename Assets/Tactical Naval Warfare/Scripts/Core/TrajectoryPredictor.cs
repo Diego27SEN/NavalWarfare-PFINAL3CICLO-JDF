@@ -7,7 +7,7 @@ public class TrajectoryPredictor : MonoBehaviour
     public Transform firePoint;
     public ShootController shootController; //ShootController
 
-    [Header("Configuración de la Curva")]
+    [Header("Configuracion de la Curva")]
     public int pointsCount = 30; 
     public float timeStep = 0.1f; 
 
@@ -47,7 +47,7 @@ public class TrajectoryPredictor : MonoBehaviour
             // Simulamos la gravedad
             currentVel += Physics.gravity * timeStep;
 
-            // Opcional: Raycast para detener la línea si choca contra algo antes de tiempo
+            // Raycast para detener la línea si choca contra algo antes de tiempo
             if (Physics.Raycast(currentPos, currentVel.normalized, out RaycastHit hit, 0.5f))
             {
                 lineRenderer.positionCount = i + 1; // Cortamos la línea al chocar
