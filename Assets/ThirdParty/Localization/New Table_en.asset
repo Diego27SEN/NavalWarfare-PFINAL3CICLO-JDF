@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19776147456
-    m_Localized: Return
+    m_Localized: <-- Return
     m_Metadata:
       m_Items: []
   - m_Id: 18421387264
@@ -47,9 +47,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20501762048
-    m_Localized: 'Tropical Sea
-
-'
+    m_Localized: Tropical Sea
     m_Metadata:
       m_Items: []
   - m_Id: 396760924225536
@@ -98,6 +96,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2523173980794880
     m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7199117562163200
+    m_Localized: Choose a language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7221355829080064
+    m_Localized: Members
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7221347599855616
+    m_Localized: "USED \u200B\u200BPROGRAMS"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7221344315715584
+    m_Localized: CREDITOS
     m_Metadata:
       m_Items: []
   references:
