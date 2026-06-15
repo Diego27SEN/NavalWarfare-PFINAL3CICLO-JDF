@@ -44,7 +44,7 @@ Material:
     - _Speed3: 2
     - _Transparency: 1
     m_Colors:
-    - _DeepColor: {r: 0, g: 0.2532153, b: 1, a: 1}
+    - _DeepColor: {r: 0, g: 0.24999997, b: 0.8, a: 1}
     - _Direction1: {r: 1, g: 0, b: 0, a: 0}
     - _Direction2: {r: 0, g: 1, b: 0, a: 0}
     - _Direction3: {r: 0.7, g: 0.7, b: 0, a: 0}
