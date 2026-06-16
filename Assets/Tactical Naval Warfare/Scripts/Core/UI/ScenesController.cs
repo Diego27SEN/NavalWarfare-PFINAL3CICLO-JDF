@@ -19,6 +19,11 @@ public class ScenesController : MonoBehaviour
         SceneManager.LoadScene("SelectorScene");
     }
 
+    public void Map1()
+    {
+        SceneManager.LoadScene("TestCinematic");
+    }
+
     public void ModeScene()
     {
         SceneManager.LoadScene("ModeSelector");
