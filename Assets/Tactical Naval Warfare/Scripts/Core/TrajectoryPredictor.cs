@@ -8,14 +8,25 @@ public class TrajectoryPredictor : MonoBehaviour
     public ShootController shootController; //ShootController
 
     [Header("Configuracion de la Curva")]
-    public int pointsCount = 30; 
-    public float timeStep = 0.1f; 
+    public int pointsCount = 80; 
+    public float timeStep = 0.1f;
+
+    [Header("Marcador de Impacto")]
+    [Tooltip("PrefabPunto")]
+    public GameObject markerPrefab;
+    private GameObject impactMarker;
 
     private LineRenderer lineRenderer;
 
     void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+
+        if (markerPrefab != null)
+        {
+            impactMarker = Instantiate(markerPrefab);
+            impactMarker.SetActive(false);
+        }
     }
     void Update()
     {

@@ -8,24 +8,27 @@ public class CannonBall : MonoBehaviour
 
     private void OnEnable()
     {
-        //Regresa al pool tras X segundos si no colisionó
         Invoke(nameof(ReturnToPool), lifeTime);
     }
     private void OnTriggerEnter(Collider other)
     {
-        // Detecta si choco contra el agua o contra un barco
-        if (other.CompareTag("Water") || other.CompareTag("Ship"))
+        if (!other.CompareTag("Water") && !other.CompareTag("Ship")) return;
+
+        // Efecto visual
+        string particleId = other.CompareTag("Water") ? "WaterExplosion" : "WoodExplosion";
+        PoolManager.Instance?.GetObject(particleId, transform.position, Quaternion.identity);
+
+        // 3. Sistema de Daño
+        if (other.CompareTag("Ship"))
         {
-            // Elegimos que partícula pedir dependiendo de contra qué chocamos
-            string particleId = other.CompareTag("Water") ? "WaterExplosion" : "WoodExplosion";
-
-            if (PoolManager.Instance != null)
-            {               
-                PoolManager.Instance.GetObject(particleId, transform.position, Quaternion.identity);
+            if (other.TryGetComponent<ShipHealth>(out ShipHealth health))
+            {
+                health.TakeDamage(50.00f);
             }
-
-            ReturnToPool();
         }
+
+        ReturnToPool();
+
     }
     private void ReturnToPool()
     {
