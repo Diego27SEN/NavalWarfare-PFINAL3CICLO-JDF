@@ -379,16 +379,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9037334807089196712, guid: 101d176d3e2703f4792f831eb1561f25, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 468605885}
-    - targetCorrespondingSourceObject: {fileID: 9037334807089196712, guid: 101d176d3e2703f4792f831eb1561f25, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 468605884}
-    - targetCorrespondingSourceObject: {fileID: 9037334807089196712, guid: 101d176d3e2703f4792f831eb1561f25, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 468605883}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 101d176d3e2703f4792f831eb1561f25, type: 3}
 --- !u!1 &67362361
 GameObject:
@@ -532,6 +523,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 123976089}
+  - component: {fileID: 123976092}
+  - component: {fileID: 123976091}
+  - component: {fileID: 123976090}
   m_Layer: 0
   m_Name: Sharks
   m_TagString: Untagged
@@ -553,9 +547,65 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 468605882}
-  - {fileID: 151829213}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &123976090
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123976088}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &123976091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123976088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c15271555df184d93cfdf1c8ef019e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SharkController
+  roamRadius: 200
+  waitTime: 0.5
+--- !u!195 &123976092
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123976088}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 20
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &129795074
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,73 +726,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0dc25769c4b869e4cb29e0669073f1cf, type: 3}
   m_PrefabInstance: {fileID: 909889499}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &151829212 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5238273357562609869, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
-  m_PrefabInstance: {fileID: 326349386}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &151829213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4898163162678418039, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
   m_PrefabInstance: {fileID: 326349386}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &151829214
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151829212}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.08199184, y: 0.1910636, z: 0.08632894}
-  m_Center: {x: -0.0024800766, y: 0.032870073, z: 0.010488997}
---- !u!195 &151829215
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151829212}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.053653467
-  m_Speed: 20
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.25680375
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &151829216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151829212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c15271555df184d93cfdf1c8ef019e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SharkController
-  roamRadius: 200
-  waitTime: 0.5
 --- !u!1 &179136100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,19 +1637,27 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 123976089}
+    m_TransformParent: {fileID: 1435424162}
     m_Modifications:
     - target: {fileID: 4898163162678418039, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 250.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898163162678418039, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 250.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898163162678418039, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.28125
+      value: 319.1172
       objectReference: {fileID: 0}
     - target: {fileID: 4898163162678418039, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.000030040741
       objectReference: {fileID: 0}
     - target: {fileID: 4898163162678418039, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1539
+      value: 112.38574
       objectReference: {fileID: 0}
     - target: {fileID: 4898163162678418039, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1673,7 +1669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4898163162678418039, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4898163162678418039, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1698,16 +1694,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5238273357562609869, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 151829216}
-    - targetCorrespondingSourceObject: {fileID: 5238273357562609869, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 151829215}
-    - targetCorrespondingSourceObject: {fileID: 5238273357562609869, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 151829214}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 558fc30bd6a4cbc409dec0731a0dca09, type: 3}
 --- !u!1 &330585543
 GameObject:
@@ -2746,73 +2733,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 222.353, z: 0}
---- !u!1 &468605881 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9037334807089196712, guid: 101d176d3e2703f4792f831eb1561f25, type: 3}
-  m_PrefabInstance: {fileID: 66199620}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &468605882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8512015005781292050, guid: 101d176d3e2703f4792f831eb1561f25, type: 3}
   m_PrefabInstance: {fileID: 66199620}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &468605883
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468605881}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.18874295, y: 0.3477102, z: 0.13868226}
-  m_Center: {x: 0.00021127237, y: 0.052868567, z: 0.034456186}
---- !u!114 &468605884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468605881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c15271555df184d93cfdf1c8ef019e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SharkController
-  roamRadius: 200
-  waitTime: 0.5
---- !u!195 &468605885
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468605881}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.10379732
-  m_Speed: 20
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.45344734
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1001 &474786546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3178,7 +3103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
   moveSpeed: 40
-  rotationSpeed: 1
+  rotationSpeed: 0.3
   maxMoveDistance: 20
   InTurn: 0
   playerInputSystem: {fileID: 280620271}
@@ -6679,7 +6604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
   moveSpeed: 40
-  rotationSpeed: 1
+  rotationSpeed: 0.3
   maxMoveDistance: 20
   InTurn: 0
   playerInputSystem: {fileID: 280620271}
@@ -7158,7 +7083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
   moveSpeed: 40
-  rotationSpeed: 1
+  rotationSpeed: 0.3
   maxMoveDistance: 20
   InTurn: 0
   playerInputSystem: {fileID: 280620271}
@@ -8137,6 +8062,98 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dc4ccd5dca9d8884d971a39c409d968c, type: 3}
   m_PrefabInstance: {fileID: 1430895005}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1435424158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1435424162}
+  - component: {fileID: 1435424161}
+  - component: {fileID: 1435424160}
+  - component: {fileID: 1435424159}
+  m_Layer: 0
+  m_Name: Tiburon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1435424159
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435424158}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &1435424160
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435424158}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 20
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1435424161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435424158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c15271555df184d93cfdf1c8ef019e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SharkController
+  roamRadius: 200
+  waitTime: 0.5
+--- !u!4 &1435424162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435424158}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -41667.195, y: -2, z: 15264.438}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 151829213}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1490323834
 GameObject:
   m_ObjectHideFlags: 0
@@ -11073,7 +11090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
   moveSpeed: 40
-  rotationSpeed: 1
+  rotationSpeed: 0.3
   maxMoveDistance: 20
   InTurn: 0
   playerInputSystem: {fileID: 280620271}
@@ -318274,4 +318291,5 @@ SceneRoots:
   - {fileID: 1654950323}
   - {fileID: 2014396500}
   - {fileID: 123976089}
+  - {fileID: 1435424162}
   - {fileID: 129795075}
