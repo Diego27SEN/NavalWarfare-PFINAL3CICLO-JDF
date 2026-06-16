@@ -123,6 +123,10 @@ MonoBehaviour:
     m_Key: Map 1 Info
     m_Metadata:
       m_Items: []
+  - m_Id: 9775864644546560
+    m_Key: Loading
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

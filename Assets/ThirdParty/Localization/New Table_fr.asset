@@ -125,6 +125,10 @@ MonoBehaviour:
       navale
     m_Metadata:
       m_Items: []
+  - m_Id: 9775864644546560
+    m_Localized: Chargement.....
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
