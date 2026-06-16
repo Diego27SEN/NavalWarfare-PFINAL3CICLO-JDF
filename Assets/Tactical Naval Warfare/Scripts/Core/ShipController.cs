@@ -43,17 +43,26 @@ public class ShipController : MonoBehaviour
     {
         moveDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
 
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        if (moveDirection == Vector3.zero) return;
 
-        if (moveDirection != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+        // Movimiento relativo a la cámara
+        Vector3 camForward = Camera.main.transform.forward;
+        Vector3 camRight = Camera.main.transform.right;
 
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime);
-        }
+        // Aplanar para ignorar la inclinación vertical de la cámara
+        camForward.y = 0f;
+        camRight.y = 0f;
+        camForward.Normalize();
+        camRight.Normalize();
+
+        Vector3 worldDirection = (camForward * moveDirection.z + camRight * moveDirection.x);
+
+        // Mover
+        transform.position += worldDirection * moveSpeed * Time.deltaTime;
+
+        // Rotar suave hacia donde se mueve
+        Quaternion targetRotation = Quaternion.LookRotation(worldDirection);
+        transform.rotation = Quaternion.Slerp( transform.rotation,targetRotation,rotationSpeed * Time.deltaTime);
     }
     public void StartTurn()
     {

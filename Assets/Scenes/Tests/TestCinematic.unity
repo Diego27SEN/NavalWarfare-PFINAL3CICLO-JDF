@@ -3178,7 +3178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
   moveSpeed: 40
-  rotationSpeed: 0.1
+  rotationSpeed: 1
   maxMoveDistance: 20
   InTurn: 0
   playerInputSystem: {fileID: 280620271}
@@ -3201,7 +3201,7 @@ MonoBehaviour:
   - {fileID: 1760427693}
   - {fileID: 179136101}
   speed: 50
-  rotationSpeed: 30
+  rotationSpeed: 1
 --- !u!4 &514636598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4315887757029753651, guid: d4efacad3089bb044832b3692af3ffe5, type: 3}
@@ -6679,7 +6679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
   moveSpeed: 40
-  rotationSpeed: 0.1
+  rotationSpeed: 1
   maxMoveDistance: 20
   InTurn: 0
   playerInputSystem: {fileID: 280620271}
@@ -6700,7 +6700,7 @@ MonoBehaviour:
   - {fileID: 1945781572}
   - {fileID: 884315256}
   speed: 50
-  rotationSpeed: 30
+  rotationSpeed: 1
 --- !u!4 &1066038682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4861362704299985187, guid: 0ffbe076334dd264d8f054d4a9f58c81, type: 3}
@@ -7158,7 +7158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
   moveSpeed: 40
-  rotationSpeed: 0.1
+  rotationSpeed: 1
   maxMoveDistance: 20
   InTurn: 0
   playerInputSystem: {fileID: 280620271}
@@ -7183,7 +7183,7 @@ MonoBehaviour:
   - {fileID: 938612936}
   - {fileID: 820877545}
   speed: 50
-  rotationSpeed: 30
+  rotationSpeed: 1
 --- !u!4 &1239101529 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8100739807240189836, guid: 6e9696b2e0c45114a9d538387c518468, type: 3}
@@ -11073,7 +11073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
   moveSpeed: 40
-  rotationSpeed: 0.1
+  rotationSpeed: 1
   maxMoveDistance: 20
   InTurn: 0
   playerInputSystem: {fileID: 280620271}
@@ -11095,8 +11095,8 @@ MonoBehaviour:
   - {fileID: 2146487244}
   - {fileID: 1513334638}
   - {fileID: 942038099}
-  speed: 50
-  rotationSpeed: 30
+  speed: 35
+  rotationSpeed: 1
 --- !u!4 &1951767409 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 910640623298415003, guid: 4c2c646a3cdecb74e9b72bb349d53b1b, type: 3}

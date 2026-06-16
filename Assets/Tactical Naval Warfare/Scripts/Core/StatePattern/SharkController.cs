@@ -19,34 +19,37 @@ public class SharkController : MonoBehaviour
     {
         agent.updateRotation = false;
         SetRandomDestination();
+        SharkRotation();
     }
 
     private void Update()
     {
-
-
-        if (agent.velocity.sqrMagnitude > 0.1f)
-        {
-            Vector3 dir = agent.velocity.normalized;
-            Quaternion targetRot = Quaternion.LookRotation(dir);
-
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 5f * Time.deltaTime);
-        }
-
         if (!agent.pathPending && agent.remainingDistance <= 1f)
         {
             Debug.Log("Llegó al destino");
 
             timer += Time.deltaTime;
 
-            if (timer >= waitTime)
-            {
-                Debug.Log("Buscando nuevo destino");
+        }
 
-                SetRandomDestination();
+        if (timer >= waitTime)
+        {
+            Debug.Log("Buscando nuevo destino");
 
-                timer = 0f;
-            }
+            SetRandomDestination();
+
+            timer = 0f;
+        }
+
+    }
+
+    private void SharkRotation()
+    {
+        if (agent.velocity.sqrMagnitude > 0.1f)
+        {
+            Vector3 dir = agent.velocity.normalized;
+            Quaternion targetRot = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 5f * Time.deltaTime);
         }
     }
 
