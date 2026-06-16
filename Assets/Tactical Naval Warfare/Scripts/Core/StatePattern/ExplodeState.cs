@@ -18,11 +18,7 @@ public class ExplodeState : IState
         timer = 0f;
 
 
-        Collider[] hits = Physics.OverlapSphere(
-            submarineBomb.transform.position,
-            submarineBomb.explosionRadius,
-            submarineBomb.shipLayer
-        );
+        Collider[] hits = Physics.OverlapSphere(submarineBomb.transform.position,submarineBomb.explosionRadius);
 
         foreach (var hit in hits)
         {

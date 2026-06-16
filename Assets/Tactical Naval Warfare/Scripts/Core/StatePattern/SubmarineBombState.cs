@@ -6,7 +6,7 @@ public class SubmarineBombController : MonoBehaviour
 {
     [FoldoutGroup("Detection")]
     public float explosionRadius = 3f;
-    public LayerMask shipLayer;
+    
 
     [FoldoutGroup("Combat")]
     public float damage = 35f;
@@ -59,11 +59,10 @@ public class SubmarineBombController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (((1 << other.gameObject.layer) & shipLayer) != 0)
-        {
+        
             if (stateMachine.CurrentState == driftState)
                 stateMachine.ChangeState(explodeState);
-        }
+        
     }
 
     public void OnDrawGizmos()

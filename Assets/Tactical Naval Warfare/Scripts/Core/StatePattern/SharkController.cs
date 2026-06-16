@@ -23,7 +23,7 @@ public class SharkController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Remaining Distance: " + agent.remainingDistance);
+
 
         if (agent.velocity.sqrMagnitude > 0.1f)
         {
@@ -59,13 +59,8 @@ public class SharkController : MonoBehaviour
 
         if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, roamRadius, NavMesh.AllAreas))
         {
-            Debug.Log("Nuevo destino: " + hit.position);
-
-            agent.SetDestination(hit.position);
+              agent.SetDestination(hit.position);
         }
-        else
-        {
-            Debug.Log("No encontró destino");
-        }
+        
     }
 }
