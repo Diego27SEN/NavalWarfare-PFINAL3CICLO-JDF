@@ -115,6 +115,18 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 9754447140007936
+    m_Key: BEGIN BUTTON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9764296154329088
+    m_Key: Map 1 Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9775864644546560
+    m_Key: Loading
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

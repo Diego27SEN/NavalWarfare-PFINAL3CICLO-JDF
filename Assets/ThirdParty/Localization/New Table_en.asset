@@ -114,6 +114,19 @@ MonoBehaviour:
     m_Localized: CREDITOS
     m_Metadata:
       m_Items: []
+  - m_Id: 9754447140007936
+    m_Localized: BEGIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9764296154329088
+    m_Localized: A quiet and cool place, turned into the terrain for a fierce naval
+      battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9775864644546560
+    m_Localized: Loading.....
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
