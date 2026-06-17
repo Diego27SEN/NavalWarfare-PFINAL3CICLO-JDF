@@ -36,7 +36,7 @@ public class PoolManager : MonoBehaviour
     {
         if (!poolDictionary.ContainsKey(id))
         {
-            Debug.LogError($"El pool '{id}' no existe.");
+            Debug.LogWarning($"El pool '{id}' no existe.");
             return null;
         }
 

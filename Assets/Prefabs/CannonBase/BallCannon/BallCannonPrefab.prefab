@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7344300496811441242}
   - component: {fileID: 6953202876933921957}
   - component: {fileID: -8093392336443361371}
+  - component: {fileID: -1315321289353091604}
   m_Layer: 0
   m_Name: BallCannonPrefab
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -43672.57, y: 17.826, z: 16599.574}
-  m_LocalScale: {x: 0.71802, y: 0.71802, z: 0.71802}
+  m_LocalScale: {x: 2.2367938, y: 2.2367938, z: 2.2367938}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -140,3 +141,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &-1315321289353091604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134055103974233099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07461110be404545b2b2e231e948b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CannonBall
+  myPoolId: CannonBall
+  lifeTime: 3

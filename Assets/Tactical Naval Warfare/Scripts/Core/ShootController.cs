@@ -12,7 +12,7 @@ public class ShootController : MonoBehaviour
     public Transform firePoint;
 
     [Tooltip(" ID del PoolConfigData de la bala")]
-    public float impulseForce = 50.00f;
+    public float impulseForce = 100.00f;
 
     public string poolId = "CannonBall";
 
