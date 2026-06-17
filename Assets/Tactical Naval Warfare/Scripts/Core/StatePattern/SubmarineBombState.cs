@@ -6,10 +6,11 @@ public class SubmarineBombController : MonoBehaviour
 {
     [FoldoutGroup("Detection")]
     public float explosionRadius = 3f;
-    
+
+   
 
     [FoldoutGroup("Combat")]
-    public float damage = 35f;
+    public float damage = 60f;
     public float explosionDuration = 0.8f;
     public GameObject explosionVFX;
 
@@ -59,10 +60,21 @@ public class SubmarineBombController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("Mina tocó: " + other.gameObject.name + " tag: " + other.tag);
+
+        if (other.CompareTag("Ship"))
+        {
+            Debug.Log("Es un barco!");
+
             if (stateMachine.CurrentState == driftState)
+            {
+                Debug.Log("Explotando!");
+
+                if (other.TryGetComponent<ShipHealth>(out ShipHealth health))health.TakeDamage(damage);
+
                 stateMachine.ChangeState(explodeState);
-        
+            }
+        }
     }
 
     public void OnDrawGizmos()

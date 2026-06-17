@@ -10,25 +10,29 @@ public class CannonBall : MonoBehaviour
     {
         Invoke(nameof(ReturnToPool), lifeTime);
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (!other.CompareTag("Water") && !other.CompareTag("Ship")) return;
+        if (!other.gameObject.CompareTag("Water") && !other.gameObject.CompareTag("Ship") && !other.gameObject.CompareTag("Crew")) return;
 
-        // Efecto visual
-        string particleId = other.CompareTag("Water") ? "WaterExplosion" : "WoodExplosion";
+        string particleId = other.gameObject.CompareTag("Water") ? "WaterExplosion" : "WoodExplosion";
         PoolManager.Instance?.GetObject(particleId, transform.position, Quaternion.identity);
 
-        // 3. Sistema de Daño
-        if (other.CompareTag("Ship"))
+        if (other.gameObject.CompareTag("Ship"))
         {
-            if (other.TryGetComponent<ShipHealth>(out ShipHealth health))
+            if (other.gameObject.TryGetComponent<ShipHealth>(out ShipHealth health))health.TakeDamage(20.00f);
+        }
+
+        if (other.gameObject.CompareTag("Crew"))
+        {
+            if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
             {
-                health.TakeDamage(20.00f);
+                Vector3 impulso = (other.transform.position - transform.position).normalized;
+                impulso.y = 0.5f;
+                rb.AddForce(impulso * 8f, ForceMode.Impulse);
             }
         }
 
         ReturnToPool();
-
     }
     private void ReturnToPool()
     {

@@ -13,9 +13,16 @@ public class ShipController : MonoBehaviour
 
     [SerializeField] private PlayerInputSystem playerInputSystem;
 
+    private CannonController cannonController;
+
     private Vector2 moveInput;
     private Vector3 moveDirection;
 
+    private void Awake()
+    {
+        cannonController = GetComponentInChildren<CannonController>();
+        playerInputSystem.enabled = false; // bloqueado hasta que sea su turno
+    }
 
     private void OnEnable()
     {
@@ -67,12 +74,16 @@ public class ShipController : MonoBehaviour
     public void StartTurn()
     {
         InTurn = true;
+        playerInputSystem.enabled = true;  // solo este barco escucha
+        cannonController?.EnableCannon();
         Debug.Log(name + " START TURN");
     }
 
     public void EndTurn()
     {
         InTurn = false;
+        playerInputSystem.enabled = false; // deja de escuchar
+        cannonController?.DisableCannon();
         Debug.Log(name + " END TURN");
     }
 }
