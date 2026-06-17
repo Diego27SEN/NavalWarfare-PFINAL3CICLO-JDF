@@ -45,39 +45,33 @@ public class TrajectoryPredictor : MonoBehaviour
     }
     private void DrawTrajectory()
     {
-        if (impactMarker != null)
-        {
-            impactMarker.SetActive(false);
-        }
-
         lineRenderer.positionCount = pointsCount;
-
         Vector3 currentPos = firePoint.position;
         Vector3 currentVel = firePoint.forward * shootController.impulseForce;
+
+        // Apagamos el marcador por defecto; si choca contra algo, lo encendemos abajo
+        impactMarker?.SetActive(false);
 
         for (int i = 0; i < pointsCount; i++)
         {
             lineRenderer.SetPosition(i, currentPos);
 
-            Vector3 nextPos = currentPos + currentVel * timeStep;
+            currentPos += currentVel * timeStep;
+            currentVel += Physics.gravity * timeStep;
 
-            // Raycast para detener la línea si choca contra algo antes de tiempo
-            if (Physics.Linecast(currentPos, nextPos.normalized, out RaycastHit hit, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            // fisicas
+            if (Physics.Raycast(currentPos, currentVel.normalized, out RaycastHit hit, 0.5f))
             {
-                lineRenderer.positionCount = i + 2;
-                lineRenderer.SetPosition(i + 1, hit.point);
+                lineRenderer.positionCount = i + 1;
 
-                if (impactMarker != null)
+                if (impactMarker)
                 {
-                    impactMarker.transform.position = hit.point + (hit.normal * 0.05f);
-                    impactMarker.transform.up = hit.normal; // Para que se acueste sobre la superficie
+                    impactMarker.transform.position = hit.point;
+                    impactMarker.transform.up = hit.normal;
                     impactMarker.SetActive(true);
                 }
                 break;
             }
-  
-            currentPos = nextPos;
-            currentVel += Physics.gravity * timeStep;
         }
     }
 }
