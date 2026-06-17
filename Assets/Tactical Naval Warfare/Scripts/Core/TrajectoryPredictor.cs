@@ -22,27 +22,34 @@ public class TrajectoryPredictor : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
 
-        if (markerPrefab != null)
-        {
-            impactMarker = Instantiate(markerPrefab);
-            impactMarker.SetActive(false);
-        }
+        if (markerPrefab == null) return;
+
+        impactMarker = Instantiate(markerPrefab);
+        impactMarker.SetActive(false);
     }
     void Update()
     {
-        if (GameManager.Instance != null && GameManager.Instance.CanExecuteShot(shootController.ownerShip))
-        {
-            lineRenderer.enabled = true;
-            DrawTrajectory();
-        }
-        else
-        {
-            lineRenderer.enabled = false;
-        }
-    }
+        // Si no existe GameManager, da false
+        bool canShoot = GameManager.Instance?.CanExecuteShot(shootController.ownerShip) ?? false;
 
-    void DrawTrajectory()
+        lineRenderer.enabled = canShoot;
+
+        // Si no es el turno, apagamos marcador y salimos
+        if (!canShoot)
+        {
+            impactMarker?.SetActive(false);
+            return;
+        }
+
+        DrawTrajectory();
+    }
+    private void DrawTrajectory()
     {
+        if (impactMarker != null)
+        {
+            impactMarker.SetActive(false);
+        }
+
         lineRenderer.positionCount = pointsCount;
 
         Vector3 currentPos = firePoint.position;
@@ -52,18 +59,25 @@ public class TrajectoryPredictor : MonoBehaviour
         {
             lineRenderer.SetPosition(i, currentPos);
 
-            // Simulamos la física
-            currentPos += currentVel * timeStep;
-
-            // Simulamos la gravedad
-            currentVel += Physics.gravity * timeStep;
+            Vector3 nextPos = currentPos + currentVel * timeStep;
 
             // Raycast para detener la línea si choca contra algo antes de tiempo
-            if (Physics.Raycast(currentPos, currentVel.normalized, out RaycastHit hit, 0.5f))
+            if (Physics.Linecast(currentPos, nextPos.normalized, out RaycastHit hit, Physics.AllLayers, QueryTriggerInteraction.Ignore))
             {
-                lineRenderer.positionCount = i + 1; // Cortamos la línea al chocar
+                lineRenderer.positionCount = i + 2;
+                lineRenderer.SetPosition(i + 1, hit.point);
+
+                if (impactMarker != null)
+                {
+                    impactMarker.transform.position = hit.point + (hit.normal * 0.05f);
+                    impactMarker.transform.up = hit.normal; // Para que se acueste sobre la superficie
+                    impactMarker.SetActive(true);
+                }
                 break;
             }
+  
+            currentPos = nextPos;
+            currentVel += Physics.gravity * timeStep;
         }
     }
 }

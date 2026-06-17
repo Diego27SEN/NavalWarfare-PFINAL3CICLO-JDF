@@ -23,7 +23,7 @@ public class CannonBall : MonoBehaviour
         {
             if (other.TryGetComponent<ShipHealth>(out ShipHealth health))
             {
-                health.TakeDamage(50.00f);
+                health.TakeDamage(20.00f);
             }
         }
 
