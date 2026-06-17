@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using DG.Tweening;
+using Unity.Cinemachine;
 
 public class ShootController : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class ShootController : MonoBehaviour
 
     public string poolId = "CannonBall";
 
+    [Header("Bullet Camera")]
+    [SerializeField] private CinemachineCamera bulletCam; 
+
     [Header("Animación de Retroceso")]
     [Tooltip("El modelo 3D del cañón que se moverá hacia atrás")]
     public Transform cannonModel;
@@ -26,9 +30,20 @@ public class ShootController : MonoBehaviour
     [Tooltip("Curva para el impacto inicial")]
     public AnimationCurve recoilCurve; // Curva de Animación
 
+
+    private bool isBallInFlight = false;
+
+    private void Start()
+    {
+        BulletCameraController.bulletCam = bulletCam;
+    }
+
     [Button("Disparar Cañón", ButtonSizes.Large)]
     public void FireCannon()
     {
+
+        if (isBallInFlight) return; // bloquea si ya hay una bala volando
+
         // Le preguntamos si podemos disparar. Si no, cortamos aquí.
         if (GameManager.Instance == null || !GameManager.Instance.CanExecuteShot(ownerShip))
         {
@@ -49,6 +64,8 @@ public class ShootController : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.AddForce(firePoint.forward * impulseForce, ForceMode.Impulse);
 
+        isBallInFlight = true; // bloquea el disparo
+
         GameManager.Instance.RegisterShotEfectuated();
 
         ApplyRecoilAnimation();
@@ -67,5 +84,22 @@ public class ShootController : MonoBehaviour
                 // 2. Movimiento de regreso al punto original
                 cannonModel.DOLocalMoveZ(originalZ, returnDuration).SetEase(Ease.OutElastic);
             });
+    }
+
+
+
+    private void OnEnable()
+    {
+        BulletCameraController.OnBulletFinished += UnlockShot;
+    }
+
+    private void OnDisable()
+    {
+        BulletCameraController.OnBulletFinished -= UnlockShot;
+    }
+
+    private void UnlockShot()
+    {
+        isBallInFlight = false; // desbloquea el disparo
     }
 }
