@@ -915,7 +915,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 96.7
+  m_fontSize: 97.05
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3795,13 +3795,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd48308fca730cc4594cb6335aaa78d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
   extraVolume: ExtraVolume
   musicVolume: MusicVolume
   sfxVolume: SFXVolume
-  masterSlider: {fileID: 0}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  extrasSlider: {fileID: 1146316786}
+  musicSlider: {fileID: 280289292}
+  sfxSlider: {fileID: 971402590}
   musicTracks:
   - {fileID: 0}
   sfxClips: []
@@ -5509,7 +5509,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 99.25
+  m_fontSize: 99.55
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6562,7 +6562,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 96.7
+  m_fontSize: 97.05
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
