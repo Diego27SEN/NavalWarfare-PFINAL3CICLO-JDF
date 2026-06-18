@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     [Header("Configuración de Audio")]
     [SerializeField] private AudioMixer audioMixer;
 
-    [SerializeField] private string masterVolume = "MasterVolume";
+    [SerializeField] private string extraVolume = "ExtraVolume";
     [SerializeField] private string musicVolume = "MusicVolume";
     [SerializeField] private string sfxVolume = "SFXVolume";
 
@@ -32,7 +32,7 @@ public class SoundManager : MonoBehaviour
     {
         if(masterSlider != null)
         {
-            masterSlider.onValueChanged.AddListener(SetMasterVolume);
+            masterSlider.onValueChanged.AddListener(SetExtraVolume);
         }
 
         if (musicSlider != null)
@@ -47,10 +47,10 @@ public class SoundManager : MonoBehaviour
 
         UpdateSlidersFromMixer();
     }
-
-    public void SetMasterVolume(float value)
+    
+    public void SetExtraVolume(float value)
     {
-        audioMixer.SetFloat(masterVolume, Mathf.Log10(Mathf.Max(0.0001f, value)) * 20f);
+        audioMixer.SetFloat(extraVolume, Mathf.Log10(Mathf.Max(0.0001f, value)) * 20f);
     }
 
     public void SetMusicVolume(float value)
@@ -67,7 +67,7 @@ public class SoundManager : MonoBehaviour
     {
         if (audioMixer == null) return;
 
-        if (masterSlider != null && audioMixer.GetFloat(masterVolume, out float masterValue))
+        if (masterSlider != null && audioMixer.GetFloat(extraVolume, out float masterValue))
         {
             masterSlider.value = Mathf.Pow(10f, masterValue / 20f);
         }
