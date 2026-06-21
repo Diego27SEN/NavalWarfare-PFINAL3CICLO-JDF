@@ -10,6 +10,10 @@ public class SoundManager : MonoBehaviour
     [Header("Configuración de Audio")]
     [SerializeField] private AudioMixer audioMixer;
 
+    [SerializeField] private AudioSource musicAudioSource;
+    [SerializeField] private AudioSource sfxAudioSource;
+    [SerializeField] private AudioSource extrasAudioSource;
+
     [SerializeField] private string extraVolume = "ExtraVolume";
     [SerializeField] private string musicVolume = "MusicVolume";
     [SerializeField] private string sfxVolume = "SFXVolume";
@@ -27,6 +31,43 @@ public class SoundManager : MonoBehaviour
 
     [FoldoutGroup("Extras", expanded: false)]
     [SerializeField] private List<AudioClip> extraClips = new List<AudioClip>();
+
+    public void PlayMusicTrack(int index)
+    {
+        if (musicAudioSource == null) return;
+
+        if (index >= 0 && index < musicTracks.Count && musicTracks[index] != null)
+        {
+            if (musicAudioSource.clip == musicTracks[index] && musicAudioSource.isPlaying)
+            {
+                return;
+            }
+
+            musicAudioSource.clip = musicTracks[index];
+            musicAudioSource.loop = true;
+            musicAudioSource.Play();
+        }
+    }
+
+    public void PlaySFX(int index)
+    {
+        if (sfxAudioSource == null) return;
+
+        if (index >= 0 && index < sfxClips.Count && sfxClips[index] != null)
+        {
+            sfxAudioSource.PlayOneShot(sfxClips[index]);
+        }
+    }
+
+    public void PlayExtra(int index)
+    {
+        if (extrasAudioSource == null) return;
+
+        if (index >= 0 && index < extraClips.Count && extraClips[index] != null)
+        {
+            extrasAudioSource.PlayOneShot(extraClips[index]);
+        }
+    }
 
     void Start()
     {
