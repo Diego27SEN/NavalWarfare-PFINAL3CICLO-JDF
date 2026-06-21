@@ -51,7 +51,7 @@ public class DiceTurnController
     public void RegisterShotEfectuated()
     {
         remainingShots--;
-        if (remainingShots <= 0) EndTurn();
+        Debug.Log($"Disparos restantes: {remainingShots}");
     }
     public void EndTurn()
     {

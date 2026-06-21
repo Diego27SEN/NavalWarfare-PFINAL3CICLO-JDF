@@ -11,6 +11,7 @@ public class BulletCameraController : MonoBehaviour
         {
             bulletCam.Target.TrackingTarget = transform;
             bulletCam.Priority = 100;
+            bulletCam.Lens.NearClipPlane = 0.01f; // Ajusta la velocidad de seguimiento para que sea más rápida
         }
     }
 

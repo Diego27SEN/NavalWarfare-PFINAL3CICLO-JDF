@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using DG.Tweening;
-using Unity.Cinemachine;
+
 
 public class ShootController : MonoBehaviour
 {
@@ -17,8 +17,6 @@ public class ShootController : MonoBehaviour
 
     public string poolId = "CannonBall";
 
-    [Header("Bullet Camera")]
-    [SerializeField] private CinemachineCamera bulletCam; 
 
     [Header("Animación de Retroceso")]
     [Tooltip("El modelo 3D del cañón que se moverá hacia atrás")]
@@ -30,13 +28,9 @@ public class ShootController : MonoBehaviour
     [Tooltip("Curva para el impacto inicial")]
     public AnimationCurve recoilCurve; // Curva de Animación
 
-
+    [SerializeField] private TurnManager turnManager;
     private bool isBallInFlight = false;
 
-    private void Start()
-    {
-        BulletCameraController.bulletCam = bulletCam;
-    }
 
     [Button("Disparar Cañón", ButtonSizes.Large)]
     public void FireCannon()
@@ -64,12 +58,15 @@ public class ShootController : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.AddForce(firePoint.forward * impulseForce, ForceMode.Impulse);
 
-        isBallInFlight = true; // bloquea el disparo
+
+        isBallInFlight = true;
+        turnManager.PauseTimer(); // pausa el timer
 
         GameManager.Instance.RegisterShotEfectuated();
 
         ApplyRecoilAnimation();
     }
+
     private void ApplyRecoilAnimation()
     {
         if (cannonModel == null) return;
@@ -100,6 +97,7 @@ public class ShootController : MonoBehaviour
 
     private void UnlockShot()
     {
-        isBallInFlight = false; // desbloquea el disparo
+        isBallInFlight = false;
+        turnManager?.ResumeTimer(); // solo reanuda el timer
     }
 }
