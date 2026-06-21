@@ -29,6 +29,7 @@ public class CannonController : MonoBehaviour
     private void Awake()
     {
         inputsSystem = GetComponent<CannonInputs>();
+        inputsSystem.enabled = false; // bloqueado por defecto
     }
 
     private void OnEnable()
@@ -95,6 +96,22 @@ public class CannonController : MonoBehaviour
     {
         Cursor.lockState = isCannonActive ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !isCannonActive;
+    }
+    #endregion
+
+    #region Control de Turno
+    public void EnableCannon()
+    {
+        inputsSystem.enabled = true;
+        isCannonActive = true;
+        UpdateMouseVisibility();
+    }
+
+    public void DisableCannon()
+    {
+        inputsSystem.enabled = false;
+        isCannonActive = false;
+        UpdateMouseVisibility();
     }
     #endregion
 }

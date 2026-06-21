@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using DG.Tweening;
 
+
 public class ShootController : MonoBehaviour
 {
     [Header("Referencias de Disparo")]
@@ -16,6 +17,7 @@ public class ShootController : MonoBehaviour
 
     public string poolId = "CannonBall";
 
+
     [Header("Animación de Retroceso")]
     [Tooltip("El modelo 3D del cañón que se moverá hacia atrás")]
     public Transform cannonModel;
@@ -26,9 +28,16 @@ public class ShootController : MonoBehaviour
     [Tooltip("Curva para el impacto inicial")]
     public AnimationCurve recoilCurve; // Curva de Animación
 
+    [SerializeField] private TurnManager turnManager;
+    private bool isBallInFlight = false;
+
+
     [Button("Disparar Cañón", ButtonSizes.Large)]
     public void FireCannon()
     {
+
+        if (isBallInFlight) return; // bloquea si ya hay una bala volando
+
         // Le preguntamos si podemos disparar. Si no, cortamos aquí.
         if (GameManager.Instance == null || !GameManager.Instance.CanExecuteShot(ownerShip))
         {
@@ -49,10 +58,15 @@ public class ShootController : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.AddForce(firePoint.forward * impulseForce, ForceMode.Impulse);
 
+
+        isBallInFlight = true;
+        turnManager.PauseTimer(); // pausa el timer
+
         GameManager.Instance.RegisterShotEfectuated();
 
         ApplyRecoilAnimation();
     }
+
     private void ApplyRecoilAnimation()
     {
         if (cannonModel == null) return;
@@ -67,5 +81,23 @@ public class ShootController : MonoBehaviour
                 // 2. Movimiento de regreso al punto original
                 cannonModel.DOLocalMoveZ(originalZ, returnDuration).SetEase(Ease.OutElastic);
             });
+    }
+
+
+
+    private void OnEnable()
+    {
+        BulletCameraController.OnBulletFinished += UnlockShot;
+    }
+
+    private void OnDisable()
+    {
+        BulletCameraController.OnBulletFinished -= UnlockShot;
+    }
+
+    private void UnlockShot()
+    {
+        isBallInFlight = false;
+        turnManager?.ResumeTimer(); // solo reanuda el timer
     }
 }

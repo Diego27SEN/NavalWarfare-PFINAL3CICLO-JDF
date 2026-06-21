@@ -7,7 +7,7 @@ public class SharkController : MonoBehaviour
     public float roamRadius = 100f;
     public float waitTime = 2f;
 
-    private NavMeshAgent agent;
+    [SerializeField]private NavMeshAgent agent;
     private float timer;
 
     private void Awake()
@@ -26,7 +26,7 @@ public class SharkController : MonoBehaviour
     {
         if (!agent.pathPending && agent.remainingDistance <= 1f)
         {
-            Debug.Log("Llegó al destino");
+          //  Debug.Log("Llegó al destino");
 
             timer += Time.deltaTime;
 
@@ -34,7 +34,7 @@ public class SharkController : MonoBehaviour
 
         if (timer >= waitTime)
         {
-            Debug.Log("Buscando nuevo destino");
+           // Debug.Log("Buscando nuevo destino");
 
             SetRandomDestination();
 

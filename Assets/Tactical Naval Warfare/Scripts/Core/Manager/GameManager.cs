@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     [FoldoutGroup("Control de Turno"), ShowInInspector, ReadOnly]
     public bool hasRolledDice => turnController != null && turnController.hasRolledDice;
 
+    [SerializeField] private TurnManager turnManager;
+
     private void Awake() 
     {
         if (Instance == null) 
@@ -84,7 +86,17 @@ public class GameManager : MonoBehaviour
 
     [FoldoutGroup("Control de Turno")]
     [Button("Terminar Turno Dado", ButtonSizes.Medium)]
-    public void EndTurn() => turnController.EndTurn();
+    public void EndTurn()
+    {
+
+        if (!hasRolledDice)
+        {
+            Debug.LogWarning("¡Debes tirar el dado antes de terminar el turno!");
+            return;
+        }
+        turnController.EndTurn();
+        turnManager.NextTurn(); // cambia cámara 
+    }
     #endregion
 
     #region Redirección de Metodos Linq

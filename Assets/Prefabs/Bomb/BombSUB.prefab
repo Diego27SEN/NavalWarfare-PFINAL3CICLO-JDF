@@ -77,6 +77,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c77f006a72ec44c4bb933d559647b504, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6825928731547175313}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c77f006a72ec44c4bb933d559647b504, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 813445515363857562}
   m_SourcePrefab: {fileID: 100100000, guid: c77f006a72ec44c4bb933d559647b504, type: 3}
 --- !u!1 &1320738756860311541 stripped
 GameObject:
@@ -93,7 +96,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 3.7013526
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -118,10 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubmarineBombController
   explosionRadius: 3
-  shipLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  damage: 35
+  damage: 60
   explosionDuration: 0.8
   explosionVFX: {fileID: 0}
   driftSpeed: 1.2
@@ -145,9 +145,36 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 3.7013516
   m_Center: {x: 0.000000834465, y: 0.00000023841858, z: -0.00000023841858}
+--- !u!54 &813445515363857562
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320738756860311541}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

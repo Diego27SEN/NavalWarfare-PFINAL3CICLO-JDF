@@ -11,8 +11,12 @@ public class TurnManager : MonoBehaviour
     [Title("Gameplay Camera")]
     [SerializeField] private CinemachineCamera gameplayCam;
     [SerializeField] private float turnDuration = 20f;
-    [SerializeField] private float currentTime;
+    public float currentTime;
     [SerializeField] private int currentTurn;
+    [SerializeField] private CinemachineCamera BulletCam;
+
+    private bool gameStarted = false;
+    private bool timerPaused = false;
 
     private TurnNode currentNode;
     private InputSystem_Actions inputs;
@@ -20,16 +24,19 @@ public class TurnManager : MonoBehaviour
     private void Awake()
     {
         inputs = new InputSystem_Actions();
+        BulletCameraController.bulletCam = BulletCam;
     }
 
     private void Update()
     {
+        if (!gameStarted || timerPaused) return;
+
         currentTime -= Time.deltaTime;
 
         if (currentTime <= 0)
         {
-            NextTurn();
-            currentTime = turnDuration;
+            currentTime = float.MaxValue; // Evita que se llame repetidamente a EndTurn mientras se procesa el cambio de turno
+            GameManager.Instance.EndTurn(); // Llama al método EndTurn del GameManager para manejar la lógica de fin de turno
         }
     }
     private void OnEnable()
@@ -40,6 +47,7 @@ public class TurnManager : MonoBehaviour
     }
     private void OnDisable()
     {
+        if (inputs == null) return;
         inputs.Player.Next.performed -= OnNextTurn;
 
         inputs.Disable();
@@ -53,7 +61,7 @@ public class TurnManager : MonoBehaviour
 
     private void OnNextTurn(InputAction.CallbackContext context)
     {
-        NextTurn();
+        GameManager.Instance.EndTurn(); // Llama al método EndTurn del GameManager para manejar la lógica de fin de turno
     }
 
     private void CreateCircularList()
@@ -100,20 +108,16 @@ public class TurnManager : MonoBehaviour
 
     public void StartGame()
     {
+        gameStarted = true;
         StartTurn();
     }
     [Button]
     public void NextTurn()
     {
         currentNode.ship.EndTurn();
-
         currentNode = currentNode.next;
-
-        currentNode.ship.StartTurn();
-
         currentTurn++;
-
-        ChangeCameraTarget();
+        StartTurn(); 
     }
 
     private void ChangeCameraTarget()
@@ -121,5 +125,14 @@ public class TurnManager : MonoBehaviour
         gameplayCam.Follow =currentNode.ship.transform;
 
         gameplayCam.LookAt = currentNode.ship.transform;
+    }
+
+    public void PauseTimer() 
+    {
+        timerPaused = true; 
+    }
+    public void ResumeTimer() 
+    { 
+        timerPaused = false; 
     }
 }

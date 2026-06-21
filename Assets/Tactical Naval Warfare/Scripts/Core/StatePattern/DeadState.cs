@@ -15,12 +15,17 @@ public class DeadState : IState
 
     public void Enter()
     {
-        submarineBomb.Agent.ResetPath();
-        submarineBomb.Agent.enabled = false;
+        if (submarineBomb.Agent != null && submarineBomb.Agent.isActiveAndEnabled && submarineBomb.Agent.isOnNavMesh)
+        {
+            submarineBomb.Agent.ResetPath();
+            submarineBomb.Agent.enabled = false;
+        }
+
         Collider col = submarineBomb.GetComponent<Collider>();
         if (col != null) col.enabled = false;
+
         Object.Destroy(submarineBomb.gameObject, destroyDelay);
-        Debug.Log("Mina destruida");
+        Debug.Log("Destruyendose");
     }
 
     public void Update() { }
