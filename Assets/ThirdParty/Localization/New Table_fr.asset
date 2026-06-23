@@ -129,6 +129,42 @@ MonoBehaviour:
     m_Localized: Chargement.....
     m_Metadata:
       m_Items: []
+  - m_Id: 12302476622626816
+    m_Localized: Lancez le de avant de passer votre tour !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302664233844736
+    m_Localized: nom du bateau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302827581014016
+    m_Localized: Ordre du tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302953544351744
+    m_Localized: vie 400/400
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303157240725504
+    m_Localized: Canon a feu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303276430262272
+    m_Localized: fin de quart de travail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303443892043776
+    m_Localized: Cartes de pouvoir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303754912268288
+    m_Localized: Lancer les des
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303908889362432
+    m_Localized: Munitions 10/10
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

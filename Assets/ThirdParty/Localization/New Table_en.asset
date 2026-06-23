@@ -127,6 +127,42 @@ MonoBehaviour:
     m_Localized: Loading.....
     m_Metadata:
       m_Items: []
+  - m_Id: 12302476622626816
+    m_Localized: Roll the die first before passing your turn!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302664233844736
+    m_Localized: Boat name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302827581014016
+    m_Localized: Turn Order
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302953544351744
+    m_Localized: Health 400/400
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303157240725504
+    m_Localized: Shoot Cannon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303276430262272
+    m_Localized: Finish turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303443892043776
+    m_Localized: Power cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303754912268288
+    m_Localized: Roll a Die
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303908889362432
+    m_Localized: Ammo 10/10
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

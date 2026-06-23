@@ -125,6 +125,42 @@ MonoBehaviour:
     m_Localized: Cargando.....
     m_Metadata:
       m_Items: []
+  - m_Id: 12302476622626816
+    m_Localized: "\xA1Tira el dado primero antes de pasar de turno!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302664233844736
+    m_Localized: Nombre del bote
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302827581014016
+    m_Localized: Orden de Turnos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302953544351744
+    m_Localized: Vida 400/400
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303157240725504
+    m_Localized: Disparar Canon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303276430262272
+    m_Localized: Terminar Turno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303443892043776
+    m_Localized: Cartas de Poder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303754912268288
+    m_Localized: Tirar Dado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303908889362432
+    m_Localized: Municion 10/10
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

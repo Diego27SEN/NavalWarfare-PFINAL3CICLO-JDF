@@ -127,6 +127,46 @@ MonoBehaviour:
     m_Key: Loading
     m_Metadata:
       m_Items: []
+  - m_Id: 12302476622626816
+    m_Key: Info Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302664233844736
+    m_Key: Boat name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302827581014016
+    m_Key: Turn Order
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302953544351744
+    m_Key: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303157240725504
+    m_Key: Shoot Canno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303276430262272
+    m_Key: Finish turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303443892043776
+    m_Key: Power ups
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303754912268288
+    m_Key: Dice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12303908889362432
+    m_Key: Ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12304083619872768
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
