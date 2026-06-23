@@ -3531,7 +3531,7 @@ GameObject:
   - component: {fileID: 330912310}
   - component: {fileID: 330912309}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Turn 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3576,10 +3576,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Nave 4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da0c14cdd315d994ab9fc9e8b8c36662, type: 2}
+  m_sharedMaterial: {fileID: 2722466554421801782, guid: da0c14cdd315d994ab9fc9e8b8c36662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3603,10 +3603,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 35.95
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3994,7 +3994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &364746874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4990,7 +4990,7 @@ GameObject:
   - component: {fileID: 414168364}
   - component: {fileID: 414168363}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Turn 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5035,10 +5035,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Nave 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da0c14cdd315d994ab9fc9e8b8c36662, type: 2}
+  m_sharedMaterial: {fileID: 2722466554421801782, guid: da0c14cdd315d994ab9fc9e8b8c36662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5062,10 +5062,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 35.95
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -8186,7 +8186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &756285797
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8927,7 +8927,7 @@ GameObject:
   - component: {fileID: 814380976}
   - component: {fileID: 814380975}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Turn 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8972,10 +8972,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Nave 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da0c14cdd315d994ab9fc9e8b8c36662, type: 2}
+  m_sharedMaterial: {fileID: 2722466554421801782, guid: da0c14cdd315d994ab9fc9e8b8c36662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8999,10 +8999,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 35.95
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -11480,6 +11480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
   shipData: {fileID: 11400000, guid: 092fd61eef7972d4789b7082113b841b, type: 2}
+  healthText: {fileID: 0}
   currentHealth: 0
 --- !u!114 &1073331270
 MonoBehaviour:
@@ -11531,7 +11532,7 @@ GameObject:
   - component: {fileID: 1073485781}
   - component: {fileID: 1073485783}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Health Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11553,8 +11554,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 8.2}
-  m_SizeDelta: {x: -24.906, y: -181.191}
+  m_AnchoredPosition: {x: -2.621704, y: 8.199997}
+  m_SizeDelta: {x: -30.15, y: -181.191}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1073485781
 MonoBehaviour:
@@ -11576,7 +11577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Health: 400/400'
+  m_text: 'Health:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da0c14cdd315d994ab9fc9e8b8c36662, type: 2}
   m_sharedMaterial: {fileID: 2722466554421801782, guid: da0c14cdd315d994ab9fc9e8b8c36662, type: 2}
@@ -11929,7 +11930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1105088492
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12493,7 +12494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1165691486
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15027,6 +15028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
   shipData: {fileID: 11400000, guid: 6cb34fd8f4550c04aa560720b159957a, type: 2}
+  healthText: {fileID: 0}
   currentHealth: 0
 --- !u!114 &1490323837
 MonoBehaviour:
@@ -18737,7 +18739,7 @@ GameObject:
   - component: {fileID: 1822822622}
   - component: {fileID: 1822822621}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Roll a Die Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19053,6 +19055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
   shipData: {fileID: 11400000, guid: 73d7aaaa259ef5743b4a66b1448d9720, type: 2}
+  healthText: {fileID: 0}
   currentHealth: 0
 --- !u!114 &1881824752
 MonoBehaviour:
@@ -19220,6 +19223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
   shipData: {fileID: 11400000, guid: ef1ef06ebadcbe0409b8101c537eb756, type: 2}
+  healthText: {fileID: 0}
   currentHealth: 0
 --- !u!114 &1887881855
 MonoBehaviour:
@@ -19899,6 +19903,11 @@ MonoBehaviour:
   currentTime: 0
   currentTurn: 0
   BulletCam: {fileID: 717040113}
+  turnTexts:
+  - {fileID: 1995022974}
+  - {fileID: 414168363}
+  - {fileID: 814380975}
+  - {fileID: 330912309}
   gameplayUI: {fileID: 910338794}
 --- !u!1 &1964245515
 GameObject:
@@ -19985,7 +19994,7 @@ GameObject:
   - component: {fileID: 1995022975}
   - component: {fileID: 1995022974}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Turn 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20030,10 +20039,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Nave 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da0c14cdd315d994ab9fc9e8b8c36662, type: 2}
+  m_sharedMaterial: {fileID: 2722466554421801782, guid: da0c14cdd315d994ab9fc9e8b8c36662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20057,10 +20066,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 35.95
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
