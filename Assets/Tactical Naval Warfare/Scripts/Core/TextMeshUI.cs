@@ -11,7 +11,7 @@ public class TurnMeshUI : MonoBehaviour
 
         if (!GameManager.Instance.hasRolledDice)
         {
-            infoText.text = "¡Tira el dado primero!";
+            infoText.text = "¡Tira el dado primero antes de pasar de turno!";
             infoText.color = Color.yellow;
         }
         else if (GameManager.Instance.remainingShots <= 0)
