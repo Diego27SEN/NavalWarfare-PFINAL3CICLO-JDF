@@ -5,6 +5,10 @@
      Epic,
      Legendary    
  }
+public enum SkillCategory 
+{ 
+    StatBuff, 
+    ComplexHability 
+}
 
-       
 
