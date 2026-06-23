@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.05
+  m_fontSize: 25.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4262,7 +4262,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.45
+  m_fontSize: 35.9
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4642,7 +4642,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.45
+  m_fontSize: 22.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4849,7 +4849,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5205271887144440729, guid: 0ffbe076334dd264d8f054d4a9f58c81, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1066038692}
+      addedObject: {fileID: 1066038696}
+    - targetCorrespondingSourceObject: {fileID: 5205271887144440729, guid: 0ffbe076334dd264d8f054d4a9f58c81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1066038695}
   m_SourcePrefab: {fileID: 100100000, guid: 0ffbe076334dd264d8f054d4a9f58c81, type: 3}
 --- !u!1 &410087039
 GameObject:
@@ -6134,6 +6137,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2838047407261934760, guid: 749005adeae5d094685c6b3357e6b794, type: 3}
+--- !u!114 &514636611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514636593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a7f0e352b426b4aa480a39f9a1a379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
+  shipData: {fileID: 11400000, guid: 092fd61eef7972d4789b7082113b841b, type: 2}
+  currentHealth: 0
 --- !u!1001 &517538552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10752,6 +10769,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8872174021330513206, guid: 6e9696b2e0c45114a9d538387c518468, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1239101539}
+    - targetCorrespondingSourceObject: {fileID: 8872174021330513206, guid: 6e9696b2e0c45114a9d538387c518468, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1239101542}
   m_SourcePrefab: {fileID: 100100000, guid: 6e9696b2e0c45114a9d538387c518468, type: 3}
 --- !u!1 &1005325346
 GameObject:
@@ -11362,7 +11382,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4861362704299985187, guid: 0ffbe076334dd264d8f054d4a9f58c81, type: 3}
   m_PrefabInstance: {fileID: 409139432}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1066038692
+--- !u!114 &1066038695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066038677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a7f0e352b426b4aa480a39f9a1a379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
+  shipData: {fileID: 11400000, guid: ef1ef06ebadcbe0409b8101c537eb756, type: 2}
+  currentHealth: 0
+--- !u!64 &1066038696
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11395,7 +11429,6 @@ GameObject:
   - component: {fileID: 1073331268}
   - component: {fileID: 1073331271}
   - component: {fileID: 1073331270}
-  - component: {fileID: 1073331269}
   m_Layer: 0
   m_Name: Ship_Red
   m_TagString: Ship
@@ -11419,20 +11452,6 @@ Transform:
   - {fileID: 514636598}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 178.617, z: 0}
---- !u!114 &1073331269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1073331267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a7f0e352b426b4aa480a39f9a1a379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
-  shipData: {fileID: 11400000, guid: 092fd61eef7972d4789b7082113b841b, type: 2}
-  currentHealth: 0
 --- !u!114 &1073331270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12721,7 +12740,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.5
+  m_fontSize: 65.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13255,6 +13274,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2838047407261934760, guid: 749005adeae5d094685c6b3357e6b794, type: 3}
+--- !u!114 &1239101542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239101524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a7f0e352b426b4aa480a39f9a1a379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
+  shipData: {fileID: 11400000, guid: 6cb34fd8f4550c04aa560720b159957a, type: 2}
+  currentHealth: 0
 --- !u!1 &1252478265
 GameObject:
   m_ObjectHideFlags: 0
@@ -13979,6 +14012,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3507967250915596681, guid: d4efacad3089bb044832b3692af3ffe5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 514636608}
+    - targetCorrespondingSourceObject: {fileID: 3507967250915596681, guid: d4efacad3089bb044832b3692af3ffe5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 514636611}
   m_SourcePrefab: {fileID: 100100000, guid: d4efacad3089bb044832b3692af3ffe5, type: 3}
 --- !u!1 &1360153320
 GameObject:
@@ -14942,7 +14978,6 @@ GameObject:
   - component: {fileID: 1490323835}
   - component: {fileID: 1490323838}
   - component: {fileID: 1490323837}
-  - component: {fileID: 1490323836}
   m_Layer: 0
   m_Name: Ship_Yellow
   m_TagString: Ship
@@ -14966,20 +15001,6 @@ Transform:
   - {fileID: 1239101529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 89.577, z: 0}
---- !u!114 &1490323836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490323834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a7f0e352b426b4aa480a39f9a1a379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
-  shipData: {fileID: 11400000, guid: 6cb34fd8f4550c04aa560720b159957a, type: 2}
-  currentHealth: 0
 --- !u!114 &1490323837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15571,7 +15592,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 569967581806351137, guid: 4c2c646a3cdecb74e9b72bb349d53b1b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1951767419}
+      addedObject: {fileID: 1951767422}
+    - targetCorrespondingSourceObject: {fileID: 569967581806351137, guid: 4c2c646a3cdecb74e9b72bb349d53b1b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1951767423}
   m_SourcePrefab: {fileID: 100100000, guid: 4c2c646a3cdecb74e9b72bb349d53b1b, type: 3}
 --- !u!1 &1535800789
 GameObject:
@@ -18968,7 +18992,6 @@ GameObject:
   - component: {fileID: 1881824750}
   - component: {fileID: 1881824753}
   - component: {fileID: 1881824752}
-  - component: {fileID: 1881824751}
   m_Layer: 0
   m_Name: Ship_Green
   m_TagString: Ship
@@ -18992,20 +19015,6 @@ Transform:
   - {fileID: 1951767409}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -153.047, z: 0}
---- !u!114 &1881824751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1881824749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a7f0e352b426b4aa480a39f9a1a379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
-  shipData: {fileID: 11400000, guid: 73d7aaaa259ef5743b4a66b1448d9720, type: 2}
-  currentHealth: 0
 --- !u!114 &1881824752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19135,7 +19144,6 @@ GameObject:
   - component: {fileID: 1887881853}
   - component: {fileID: 1887881856}
   - component: {fileID: 1887881855}
-  - component: {fileID: 1887881854}
   m_Layer: 0
   m_Name: Ship_Blue
   m_TagString: Ship
@@ -19159,20 +19167,6 @@ Transform:
   - {fileID: 1066038682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1887881854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887881852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a7f0e352b426b4aa480a39f9a1a379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
-  shipData: {fileID: 11400000, guid: ef1ef06ebadcbe0409b8101c537eb756, type: 2}
-  currentHealth: 0
 --- !u!114 &1887881855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19775,7 +19769,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 910640623298415003, guid: 4c2c646a3cdecb74e9b72bb349d53b1b, type: 3}
   m_PrefabInstance: {fileID: 1534251896}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1951767419
+--- !u!64 &1951767422
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19797,6 +19791,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2838047407261934760, guid: 749005adeae5d094685c6b3357e6b794, type: 3}
+--- !u!114 &1951767423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951767404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a7f0e352b426b4aa480a39f9a1a379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
+  shipData: {fileID: 11400000, guid: 73d7aaaa259ef5743b4a66b1448d9720, type: 2}
+  currentHealth: 0
 --- !u!1 &1953886408
 GameObject:
   m_ObjectHideFlags: 0
