@@ -1,9 +1,12 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.Rendering;
 
 public class ShipHealth : MonoBehaviour
 {
     [Header("Datos del Barco")]
     public ShipDatabase shipData;
+    public TextMeshProUGUI healthText;
 
     [Header("Estado Actual")]
     [SerializeField] private float currentHealth;
@@ -19,6 +22,7 @@ public class ShipHealth : MonoBehaviour
             currentHealth = 400f;
         }
     }
+
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
