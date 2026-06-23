@@ -103,8 +103,8 @@ public class CannonController : MonoBehaviour
     public void EnableCannon()
     {
         inputsSystem.enabled = true;
-        isCannonActive = true;
-        UpdateMouseVisibility();
+        isCannonActive = false; // no activa el modo apuntado automáticamente
+        UpdateMouseVisibility(); // cursor libre para la UI
     }
 
     public void DisableCannon()

@@ -18,22 +18,18 @@ public class CannonInputs : MonoBehaviour
     private void OnEnable()
     {
         inputs.Enable();
-
         inputs.Player.Look.performed += OnLookPerformed;
         inputs.Player.Look.canceled += OnLookCanceled;
-
-        inputs.Player.ToggleMouse.performed += OnAimPerformed;
-        inputs.Player.ToggleMouse.canceled += OnAimCanceled;
+        inputs.Player.ToggleMouse.started += OnAimPerformed;   // al presionar
+        inputs.Player.ToggleMouse.canceled += OnAimCanceled;   // al soltar
     }
 
     private void OnDisable()
     {
         inputs.Player.Look.performed -= OnLookPerformed;
         inputs.Player.Look.canceled -= OnLookCanceled;
-
-        inputs.Player.ToggleMouse.performed -= OnAimPerformed;
+        inputs.Player.ToggleMouse.started -= OnAimPerformed;
         inputs.Player.ToggleMouse.canceled -= OnAimCanceled;
-
         inputs.Disable();
     }
     #endregion

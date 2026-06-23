@@ -20,6 +20,7 @@ public class TurnManager : MonoBehaviour
 
     private TurnNode currentNode;
     private InputSystem_Actions inputs;
+    [SerializeField] private GameplayUI gameplayUI;
 
     private void Awake()
     {
@@ -103,6 +104,8 @@ public class TurnManager : MonoBehaviour
         currentTime = turnDuration;
 
         ChangeCameraTarget();
+
+        gameplayUI.UpdateActiveShip(currentNode.ship); // actualiza el botón
 
     }
 
