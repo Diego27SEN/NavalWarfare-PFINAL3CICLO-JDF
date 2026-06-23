@@ -20,7 +20,7 @@ public class TurnMeshUI : MonoBehaviour
             infoText.color = Color.red;
         }
         else
-        {
+        {        
             infoText.text = "Disparos: " + GameManager.Instance.remainingShots;
             infoText.color = Color.white;
         }

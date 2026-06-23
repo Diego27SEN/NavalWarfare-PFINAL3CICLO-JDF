@@ -7,6 +7,7 @@ public class ShipHealth : MonoBehaviour
 
     [Header("Estado Actual")]
     [SerializeField] private float currentHealth;
+
     void Start()
     {
         if (shipData != null)
