@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
+using TMPro;
 
 public class TurnManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class TurnManager : MonoBehaviour
     public float currentTime;
     [SerializeField] private int currentTurn;
     [SerializeField] private CinemachineCamera BulletCam;
+
+    [SerializeField] private TextMeshProUGUI[] turnTexts = new TextMeshProUGUI[4];
 
     private bool gameStarted = false;
     private bool timerPaused = false;
@@ -57,7 +60,6 @@ public class TurnManager : MonoBehaviour
     private void Start()
     {
         CreateCircularList();
-
     }
 
     private void OnNextTurn(InputAction.CallbackContext context)
@@ -68,12 +70,16 @@ public class TurnManager : MonoBehaviour
     private void CreateCircularList()
     {
         TurnNode firstNode = null;
-
         TurnNode previousNode = null;
 
         for (int i = 0; i < ships.Length; i++)
         {
             TurnNode newNode = new TurnNode(ships[i]);
+
+            if (string.IsNullOrEmpty(newNode.ship.gameObject.name) || newNode.ship.gameObject.name.StartsWith("GameObject"))
+            {
+                newNode.ship.gameObject.name = "Barco " + (i + 1);
+            }
 
             if (firstNode == null)
             {
@@ -91,22 +97,18 @@ public class TurnManager : MonoBehaviour
         }
 
         previousNode.next = firstNode;
-
         firstNode.previous = previousNode;
-
         currentNode = firstNode;
     }
 
     private void StartTurn()
     {
         currentNode.ship.StartTurn();
-
         currentTime = turnDuration;
-
         ChangeCameraTarget();
-
         gameplayUI.UpdateActiveShip(currentNode.ship); // actualiza el botón
 
+        UpdateTurnUIBoxes();
     }
 
     public void StartGame()
@@ -137,5 +139,19 @@ public class TurnManager : MonoBehaviour
     public void ResumeTimer() 
     { 
         timerPaused = false; 
+    }
+
+    private void UpdateTurnUIBoxes()
+    {
+        TurnNode tempNode = currentNode;
+
+        for (int i = 0; i < turnTexts.Length; i++)
+        {
+            if (turnTexts[i] != null && tempNode != null)
+            {
+                turnTexts[i].text = tempNode.ship.gameObject.name;
+                tempNode = tempNode.next;
+            }
+        }
     }
 }
