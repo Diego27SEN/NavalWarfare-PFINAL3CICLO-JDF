@@ -17,6 +17,8 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private CinemachineCamera BulletCam;
 
     [SerializeField] private TextMeshProUGUI currentTurnTitleText;
+
+    [Title("Turn Order")]
     [SerializeField] private TextMeshProUGUI[] turnTexts = new TextMeshProUGUI[4];
 
     [SerializeField] private TextMeshProUGUI activeShipHealthText;
@@ -37,7 +39,6 @@ public class TurnManager : MonoBehaviour
 
     private void Update()
     {
-        //time.scale = 5
         if (!gameStarted || timerPaused) return;
 
         currentTime -= Time.deltaTime;
@@ -54,7 +55,6 @@ public class TurnManager : MonoBehaviour
     private void OnEnable()
     {
         inputs.Enable();
-
         inputs.Player.Next.performed += OnNextTurn;
     }
 
@@ -62,7 +62,6 @@ public class TurnManager : MonoBehaviour
     {
         if (inputs == null) return;
         inputs.Player.Next.performed -= OnNextTurn;
-
         inputs.Disable();
     }
 
@@ -167,13 +166,13 @@ public class TurnManager : MonoBehaviour
         if (currentNode == null) return;
 
         TurnNode tempNode = currentNode;
-        Debug.Log("nodo: " + tempNode.ship.gameObject.name);
 
         for (int i = 0; i < turnTexts.Length; i++)
         {
             if (turnTexts[i] != null && tempNode != null && tempNode.ship != null)
             {
-                turnTexts[i].text = playerNamesSO.GetName(tempNode.ship.shipType);
+                turnTexts[i].text = tempNode.ship.gameObject.name;
+                Debug.Log($"Vuelta {i} -> Objeto: {tempNode.ship.name} | Su tipo asignado es: {tempNode.ship.shipType}");
                 tempNode = tempNode.next;
             }
         }
@@ -215,7 +214,7 @@ public class TurnManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"[TurnManager] Ojo: No se encontró ShipHealth en {currentNode.ship.gameObject.name}");
+            Debug.LogWarning($"[TurnManager] Ojo: No se encontro ShipHealth en {currentNode.ship.gameObject.name}");
             activeShipHealthText.text = "--- / ---";
         }
     }
