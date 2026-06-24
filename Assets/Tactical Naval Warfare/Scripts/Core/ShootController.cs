@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
 
 
 public class ShootController : MonoBehaviour
@@ -82,22 +83,32 @@ public class ShootController : MonoBehaviour
                 cannonModel.DOLocalMoveZ(originalZ, returnDuration).SetEase(Ease.OutElastic);
             });
     }
-
-
-
     private void OnEnable()
     {
-        BulletCameraController.OnBulletFinished += UnlockShot;
+        BulletCameraController.OnBulletFinished += StartCameraDelay;
     }
 
     private void OnDisable()
     {
-        BulletCameraController.OnBulletFinished -= UnlockShot;
+        BulletCameraController.OnBulletFinished -= StartCameraDelay;
     }
 
-    private void UnlockShot()
+    private void StartCameraDelay()
     {
+        StartCoroutine(CameraReturnDelay());
+    }
+
+    private IEnumerator CameraReturnDelay()
+    {
+        yield return new WaitForSeconds(2f);
+
+        if (BulletCameraController.bulletCam != null)
+        {
+            BulletCameraController.bulletCam.Target.TrackingTarget = null;
+            BulletCameraController.bulletCam.Priority = 0;
+        }
+
         isBallInFlight = false;
-        turnManager?.ResumeTimer(); // solo reanuda el timer
+        turnManager?.ResumeTimer();
     }
 }

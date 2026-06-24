@@ -11,7 +11,7 @@ public class TurnManager : MonoBehaviour
 
     [Title("Gameplay Camera")]
     [SerializeField] private CinemachineCamera gameplayCam;
-    [SerializeField] private float turnDuration = 20f;
+    public float turnDuration = 20f;
     public float currentTime;
     [SerializeField] private int currentTurn;
     [SerializeField] private CinemachineCamera BulletCam;
@@ -39,8 +39,8 @@ public class TurnManager : MonoBehaviour
 
         if (currentTime <= 0)
         {
-            currentTime = float.MaxValue; // Evita que se llame repetidamente a EndTurn mientras se procesa el cambio de turno
-            GameManager.Instance.EndTurn(); // Llama al método EndTurn del GameManager para manejar la lógica de fin de turno
+            currentTime = float.MaxValue;
+            GameManager.Instance.ForceEndTurn(); // nuevo método sin verificar dado
         }
     }
     private void OnEnable()

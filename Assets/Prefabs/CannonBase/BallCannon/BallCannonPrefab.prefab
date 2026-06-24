@@ -155,7 +155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CannonBall
   myPoolId: CannonBall
-  lifeTime: 3
+  lifeTime: 5
+  woodExplosionVFX: {fileID: 0}
+  waterExplosionVFX: {fileID: 0}
 --- !u!114 &-9187900229193426813
 MonoBehaviour:
   m_ObjectHideFlags: 0

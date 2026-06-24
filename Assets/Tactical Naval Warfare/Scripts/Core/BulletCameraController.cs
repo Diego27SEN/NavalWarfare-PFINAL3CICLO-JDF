@@ -17,11 +17,6 @@ public class BulletCameraController : MonoBehaviour
 
     private void OnDisable()
     {
-        if (bulletCam != null)
-        {
-            bulletCam.Target.TrackingTarget = null;
-            bulletCam.Priority = 0;
-        }
         OnBulletFinished?.Invoke(); // avisa que terminó
     }
 }

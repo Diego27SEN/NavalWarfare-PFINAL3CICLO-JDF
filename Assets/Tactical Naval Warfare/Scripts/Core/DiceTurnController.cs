@@ -22,6 +22,7 @@ public class DiceTurnController
     }
     public void RollDice()
     {
+        if (hasRolledDice) return; // Evitamos que el jugador tire el dado más de una vez por turno
         if (currentPlayer == null) return;
 
         hasRolledDice = true;

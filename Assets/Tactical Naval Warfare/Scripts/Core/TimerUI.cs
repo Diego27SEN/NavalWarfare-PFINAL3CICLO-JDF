@@ -10,7 +10,8 @@ public class TimerUI : MonoBehaviour
     {
         if (turnManager == null) return;
 
-        float time = Mathf.Max(0,turnManager.currentTime);
+        float time = Mathf.Min(turnManager.currentTime, turnManager.turnDuration);
+        time = Mathf.Max(0, time);
         timerText.text = Mathf.CeilToInt(time).ToString();
     }
 }

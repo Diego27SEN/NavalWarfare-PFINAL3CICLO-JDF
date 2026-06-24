@@ -74,6 +74,11 @@ public class GameManager : MonoBehaviour
         turnController.SetInitialPlayer();
     }
 
+    public void ForceEndTurn()
+    {
+        turnController.EndTurn();
+        turnManager.NextTurn();
+    }
     #region Redirección de Lógica de Turnos
     [FoldoutGroup("Control de Turno")]
     [Button("Lanzar Dado de 8 caras", ButtonSizes.Medium)]
