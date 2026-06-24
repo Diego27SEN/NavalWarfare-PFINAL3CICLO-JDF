@@ -165,6 +165,10 @@ MonoBehaviour:
     m_Localized: Munitions 10/10
     m_Metadata:
       m_Items: []
+  - m_Id: 12304083619872768
+    m_Localized: Canon a visee
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

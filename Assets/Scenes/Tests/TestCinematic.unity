@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.65
+  m_fontSize: 25.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3075,7 +3075,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.6
+  m_fontSize: 35.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3450,7 +3450,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
+  m_fontSize: 21.9
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3975,7 +3975,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 428512676}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1672151023}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &428512676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4055,6 +4067,7 @@ GameObject:
   - component: {fileID: 448045746}
   - component: {fileID: 448045750}
   - component: {fileID: 448045751}
+  - component: {fileID: 448045752}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4143,6 +4156,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FadeOutText
   textToFade: {fileID: 1326079071}
   fadeDuration: 5
+--- !u!114 &448045752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448045745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f0cef6739eb8e4a8da8220d253ab44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TitleSounds
+  soundManager: {fileID: 1672151023}
+  musicIndexToPlay: 0
 --- !u!1 &448163726
 GameObject:
   m_ObjectHideFlags: 0
@@ -5401,7 +5428,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.35
+  m_fontSize: 49.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6363,7 +6390,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.6
+  m_fontSize: 43.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9646,7 +9673,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.65
+  m_fontSize: 65.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10597,7 +10624,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 44.85
   m_fontSizeBase: 46
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12383,7 +12410,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1546287186}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1672151023}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlayExtra
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1546287186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13742,9 +13781,14 @@ MonoBehaviour:
   extrasSlider: {fileID: 1021236984}
   musicSlider: {fileID: 1726875099}
   sfxSlider: {fileID: 33097986}
-  musicTracks: []
-  sfxClips: []
-  extraClips: []
+  musicTracks:
+  - {fileID: 8300000, guid: 0c05ec6d466cfdb4da0ec5b7a39fb067, type: 3}
+  sfxClips:
+  - {fileID: 8300000, guid: fc0b66a5979b21f44a9f61e79c665908, type: 3}
+  - {fileID: 8300000, guid: 472609a3826b16045842e13cfaccae35, type: 3}
+  - {fileID: 8300000, guid: 5ba90326920f5f5478c72d05cc23001e, type: 3}
+  extraClips:
+  - {fileID: 8300000, guid: aa02b4e0c022ed84eb44853185e0db70, type: 3}
 --- !u!4 &1672151024
 Transform:
   m_ObjectHideFlags: 0
