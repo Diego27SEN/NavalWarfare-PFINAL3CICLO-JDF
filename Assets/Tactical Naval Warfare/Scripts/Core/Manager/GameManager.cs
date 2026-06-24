@@ -1,5 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +15,11 @@ public class GameManager : MonoBehaviour
     public PoolConfigCollectionData poolDataContainer;
     public CardDeckData cardDataContainer;
     public CrewmanCollectionData crewmanDataContainer;
+
+    [Header("Referencias UI de Disparos")]
+    [SerializeField] private TextMeshProUGUI diceResultText;
+    [SerializeField] private TextMeshProUGUI shootCountText;
+    [SerializeField] private Button shootButton;
 
     private DiceTurnController turnController;
     private MatchAnalyzer matchAnalyzer;
@@ -37,8 +44,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
             InitializeContainers();
 
-            turnController = new DiceTurnController(turnDataContainer);
-            matchAnalyzer = new MatchAnalyzer(biomeDataContainer, playerDataContainer, shipDataContainer);
+            turnController = new DiceTurnController(turnDataContainer, diceResultText, shootCountText, shootButton);
+            matchAnalyzer = new MatchAnalyzer(biomeDataContainer, playerDataContainer, shipDataContainer); ;
         }
         else 
         { 
@@ -60,6 +67,7 @@ public class GameManager : MonoBehaviour
         if (playerDataContainer != null) playerDataContainer.Initialize();
         if (shipDataContainer != null) shipDataContainer.Initialize();
         if (turnDataContainer != null) turnDataContainer.Initialize();
+
     }
     public void RegisterPlayer(PlayerGameDatabase newPlayer)
     {
@@ -87,7 +95,20 @@ public class GameManager : MonoBehaviour
 
     public void RegisterShotEfectuated() => turnController.RegisterShotEfectuated();
 
-    public bool CanExecuteShot(PlayerGameDatabase player) => turnController != null && turnController.CanExecuteShot(player);
+    /*public bool CanExecuteShot(PlayerGameDatabase player) => turnController != null && turnController.CanExecuteShot(player);*/
+
+    public bool CanExecuteShot(PlayerGameDatabase player)
+    {
+        if (currentPlayer == null)
+        {
+            Debug.LogWarning("[DiceTurnController] No hay un jugador actual asignado al turno.");
+            return false;
+        }
+        string shootingPlayerID = player != null ? player.PlayerID : currentPlayer.PlayerID;
+        bool isCorrectTurn = currentPlayer.PlayerID == shootingPlayerID;
+
+        return isCorrectTurn && hasRolledDice && remainingShots > 0;
+    }
 
     [FoldoutGroup("Control de Turno")]
     [Button("Terminar Turno Dado", ButtonSizes.Medium)]

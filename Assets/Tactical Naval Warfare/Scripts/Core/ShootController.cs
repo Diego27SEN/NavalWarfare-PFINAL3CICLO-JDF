@@ -39,11 +39,21 @@ public class ShootController : MonoBehaviour
 
         if (isBallInFlight) return; // bloquea si ya hay una bala volando
 
-        // Le preguntamos si podemos disparar. Si no, cortamos aquí.
-        if (GameManager.Instance == null || !GameManager.Instance.CanExecuteShot(ownerShip))
+        if (!GameManager.Instance.hasRolledDice)
         {
-            Debug.LogWarning($"El jugador {ownerShip?.PlayerID} no cumple las condiciones para disparar.");
+            Debug.LogWarning($"[ShootController] No se puede disparar: El jugador actual ({GameManager.Instance.currentPlayer?.PlayerID}) no ha lanzado el dado.");
             return;
+        }
+
+        if (GameManager.Instance.remainingShots <= 0)
+        {
+            Debug.LogWarning($"[ShootController] No se puede disparar: Al jugador actual ({GameManager.Instance.currentPlayer?.PlayerID}) se le agotaron los disparos.");
+            return;
+        }
+
+        if (ownerShip != GameManager.Instance.currentPlayer)
+        {
+            ownerShip = GameManager.Instance.currentPlayer;
         }
 
         // Pedimos la bala. Si el Pool falla, cortamos.
@@ -61,7 +71,11 @@ public class ShootController : MonoBehaviour
 
 
         isBallInFlight = true;
-        turnManager.PauseTimer(); // pausa el timer
+
+        if (turnManager != null)
+        {
+            turnManager.PauseTimer(); // pausa el timer
+        }
 
         GameManager.Instance.RegisterShotEfectuated();
 

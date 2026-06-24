@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DiceTurnController
 {
@@ -8,9 +10,16 @@ public class DiceTurnController
     public int remainingShots = 0;
     public bool hasRolledDice = false;
 
-    public DiceTurnController(TurnSystemData data)
+    [SerializeField] private TextMeshProUGUI DiceResult;
+    [SerializeField] private TextMeshProUGUI ShootCount;
+    [SerializeField] private Button shootButton;
+
+    public DiceTurnController(TurnSystemData data, TextMeshProUGUI diceResultText, TextMeshProUGUI shootCountText, Button shootButton)
     {
         turnData = data;
+        this.DiceResult = diceResultText;
+        this.ShootCount = shootCountText;
+        this.shootButton = shootButton;
     }
 
     public void SetInitialPlayer()
@@ -18,12 +27,22 @@ public class DiceTurnController
         if (currentPlayer == null && turnData != null)
         {
             currentPlayer = turnData.SistemShift.GetCurrentPlayer();
+            UpdateShotTexts();
         }
     }
     public void RollDice()
     {
-        if (hasRolledDice) return; // Evitamos que el jugador tire el dado más de una vez por turno
-        if (currentPlayer == null) return;
+        if (hasRolledDice)
+        {
+            Debug.LogWarning($"[DiceTurnController] El jugador {currentPlayer?.PlayerID} ya ha lanzado el dado este turno.");
+            return; // Evitamos que el jugador tire el dado más de una vez por turno
+        }
+        if (currentPlayer == null)
+        {
+            Debug.LogWarning("[DiceTurnController] No hay un jugador actual asignado al turno.");   
+            return;
+        }
+
 
         hasRolledDice = true;
 
@@ -48,22 +67,70 @@ public class DiceTurnController
         }
 
         Debug.Log($"{currentPlayer.PlayerID} obtuvo {remainingShots} disparos.");
+
+        if (DiceResult != null)
+        {
+            DiceResult.text = $"{currentPlayer.PlayerID} obtuvo {remainingShots} disparos";
+        }
+
+        UpdateShotTexts();
     }
     public void RegisterShotEfectuated()
     {
         remainingShots--;
         Debug.Log($"Disparos restantes: {remainingShots}");
+
+        UpdateShotTexts();
     }
     public void EndTurn()
     {
         currentPlayer = turnData.SistemShift.AdvanceShift();
         remainingShots = 0;
         hasRolledDice = false;
+
         Debug.Log($"¡Nuevo turno para: {currentPlayer?.PlayerID}!");
+
+        if (DiceResult != null)
+        {
+            DiceResult.text = "";
+        }
+
+        if (shootButton != null)
+        {
+            shootButton.gameObject.SetActive(true);
+        }
+
+        UpdateShotTexts();
     }
 
     public bool CanExecuteShot(PlayerGameDatabase player)
     {
         return currentPlayer == player && hasRolledDice && remainingShots > 0;
+    }
+
+    private void UpdateShotTexts()
+    {
+        if (ShootCount == null) return;
+
+        if (!hasRolledDice)
+        {
+            ShootCount.text = "Tira el dado para conseguir disparos.";
+            return;
+        }
+
+        if (remainingShots > 0)
+        {
+            string shotWord = remainingShots == 1 ? "disparo" : "disparos";
+            ShootCount.text = $"Tienes {remainingShots} {shotWord}";
+        }
+        else
+        {
+            ShootCount.text = "Ya no tienes más disparos";
+
+            if (shootButton != null)
+            {
+                shootButton.gameObject.SetActive(false);
+            }
+        }
     }
 }

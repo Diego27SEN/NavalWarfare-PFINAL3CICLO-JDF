@@ -18,6 +18,8 @@ public class TurnManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI[] turnTexts = new TextMeshProUGUI[4];
 
+    [SerializeField] private TextMeshProUGUI activeShipHealthText;
+
     private bool gameStarted = false;
     private bool timerPaused = false;
 
@@ -42,6 +44,8 @@ public class TurnManager : MonoBehaviour
             currentTime = float.MaxValue;
             GameManager.Instance.ForceEndTurn(); // nuevo método sin verificar dado
         }
+
+        UpdateActiveShipHealthUI();
     }
     private void OnEnable()
     {
@@ -109,6 +113,7 @@ public class TurnManager : MonoBehaviour
         gameplayUI.UpdateActiveShip(currentNode.ship); // actualiza el botón
 
         UpdateTurnUIBoxes();
+        UpdateActiveShipHealthUI();
     }
 
     public void StartGame()
@@ -152,6 +157,34 @@ public class TurnManager : MonoBehaviour
                 turnTexts[i].text = tempNode.ship.gameObject.name;
                 tempNode = tempNode.next;
             }
+        }
+    }
+
+    public void UpdateActiveShipHealthUI()
+    {
+        if (activeShipHealthText == null || currentNode == null || currentNode.ship == null)
+        {
+            return;
+        }
+
+        ShipHealth healthComponent = currentNode.ship.GetComponentInChildren<ShipHealth>();
+
+        if (healthComponent != null)
+        {
+            float current = healthComponent.GetCurrentHealth();
+            float max = healthComponent.shipData != null ? healthComponent.shipData.hpMaximum : 400f;
+
+            if (current == 0 && max > 0)
+            {
+                current = max;
+            }
+
+            activeShipHealthText.text = $"{current} / {max}";
+        }
+        else
+        {
+            Debug.LogWarning($"[TurnManager] Ojo: No se encontró ShipHealth en {currentNode.ship.gameObject.name}");
+            activeShipHealthText.text = "--- / ---";
         }
     }
 }

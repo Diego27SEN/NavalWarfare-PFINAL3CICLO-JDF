@@ -9,7 +9,7 @@ public class ShipHealth : MonoBehaviour
     public TextMeshProUGUI healthText;
 
     [Header("Estado Actual")]
-    [SerializeField] private float currentHealth;
+    [SerializeField] public float currentHealth;
 
     void Start()
     {
@@ -33,5 +33,10 @@ public class ShipHealth : MonoBehaviour
             Debug.Log($"¡El barco {gameObject.name} ha sido hundido!");
             gameObject.SetActive(false);
         }
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }

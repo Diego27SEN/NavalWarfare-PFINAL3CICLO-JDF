@@ -21,6 +21,8 @@ public class CinematicController : MonoBehaviour
     [Header("Gameplay Camera")]
     [SerializeField] private CinemachineCamera gameplayCam;
 
+    [SerializeField] private CanvasGroup gameplayUIElement;
+
     [Header("Settings")]
     [SerializeField] private float timePerCamera = 5f;
 
@@ -35,6 +37,7 @@ public class CinematicController : MonoBehaviour
 
         // Empezar cinemática
         StartCoroutine(PlayCinematic());
+
     }
 
     [Button]
@@ -85,7 +88,13 @@ public class CinematicController : MonoBehaviour
 
     private IEnumerator PlayCinematic()
     {
-       
+       if (gameplayUIElement != null)
+        {
+            gameplayUIElement.alpha = 0f;
+            gameplayUIElement.interactable = false;
+            gameplayUIElement.blocksRaycasts = false;
+        }
+
         ActivateCamera(0);
         yield return new WaitForSeconds(timePerCamera);
 
@@ -103,8 +112,6 @@ public class CinematicController : MonoBehaviour
         ActivateCamera(4);
         yield return new WaitForSeconds(timePerCamera);
 
-
-
         camA.Priority = 0;
         camB.Priority = 0;
         camC.Priority = 0;
@@ -113,6 +120,13 @@ public class CinematicController : MonoBehaviour
 
 
         gameplayCam.Priority = 50;
+
+        if (gameplayUIElement != null)
+        {
+            gameplayUIElement.alpha = 1f;
+            gameplayUIElement.interactable = true;
+            gameplayUIElement.blocksRaycasts = true;
+        }
 
         turnManager.StartGame();
 
