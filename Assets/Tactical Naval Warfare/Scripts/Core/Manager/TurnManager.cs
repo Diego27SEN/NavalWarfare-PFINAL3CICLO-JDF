@@ -16,9 +16,11 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private int currentTurn;
     [SerializeField] private CinemachineCamera BulletCam;
 
+    [SerializeField] private TextMeshProUGUI currentTurnTitleText;
     [SerializeField] private TextMeshProUGUI[] turnTexts = new TextMeshProUGUI[4];
 
     [SerializeField] private TextMeshProUGUI activeShipHealthText;
+    [SerializeField] private PlayerNames playerNamesSO;
 
     private bool gameStarted = false;
     private bool timerPaused = false;
@@ -35,6 +37,7 @@ public class TurnManager : MonoBehaviour
 
     private void Update()
     {
+        //time.scale = 5
         if (!gameStarted || timerPaused) return;
 
         currentTime -= Time.deltaTime;
@@ -42,17 +45,19 @@ public class TurnManager : MonoBehaviour
         if (currentTime <= 0)
         {
             currentTime = float.MaxValue;
-            GameManager.Instance.ForceEndTurn(); // nuevo método sin verificar dado
+            GameManager.Instance.ForceEndTurn();
         }
 
         UpdateActiveShipHealthUI();
     }
+
     private void OnEnable()
     {
         inputs.Enable();
 
         inputs.Player.Next.performed += OnNextTurn;
     }
+
     private void OnDisable()
     {
         if (inputs == null) return;
@@ -64,11 +69,12 @@ public class TurnManager : MonoBehaviour
     private void Start()
     {
         CreateCircularList();
+        StartGame();
     }
 
     private void OnNextTurn(InputAction.CallbackContext context)
     {
-        GameManager.Instance.EndTurn(); // Llama al método EndTurn del GameManager para manejar la lógica de fin de turno
+        GameManager.Instance.EndTurn();
     }
 
     private void CreateCircularList()
@@ -78,12 +84,11 @@ public class TurnManager : MonoBehaviour
 
         for (int i = 0; i < ships.Length; i++)
         {
+            if (ships[i] == null) continue;
+
             TurnNode newNode = new TurnNode(ships[i]);
 
-            if (string.IsNullOrEmpty(newNode.ship.gameObject.name) || newNode.ship.gameObject.name.StartsWith("GameObject"))
-            {
-                newNode.ship.gameObject.name = "Barco " + (i + 1);
-            }
+            newNode.ship.gameObject.name = GetShipName(ships[i], i);
 
             if (firstNode == null)
             {
@@ -93,16 +98,17 @@ public class TurnManager : MonoBehaviour
             if (previousNode != null)
             {
                 previousNode.next = newNode;
-
                 newNode.previous = previousNode;
             }
-
             previousNode = newNode;
         }
 
-        previousNode.next = firstNode;
-        firstNode.previous = previousNode;
-        currentNode = firstNode;
+        if (previousNode != null && firstNode != null)
+        {
+            previousNode.next = firstNode;
+            firstNode.previous = previousNode;
+            currentNode = firstNode;
+        }
     }
 
     private void StartTurn()
@@ -110,8 +116,9 @@ public class TurnManager : MonoBehaviour
         currentNode.ship.StartTurn();
         currentTime = turnDuration;
         ChangeCameraTarget();
-        gameplayUI.UpdateActiveShip(currentNode.ship); // actualiza el botón
+        gameplayUI.UpdateActiveShip(currentNode.ship);
 
+        UpdateCurrentTurnTitle();
         UpdateTurnUIBoxes();
         UpdateActiveShipHealthUI();
     }
@@ -121,43 +128,68 @@ public class TurnManager : MonoBehaviour
         gameStarted = true;
         StartTurn();
     }
+
     [Button]
     public void NextTurn()
     {
         currentNode.ship.EndTurn();
         currentNode = currentNode.next;
         currentTurn++;
-        StartTurn(); 
+        StartTurn();
     }
 
     private void ChangeCameraTarget()
     {
-        gameplayCam.Follow =currentNode.ship.transform;
-
+        gameplayCam.Follow = currentNode.ship.transform;
         gameplayCam.LookAt = currentNode.ship.transform;
     }
 
-    public void PauseTimer() 
+    public void PauseTimer()
     {
-        timerPaused = true; 
+        timerPaused = true;
     }
-    public void ResumeTimer() 
-    { 
-        timerPaused = false; 
+
+    public void ResumeTimer()
+    {
+        timerPaused = false;
+    }
+
+    private void UpdateCurrentTurnTitle()
+    {
+        if (currentTurnTitleText != null && currentNode != null && currentNode.ship != null)
+        {
+            currentTurnTitleText.text = currentNode.ship.gameObject.name;
+        }
     }
 
     private void UpdateTurnUIBoxes()
     {
+        if (currentNode == null) return;
+
         TurnNode tempNode = currentNode;
+        Debug.Log("nodo: " + tempNode.ship.gameObject.name);
 
         for (int i = 0; i < turnTexts.Length; i++)
         {
-            if (turnTexts[i] != null && tempNode != null)
+            if (turnTexts[i] != null && tempNode != null && tempNode.ship != null)
             {
-                turnTexts[i].text = tempNode.ship.gameObject.name;
+                turnTexts[i].text = playerNamesSO.GetName(tempNode.ship.shipType);
                 tempNode = tempNode.next;
             }
         }
+    }
+
+    private string GetShipName(ShipController ship, int fallbackIndex)
+    {
+        if (ship == null) return "No Ship";
+
+        ShipType currentType = ship.shipType;
+        if (playerNamesSO != null && playerNamesSO.ShipNames.TryGetValue(currentType, out string customName) && !string.IsNullOrWhiteSpace(customName))
+        {
+            return customName;
+        }
+
+        return "Ship " + (fallbackIndex + 1);
     }
 
     public void UpdateActiveShipHealthUI()

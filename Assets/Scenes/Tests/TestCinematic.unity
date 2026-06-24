@@ -3192,6 +3192,7 @@ GameObject:
   - component: {fileID: 385598287}
   - component: {fileID: 385598286}
   - component: {fileID: 385598285}
+  - component: {fileID: 385598289}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3294,6 +3295,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &385598289
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385598284}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &391366548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7154,6 +7167,7 @@ MonoBehaviour:
   camD: {fileID: 249878612}
   camE: {fileID: 525781958}
   gameplayCam: {fileID: 1231990109}
+  gameplayUIElement: {fileID: 385598289}
   timePerCamera: 10
   turnManager: {fileID: 1953886410}
 --- !u!4 &857992343
@@ -8753,6 +8767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae18804ca4aefa44c88687070b146ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
+  _shipType: 0
   moveSpeed: 40
   rotationSpeed: 0.5
   maxMoveDistance: 20
@@ -8813,7 +8828,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 8}
+  m_AnchoredPosition: {x: 0, y: 12.4}
   m_SizeDelta: {x: -243.697, y: -181.191}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1073485781
@@ -8870,8 +8885,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -11455,8 +11470,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -12194,6 +12209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae18804ca4aefa44c88687070b146ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
+  _shipType: 0
   moveSpeed: 40
   rotationSpeed: 0.5
   maxMoveDistance: 20
@@ -15653,6 +15669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae18804ca4aefa44c88687070b146ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
+  _shipType: 0
   moveSpeed: 40
   rotationSpeed: 0.5
   maxMoveDistance: 20
@@ -15805,6 +15822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae18804ca4aefa44c88687070b146ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
+  _shipType: 0
   moveSpeed: 40
   rotationSpeed: 0.5
   maxMoveDistance: 20
@@ -16197,12 +16215,14 @@ MonoBehaviour:
   currentTime: 0
   currentTurn: 0
   BulletCam: {fileID: 717040113}
+  currentTurnTitleText: {fileID: 783525575}
   turnTexts:
   - {fileID: 1995022974}
   - {fileID: 414168363}
   - {fileID: 814380975}
   - {fileID: 330912309}
   activeShipHealthText: {fileID: 1392895585}
+  playerNamesSO: {fileID: 11400000, guid: af78d63006c70ad49b5db17717fab5f5, type: 2}
   gameplayUI: {fileID: 910338794}
 --- !u!1 &1965209675
 GameObject:

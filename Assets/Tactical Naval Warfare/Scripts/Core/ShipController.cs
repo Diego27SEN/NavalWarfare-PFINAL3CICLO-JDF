@@ -3,6 +3,9 @@ using UnityEngine.EventSystems;
 
 public class ShipController : MonoBehaviour
 {
+    [SerializeField] private ShipType _shipType;
+    public ShipType shipType => _shipType;
+
     [Header("Movement")]
     public float moveSpeed = 5f;
     public float rotationSpeed = 5f;
