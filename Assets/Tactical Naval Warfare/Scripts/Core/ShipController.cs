@@ -20,9 +20,11 @@ public class ShipController : MonoBehaviour
 
     private Vector2 moveInput;
     private Vector3 moveDirection;
-
+    private Rigidbody rb;
+    
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         cannonController = GetComponentInChildren<CannonController>();
         playerInputSystem.enabled = false; // bloqueado hasta que sea su turno
     }
@@ -68,7 +70,7 @@ public class ShipController : MonoBehaviour
         Vector3 worldDirection = (camForward * moveDirection.z + camRight * moveDirection.x);
 
         // Mover
-        transform.position += worldDirection * moveSpeed * Time.deltaTime;
+        rb.AddForce(worldDirection * moveSpeed, ForceMode.Force);
 
         // Rotar suave hacia donde se mueve
         Quaternion targetRotation = Quaternion.LookRotation(worldDirection);
