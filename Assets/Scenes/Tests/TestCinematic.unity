@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.9
+  m_fontSize: 25.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3477,7 +3477,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.3
+  m_fontSize: 22.05
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3578,6 +3578,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1887881853}
     m_Modifications:
+    - target: {fileID: 1265123539068420009, guid: 0ffbe076334dd264d8f054d4a9f58c81, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1672151023}
     - target: {fileID: 3543197670463006449, guid: 0ffbe076334dd264d8f054d4a9f58c81, type: 3}
       propertyPath: m_Convex
       value: 0
@@ -7505,6 +7509,7 @@ MonoBehaviour:
   shootButton: {fileID: 428512675}
   finishTurnButton: {fileID: 1546287185}
   rollDiceButton: {fileID: 1822822621}
+  soundManager: {fileID: 1672151023}
 --- !u!4 &910338795
 Transform:
   m_ObjectHideFlags: 0
@@ -8153,6 +8158,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1490323835}
     m_Modifications:
+    - target: {fileID: 2729410534351379842, guid: 6e9696b2e0c45114a9d538387c518468, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1672151023}
     - target: {fileID: 7234305834041966963, guid: 6e9696b2e0c45114a9d538387c518468, type: 3}
       propertyPath: turnManager
       value: 
@@ -9884,7 +9893,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.25
+  m_fontSize: 65.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11025,6 +11034,10 @@ PrefabInstance:
       propertyPath: turnManager
       value: 
       objectReference: {fileID: 1953886410}
+    - target: {fileID: 7632762790296525472, guid: d4efacad3089bb044832b3692af3ffe5, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1672151023}
     - target: {fileID: 8805879774680144423, guid: d4efacad3089bb044832b3692af3ffe5, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -12878,6 +12891,10 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4492747353401420629, guid: 4c2c646a3cdecb74e9b72bb349d53b1b, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1672151023}
     - target: {fileID: 7995653604412205038, guid: 4c2c646a3cdecb74e9b72bb349d53b1b, type: 3}
       propertyPath: m_Convex
       value: 0
@@ -14514,6 +14531,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5ba90326920f5f5478c72d05cc23001e, type: 3}
   extraClips:
   - {fileID: 8300000, guid: aa02b4e0c022ed84eb44853185e0db70, type: 3}
+  - {fileID: 8300000, guid: dedb8f53b510bc64ea4d2c67c244e832, type: 3}
 --- !u!4 &1672151024
 Transform:
   m_ObjectHideFlags: 0

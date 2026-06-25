@@ -8,6 +8,7 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private Button rollDiceButton;
 
     private ShootController currentShootController;
+    [SerializeField] private SoundManager soundManager;
 
     private void Start()
     {
@@ -19,6 +20,11 @@ public class GameplayUI : MonoBehaviour
         rollDiceButton.onClick.AddListener(() =>
         {
             GameManager.Instance.RollDice();
+
+            if (soundManager != null)
+            {
+                soundManager.PlayExtra(1);
+            }
         });
     }
 

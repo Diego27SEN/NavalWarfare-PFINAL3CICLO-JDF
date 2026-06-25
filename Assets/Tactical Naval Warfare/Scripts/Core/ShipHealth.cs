@@ -10,6 +10,8 @@ public class ShipHealth : MonoBehaviour
 
     [Header("Estado Actual")]
     [SerializeField] public float currentHealth;
+    [SerializeField] private SoundManager soundManager;
+
 
     void Start()
     {
@@ -21,6 +23,7 @@ public class ShipHealth : MonoBehaviour
         {
             currentHealth = 400f;
         }
+
     }
 
     public void TakeDamage(float damage)
@@ -32,6 +35,11 @@ public class ShipHealth : MonoBehaviour
         {
             Debug.Log($"¡El barco {gameObject.name} ha sido hundido!");
             gameObject.SetActive(false);
+        }
+
+        if (soundManager != null)
+        {
+            soundManager.PlaySFX(1);
         }
     }
 
