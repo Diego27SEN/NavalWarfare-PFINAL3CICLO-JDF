@@ -165,6 +165,20 @@ MonoBehaviour:
     m_Localized: Apuntar canon
     m_Metadata:
       m_Items: []
+  - m_Id: 13080766330351616
+    m_Localized: Tira el dado para conseguir disparos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13088938843615232
+    m_Localized: 'Disparos Obtenidos: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13102406736982016
+    m_Localized: 'Ya no tienes disparos
+
+'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,6 +1,9 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+
 
 public class DiceTurnController
 {
@@ -10,16 +13,16 @@ public class DiceTurnController
     public int remainingShots = 0;
     public bool hasRolledDice = false;
 
-    [SerializeField] private TextMeshProUGUI DiceResult;
-    [SerializeField] private TextMeshProUGUI ShootCount;
+    [SerializeField] private TextMeshProUGUI DiceResultValue;
     [SerializeField] private Button shootButton;
+    [SerializeField] private GameObject noShotsText;
 
-    public DiceTurnController(TurnSystemData data, TextMeshProUGUI diceResultText, TextMeshProUGUI shootCountText, Button shootButton)
+    public DiceTurnController(TurnSystemData data, TextMeshProUGUI diceResultText, Button shootButton, GameObject noShotsTextObj)
     {
         turnData = data;
-        this.DiceResult = diceResultText;
-        this.ShootCount = shootCountText;
+        this.DiceResultValue = diceResultText;
         this.shootButton = shootButton;
+        this.noShotsText = noShotsTextObj;
     }
 
     public void SetInitialPlayer()
@@ -30,6 +33,7 @@ public class DiceTurnController
             UpdateShotTexts();
         }
     }
+
     public void RollDice()
     {
         if (hasRolledDice)
@@ -68,13 +72,14 @@ public class DiceTurnController
 
         Debug.Log($"{currentPlayer.PlayerID} obtuvo {remainingShots} disparos.");
 
-        if (DiceResult != null)
+        if (DiceResultValue != null)
         {
-            DiceResult.text = $"{currentPlayer.PlayerID} obtuvo {remainingShots} disparos";
+            DiceResultValue.text = $" {remainingShots}";
         }
 
         UpdateShotTexts();
     }
+
     public void RegisterShotEfectuated()
     {
         remainingShots--;
@@ -90,15 +95,17 @@ public class DiceTurnController
 
         Debug.Log($"¡Nuevo turno para: {currentPlayer?.PlayerID}!");
 
-        if (DiceResult != null)
+        if (DiceResultValue != null)
         {
-            DiceResult.text = "";
+            DiceResultValue.text = "";
         }
 
         if (shootButton != null)
         {
             shootButton.gameObject.SetActive(true);
         }
+
+        if (noShotsText != null) noShotsText.SetActive(false);
 
         UpdateShotTexts();
     }
@@ -110,27 +117,26 @@ public class DiceTurnController
 
     private void UpdateShotTexts()
     {
-        if (ShootCount == null) return;
-
         if (!hasRolledDice)
         {
-            ShootCount.text = "Tira el dado para conseguir disparos.";
+            if (DiceResultValue != null) DiceResultValue.text = "";
+            if (noShotsText != null) noShotsText.SetActive(false);
             return;
         }
 
         if (remainingShots > 0)
         {
-            string shotWord = remainingShots == 1 ? "disparo" : "disparos";
-            ShootCount.text = $"Tienes {remainingShots} {shotWord}";
+            if (DiceResultValue != null) DiceResultValue.text = $"{remainingShots}";
+            if (noShotsText != null) noShotsText.SetActive(false);
+            if (shootButton != null) shootButton.gameObject.SetActive(true);
         }
+
         else
         {
-            ShootCount.text = "Ya no tienes más disparos";
-
-            if (shootButton != null)
-            {
-                shootButton.gameObject.SetActive(false);
-            }
+            if (DiceResultValue != null) DiceResultValue.text = "";
+            if (noShotsText != null) noShotsText.SetActive(true);
+            if (shootButton != null) shootButton.gameObject.SetActive(false);
         }
+
     }
 }

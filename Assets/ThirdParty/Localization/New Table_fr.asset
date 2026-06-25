@@ -169,6 +169,18 @@ MonoBehaviour:
     m_Localized: Canon a visee
     m_Metadata:
       m_Items: []
+  - m_Id: 13080766330351616
+    m_Localized: Lancez le de pour obtenir des tirs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13088938843615232
+    m_Localized: 'Doses recues: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13102406736982016
+    m_Localized: Vous etes a court de munitions
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

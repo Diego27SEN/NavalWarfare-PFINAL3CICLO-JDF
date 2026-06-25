@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Referencias UI de Disparos")]
     [SerializeField] private TextMeshProUGUI diceResultText;
-    [SerializeField] private TextMeshProUGUI shootCountText;
     [SerializeField] private Button shootButton;
+    [SerializeField] private GameObject noShotsTextObject;
 
     private DiceTurnController turnController;
     private MatchAnalyzer matchAnalyzer;
@@ -44,8 +44,9 @@ public class GameManager : MonoBehaviour
             Instance = this;
             InitializeContainers();
 
-            turnController = new DiceTurnController(turnDataContainer, diceResultText, shootCountText, shootButton);
-            matchAnalyzer = new MatchAnalyzer(biomeDataContainer, playerDataContainer, shipDataContainer); ;
+            turnController = new DiceTurnController(turnDataContainer, diceResultText, shootButton, noShotsTextObject);
+
+            matchAnalyzer = new MatchAnalyzer(biomeDataContainer, playerDataContainer, shipDataContainer);
         }
         else 
         { 

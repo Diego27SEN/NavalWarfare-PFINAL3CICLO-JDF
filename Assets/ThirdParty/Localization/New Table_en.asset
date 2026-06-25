@@ -167,6 +167,18 @@ MonoBehaviour:
     m_Localized: Aim Cannon
     m_Metadata:
       m_Items: []
+  - m_Id: 13080766330351616
+    m_Localized: Roll the dice to earn shoots.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13088938843615232
+    m_Localized: 'Shots Obtained: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13102406736982016
+    m_Localized: You're out of shots
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

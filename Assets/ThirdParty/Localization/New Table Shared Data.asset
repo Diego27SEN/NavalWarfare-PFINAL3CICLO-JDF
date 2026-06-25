@@ -167,6 +167,18 @@ MonoBehaviour:
     m_Key: Aim Cannon
     m_Metadata:
       m_Items: []
+  - m_Id: 13080766330351616
+    m_Key: ShootCountText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13088938843615232
+    m_Key: Value Obtained
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13102406736982016
+    m_Key: No Ammo
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
