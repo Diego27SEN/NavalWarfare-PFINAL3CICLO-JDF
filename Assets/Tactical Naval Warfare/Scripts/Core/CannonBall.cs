@@ -1,5 +1,6 @@
 using UnityEngine;
 using MoreMountains.Feedbacks;
+using System.Collections;
 
 
 public class CannonBall : MonoBehaviour
@@ -41,6 +42,15 @@ public class CannonBall : MonoBehaviour
         }
         Debug.Log("Impacto - reproduciendo feedback");
         ImpactFeedBackManager.Instance?.PlayImpact(transform.position);
+        StartCoroutine(DelayedReturnToPool());
+    }
+    private IEnumerator DelayedReturnToPool()
+    {
+        // Congela la cámara inmediatamente
+        if (BulletCameraController.bulletCam != null)
+            BulletCameraController.bulletCam.Target.TrackingTarget = null;
+
+        yield return new WaitForSeconds(0.1f);
         ReturnToPool();
     }
     private void ReturnToPool()

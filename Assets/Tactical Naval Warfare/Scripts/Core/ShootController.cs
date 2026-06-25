@@ -56,12 +56,12 @@ public class ShootController : MonoBehaviour
             ownerShip = GameManager.Instance.currentPlayer;
         }
 
-        // Pedimos la bala. Si el Pool falla, cortamos.
-        GameObject ball = PoolManager.Instance?.GetObject(poolId, firePoint.position, firePoint.rotation);
+        
+        GameObject ball = PoolManager.Instance?.GetObject(poolId, firePoint.position, firePoint.rotation); //solicitamos la bala al PoolManager
         if (ball == null) return;
 
-        // Buscamos el Rigidbody. Si no tiene, cortamos.
-        Rigidbody rb = ball.GetComponent<Rigidbody>();
+       
+        Rigidbody rb = ball.GetComponent<Rigidbody>(); //busca el componente Rigidbody de la bala
         if (rb == null) return;
 
         // Fisicas
@@ -88,12 +88,12 @@ public class ShootController : MonoBehaviour
         cannonModel.DOKill();
         float originalZ = 0f; 
 
-        // 1. Movimiento hacia atrás
+        // Movimiento hacia atrás
         cannonModel.DOLocalMoveZ(originalZ - recoilDistance, recoilDuration)
             .SetEase(recoilCurve)
             .OnComplete(() =>
             {
-                // 2. Movimiento de regreso al punto original
+                //  Movimiento de regreso al punto original
                 cannonModel.DOLocalMoveZ(originalZ, returnDuration).SetEase(Ease.OutElastic);
             });
     }
@@ -114,13 +114,14 @@ public class ShootController : MonoBehaviour
 
     private IEnumerator CameraReturnDelay()
     {
+        // Congela la cámara inmediatamente al impactar
+        if (BulletCameraController.bulletCam != null)
+            BulletCameraController.bulletCam.Target.TrackingTarget = null;
+
         yield return new WaitForSeconds(2f);
 
         if (BulletCameraController.bulletCam != null)
-        {
-            BulletCameraController.bulletCam.Target.TrackingTarget = null;
             BulletCameraController.bulletCam.Priority = 0;
-        }
 
         isBallInFlight = false;
         turnManager?.ResumeTimer();

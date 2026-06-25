@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.55
+  m_fontSize: 26.15
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3087,7 +3087,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.05
+  m_fontSize: 39.15
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3477,7 +3477,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.95
+  m_fontSize: 22.55
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3580,7 +3580,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3543197670463006449, guid: 0ffbe076334dd264d8f054d4a9f58c81, type: 3}
       propertyPath: m_Convex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3543197670463006449, guid: 0ffbe076334dd264d8f054d4a9f58c81, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
@@ -5604,7 +5604,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.35
+  m_fontSize: 49.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5756,11 +5756,11 @@ Transform:
   m_GameObject: {fileID: 717040110}
   serializedVersion: 2
   m_LocalRotation: {x: 0.22348417, y: -0.6996, z: 0.24739484, w: 0.6319893}
-  m_LocalPosition: {x: 42026.332, y: 199.2393, z: -16567.201}
+  m_LocalPosition: {x: 624.52344, y: 197.23929, z: 25.3125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 762974466}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &717040112
 MonoBehaviour:
@@ -5775,10 +5775,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineThirdPersonFollow
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0, y: 0.5, z: -3}
-  VerticalArmLength: 0.4
-  CameraSide: 1
-  CameraDistance: 3
+  ShoulderOffset: {x: 1, y: 1, z: -20}
+  VerticalArmLength: 1
+  CameraSide: 0.5
+  CameraDistance: 0
   AvoidObstacles:
     Enabled: 0
     CollisionFilter:
@@ -6285,38 +6285,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 12.839, y: 133.503, z: 0.212}
---- !u!1 &762974465
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 762974466}
-  m_Layer: 0
-  m_Name: BulletCam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &762974466
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762974465}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41401.81, y: -2.00001, z: 16592.514}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 717040111}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &773313614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6566,7 +6534,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.6
+  m_fontSize: 42.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8246,7 +8214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9109569732111797329, guid: 6e9696b2e0c45114a9d538387c518468, type: 3}
       propertyPath: m_Convex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9109569732111797329, guid: 6e9696b2e0c45114a9d538387c518468, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
@@ -8878,7 +8846,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.1
+  m_fontSize: 44.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9863,7 +9831,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.5
+  m_fontSize: 66.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10514,7 +10482,6 @@ MonoBehaviour:
   DebugActive: 0
   InScriptDrivenPause: 0
   FeedbacksList:
-  - rid: 6794647060723007745
   - rid: 6794647060723007746
   KeepPlayModeChanges: 0
   PerformanceMode: 0
@@ -10527,88 +10494,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6794647060723007745
-      type: {class: MMF_CameraShake, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
-      data:
-        Active: 1
-        UniqueID: 2007577093
-        Label: Camera Shake
-        OriginalLabel: Camera Shake
-        ChannelMode: 0
-        Channel: 0
-        MMChannelDefinition: {fileID: 0}
-        Chance: 100
-        Timing:
-          TimescaleMode: 0
-          ExcludeFromHoldingPauses: 0
-          ContributeToTotalDuration: 1
-          InitialDelay: 0
-          CooldownDuration: 0
-          InterruptsOnStop: 1
-          NumberOfRepeats: 0
-          RepeatForever: 0
-          DelayBetweenRepeats: 1
-          PlayCount: 0
-          LimitPlayCount: 0
-          MaxPlayCount: 3
-          SetPlayCountToZeroOnReset: 0
-          MMFeedbacksDirectionCondition: 0
-          PlayDirection: 0
-          ConstantIntensity: 0
-          UseIntensityInterval: 0
-          IntensityIntervalMin: 0
-          IntensityIntervalMax: 0
-          Sequence: {fileID: 0}
-          TrackID: 0
-          Quantized: 0
-          TargetBPM: 120
-        AutomatedTargetAcquisition:
-          Mode: 0
-          ChildIndex: 0
-        RandomizeOutput: 0
-        RandomMultiplier: {x: 0.8, y: 1}
-        RandomizeDuration: 0
-        RandomDurationMultiplier: {x: 0.5, y: 2}
-        UseRange: 0
-        RangeDistance: 5
-        UseRangeFalloff: 0
-        RangeFalloff:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        RemapRangeFalloff: {x: 0, y: 1}
-        AutomaticShakerSetupButton:
-          ButtonText: Automatic Shaker Setup
-        Owner: {fileID: 1284991848}
-        DebugActive: 0
-        RepeatUntilStopped: 0
-        CameraShakeProperties:
-          Duration: 0.3
-          Amplitude: 0.5
-          Frequency: 20
-          AmplitudeX: 0
-          AmplitudeY: 0
-          AmplitudeZ: 0
     - rid: 6794647060723007746
       type: {class: MMF_ParticlesInstantiation, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
@@ -10688,13 +10573,13 @@ MonoBehaviour:
         MutualizePools: 0
         ParentTransform: {fileID: 0}
         CachedRecycle: 1
-        ParticlesPrefab: {fileID: 5880797563141009103, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
+        ParticlesPrefab: {fileID: 2708598583397607910, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
         RandomParticlePrefabs: []
         MainParticlesPrefabWeight: 1
         RandomParticleWeights: 
         ForceSetActiveOnPlay: 0
         StopOnReset: 0
-        DeclaredDuration: 0
+        DeclaredDuration: 0.8
         ForceStopAction: 0
         StopAction: 0
         PositionMode: 0
@@ -10814,7 +10699,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 44.85
   m_fontSizeBase: 46
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11017,7 +10902,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1383777411488334643, guid: d4efacad3089bb044832b3692af3ffe5, type: 3}
       propertyPath: m_Convex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1383777411488334643, guid: d4efacad3089bb044832b3692af3ffe5, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
@@ -12890,7 +12775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7995653604412205038, guid: 4c2c646a3cdecb74e9b72bb349d53b1b, type: 3}
       propertyPath: m_Convex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7995653604412205038, guid: 4c2c646a3cdecb74e9b72bb349d53b1b, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
@@ -13476,6 +13361,10 @@ PrefabInstance:
     - target: {fileID: 1323282206540953445, guid: b52d436621db5e746befdb99a93a1ae6, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.37064463
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352586877579063115, guid: b52d436621db5e746befdb99a93a1ae6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4068975677954303532, guid: b52d436621db5e746befdb99a93a1ae6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14669,7 +14558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -14.45282}
+  m_AnchoredPosition: {x: 0, y: -14.452759}
   m_SizeDelta: {x: -1226.353, y: -196.433}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696273116
@@ -323795,7 +323684,7 @@ SceneRoots:
   - {fileID: 123976089}
   - {fileID: 1435424162}
   - {fileID: 129795075}
-  - {fileID: 762974466}
+  - {fileID: 717040111}
   - {fileID: 733113898}
   - {fileID: 201777115}
   - {fileID: 2727110}
