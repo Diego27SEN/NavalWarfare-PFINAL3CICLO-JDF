@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class GatlingGunSkill : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int damageExtra = 2;
+    public float fireRate = 0.2f;
+
     void Start()
     {
-        
+        Debug.Log($"[Gatling Gun] Instalada. Daño por bala: +{damageExtra} | Cadencia: {fireRate}s");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisableWeapon()
     {
-        
+        Debug.Log("[Gatling Gun] Desmontada. Volviendo al cañon estándar.");
+        Destroy(this);
     }
 }

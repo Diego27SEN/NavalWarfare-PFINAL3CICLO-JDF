@@ -2,15 +2,33 @@ using UnityEngine;
 
 public class MortarSkill : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int damageFixed = 60;
+    public int maxBullets = 3;
+    public int currentBullets;
+
     void Start()
     {
-        
+        currentBullets = maxBullets;
+        Debug.Log($"[Mortero] Instalado. Municion: {currentBullets} | Daño destructivo: {damageFixed}");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RegisterShot()
     {
-        
+        if (currentBullets > 0)
+        {
+            currentBullets--;
+            Debug.Log($"[Mortero] ¡Fuego! Balas restantes: {currentBullets}");
+
+            if (currentBullets <= 0)
+            {
+                DisableWeapon();
+            }
+        }
+    }
+
+    public void DisableWeapon()
+    {
+        Debug.Log("[Mortero] Sin municion. Desmontando arma.");
+        Destroy(this);
     }
 }
