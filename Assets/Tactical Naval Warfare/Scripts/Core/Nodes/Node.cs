@@ -7,7 +7,7 @@ namespace TacticalNavalWarfare.Collections.Graphs
     public class Node<T>//->vertices
     {
         private T value;
-        private List<Node<T>> neighbors = new();
+        public List<Node<T>> neighbors = new();
 
         public Node(T value)
         {

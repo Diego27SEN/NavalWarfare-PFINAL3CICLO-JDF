@@ -11,4 +11,11 @@ public enum SkillCategory
     ComplexHability 
 }
 
+public enum StatType 
+{ 
+    Salud, 
+    Escudo, 
+    Soldados 
+}
+
 
