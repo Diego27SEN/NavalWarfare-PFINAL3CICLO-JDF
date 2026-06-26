@@ -10,7 +10,7 @@ public class ShootController : MonoBehaviour
     [Tooltip("Script PlayerGame")]
     public PlayerGameDatabase ownerShip;
 
-    [Tooltip("El objeto vacío en la punta del cañón")]
+    [Tooltip("El objeto vacio en la punta del cañon")]
     public Transform firePoint;
 
     [Tooltip(" ID del PoolConfigData de la bala")]
@@ -19,8 +19,8 @@ public class ShootController : MonoBehaviour
     public string poolId = "CannonBall";
 
 
-    [Header("Animación de Retroceso")]
-    [Tooltip("El modelo 3D del cañón que se moverá hacia atrás")]
+    [Header("Animacion de Retroceso")]
+    [Tooltip("El modelo 3D del cañon que se movera hacia atras")]
     public Transform cannonModel;
     public float recoilDistance = 0.9f; // Qué tanto se hace para atrás
     public float recoilDuration = 0.1f; // Tiempo que tarda en ir hacia atrás
@@ -33,7 +33,7 @@ public class ShootController : MonoBehaviour
     private bool isBallInFlight = false;
 
 
-    [Button("Disparar Cañón", ButtonSizes.Large)]
+    [Button("Disparar Cañon", ButtonSizes.Large)]
     public void FireCannon()
     {
 
