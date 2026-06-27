@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MortarSkill : MonoBehaviour
+public class MortarSkill : MonoBehaviour, ITemporaryWeapon
 {
     public int damageFixed = 60;
     public int maxBullets = 3;
@@ -28,7 +28,13 @@ public class MortarSkill : MonoBehaviour
 
     public void DisableWeapon()
     {
-        Debug.Log("[Mortero] Sin municion. Desmontando arma.");
+        Debug.Log("[Mortero] Desmontado.");
         Destroy(this);
+    }
+    public void FireShot()
+    {
+        // Aquí pones la lógica del misilazo (60 daño, resta balas)
+        Debug.Log("¡Booooom! Disparando Mortero.");
+        currentBullets--;
     }
 }

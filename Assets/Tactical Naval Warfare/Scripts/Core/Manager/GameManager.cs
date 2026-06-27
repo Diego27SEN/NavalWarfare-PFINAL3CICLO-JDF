@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
-using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -122,6 +123,21 @@ public class GameManager : MonoBehaviour
         }
         turnController.EndTurn();
         turnManager.NextTurn(); // cambia cámara 
+    }
+    private void LimpiarArmasTemporales()
+    {
+        if (currentPlayer == null) return;
+
+        GameObject barcoEnEscena = currentPlayer.SelectedShip.Ship; 
+
+        if (barcoEnEscena != null)
+        {
+            // Busca la interfaz
+            ITemporaryWeapon armaTemporal = barcoEnEscena.GetComponent<ITemporaryWeapon>();
+
+            // Desactiva si no lo encuentra
+            armaTemporal?.DisableWeapon();
+        }
     }
     #endregion
 

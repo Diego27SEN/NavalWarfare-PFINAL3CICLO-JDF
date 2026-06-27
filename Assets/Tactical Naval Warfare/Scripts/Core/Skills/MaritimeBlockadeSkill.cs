@@ -22,7 +22,7 @@ public class MaritimeBlockadeSkill : MonoBehaviour
         }
 
         // Buscamos a los barcos enemigos por su Tag
-        GameObject[] enemigos = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemigos = GameObject.FindGameObjectsWithTag("Ship");
 
         foreach (GameObject enemigo in enemigos)
         {

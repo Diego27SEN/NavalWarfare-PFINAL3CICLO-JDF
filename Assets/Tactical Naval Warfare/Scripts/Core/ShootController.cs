@@ -1,7 +1,8 @@
-using Sirenix.OdinInspector;
-using UnityEngine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine;
 
 
 public class ShootController : MonoBehaviour
@@ -18,7 +19,6 @@ public class ShootController : MonoBehaviour
 
     public string poolId = "CannonBall";
 
-
     [Header("Animacion de Retroceso")]
     [Tooltip("El modelo 3D del cañon que se movera hacia atras")]
     public Transform cannonModel;
@@ -32,56 +32,52 @@ public class ShootController : MonoBehaviour
     [SerializeField] private TurnManager turnManager;
     private bool isBallInFlight = false;
 
-
     [Button("Disparar Cañon", ButtonSizes.Large)]
     public void FireCannon()
     {
+        // Referencia del barco
+        ownerShip = GameManager.Instance.currentPlayer;
+        if (ownerShip == null || ownerShip.SelectedShip == null) return;
 
-        if (isBallInFlight) return; // bloquea si ya hay una bala volando
+        // Buscamos el arma Legendaria
+        GameObject barcoActual = ownerShip.SelectedShip.Ship;
+        ITemporaryWeapon armaEspecial = ownerShip.SelectedShip.Ship.GetComponent<ITemporaryWeapon>();
 
-        if (!GameManager.Instance.hasRolledDice)
+        if (armaEspecial != null)
         {
-            Debug.LogWarning($"[ShootController] No se puede disparar: El jugador actual ({GameManager.Instance.currentPlayer?.PlayerID}) no ha lanzado el dado.");
+            armaEspecial.FireShot();
+            return; 
+        }
+
+        if (isBallInFlight || !GameManager.Instance.CanExecuteShot(ownerShip))
+        {
+            Debug.LogWarning("[ShootController] Disparo normal bloqueado.");
             return;
         }
 
-        if (GameManager.Instance.remainingShots <= 0)
-        {
-            Debug.LogWarning($"[ShootController] No se puede disparar: Al jugador actual ({GameManager.Instance.currentPlayer?.PlayerID}) se le agotaron los disparos.");
-            return;
-        }
-
-        if (ownerShip != GameManager.Instance.currentPlayer)
-        {
-            ownerShip = GameManager.Instance.currentPlayer;
-        }
-
-        
+        EjecutarDisparoNormal();
+    }
+    private void EjecutarDisparoNormal()
+    {
         GameObject ball = PoolManager.Instance?.GetObject(poolId, firePoint.position, firePoint.rotation); //solicitamos la bala al PoolManager
-        if (ball == null) return;
+            if (ball == null) return;
 
-       
         Rigidbody rb = ball.GetComponent<Rigidbody>(); //busca el componente Rigidbody de la bala
-        if (rb == null) return;
+            if (rb == null) return;
 
         // Fisicas
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         rb.AddForce(firePoint.forward * impulseForce, ForceMode.Impulse);
 
-
         isBallInFlight = true;
-
-        if (turnManager != null)
-        {
-            turnManager.PauseTimer(); // pausa el timer
-        }
+        turnManager?.PauseTimer();
 
         GameManager.Instance.RegisterShotEfectuated();
-
         ApplyRecoilAnimation();
-    }
 
+    }
+  
     private void ApplyRecoilAnimation()
     {
         if (cannonModel == null) return;
