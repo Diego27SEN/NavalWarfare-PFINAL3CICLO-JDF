@@ -3,9 +3,9 @@
   <Project Path="MoreMountains.Tools.Editor.csproj" />
   <Project Path="Sirenix.OdinInspector.Modules.UnityLocalization.Editor.csproj" />
   <Project Path="Lofelt.NiceVibrations.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="CFXRRuntime.csproj" />
   <Project Path="CFXRDemo.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="CFXREditor.csproj" />
   <Project Path="Lofelt.NiceVibrations.Demo.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />

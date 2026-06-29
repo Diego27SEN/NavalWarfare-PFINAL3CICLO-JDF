@@ -17,17 +17,19 @@ public class ShipController : MonoBehaviour
     [SerializeField] private PlayerInputSystem playerInputSystem;
 
     private CannonController cannonController;
-
-    private Vector2 moveInput;
-    private Vector3 moveDirection;
     private Rigidbody rb;
-    
+    private Vector2 moveInput;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+        rb.useGravity = false;
+
         cannonController = GetComponentInChildren<CannonController>();
-        playerInputSystem.enabled = false; // bloqueado hasta que sea su turno
+        playerInputSystem.enabled = false;
     }
+
 
     private void OnEnable()
     {
@@ -39,7 +41,7 @@ public class ShipController : MonoBehaviour
         playerInputSystem.OnMove -= SetMoveInput;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!InTurn) return;
 
@@ -53,42 +55,47 @@ public class ShipController : MonoBehaviour
 
     private void HandleMovement()
     {
-        moveDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+        Vector3 moveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
 
-        if (moveDirection == Vector3.zero) return;
+        if (moveDirection == Vector3.zero)
+        {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
 
-        // Movimiento relativo a la cámara
         Vector3 camForward = Camera.main.transform.forward;
         Vector3 camRight = Camera.main.transform.right;
 
-        // Aplanar para ignorar la inclinación vertical de la cámara
         camForward.y = 0f;
         camRight.y = 0f;
         camForward.Normalize();
         camRight.Normalize();
 
-        Vector3 worldDirection = (camForward * moveDirection.z + camRight * moveDirection.x);
+        Vector3 worldDirection = (camForward * moveDirection.z + camRight * moveDirection.x).normalized;
 
-        // Mover
-        rb.AddForce(worldDirection * moveSpeed, ForceMode.Force);
+        
+        rb.linearVelocity = worldDirection * moveSpeed;
 
-        // Rotar suave hacia donde se mueve
+        // Rotar suave
         Quaternion targetRotation = Quaternion.LookRotation(worldDirection);
-        transform.rotation = Quaternion.Slerp( transform.rotation,targetRotation,rotationSpeed * Time.deltaTime);
+        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
     }
     public void StartTurn()
     {
         InTurn = true;
-        playerInputSystem.enabled = true;  // solo este barco escucha
+        rb.isKinematic = false; // dinámico mientras es su turno
+        rb.useGravity = false;
+        playerInputSystem.enabled = true;
         cannonController?.EnableCannon();
-        Debug.Log(name + " START TURN");
     }
 
     public void EndTurn()
     {
         InTurn = false;
-        playerInputSystem.enabled = false; // deja de escuchar
+        rb.isKinematic = true; // vuelve a kinematic al terminar
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        playerInputSystem.enabled = false;
         cannonController?.DisableCannon();
-        Debug.Log(name + " END TURN");
     }
 }
