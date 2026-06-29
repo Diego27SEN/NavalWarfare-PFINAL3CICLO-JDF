@@ -31,6 +31,10 @@ public class TurnManager : MonoBehaviour
     private InputSystem_Actions inputs;
     [SerializeField] private GameplayUI gameplayUI;
 
+    public ShipController GetBarcoActual()
+    {
+        return currentNode?.ship;
+    }
     private void Awake()
     {
         inputs = new InputSystem_Actions();
