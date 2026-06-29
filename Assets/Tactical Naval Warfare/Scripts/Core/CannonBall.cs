@@ -5,10 +5,12 @@ using System.Collections;
 
 public class CannonBall : MonoBehaviour
 {
-
     [Header("Pool Configuration")]
     public string myPoolId = "CannonBall";
     public float lifeTime = 3.0f;
+
+    [Header("Damage Settings")]
+    public float currentDamage = 20.00f; 
 
     [Header("Particles")]
     public GameObject woodExplosionVFX;
@@ -21,26 +23,27 @@ public class CannonBall : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other)
     {
-        if (!other.gameObject.CompareTag("Water") && !other.gameObject.CompareTag("Ship") && !other.gameObject.CompareTag("Crew")) return;
+        GameObject obj = other.gameObject;
 
-       // string particleId = other.gameObject.CompareTag("Water") ? "WaterExplosion" : "WoodExplosion";
-       // PoolManager.Instance?.GetObject(particleId, transform.position, Quaternion.identity);
+        // Si no es nada de lo que nos importa, ignoramos la colisión
+        if (!obj.gameObject.CompareTag("Water") && !obj.gameObject.CompareTag("Ship") && !obj.gameObject.CompareTag("Crew")) return;
 
-        if (other.gameObject.CompareTag("Ship"))
+        // Unimos el Tag y el GetComponent 
+        if (obj.CompareTag("Ship") && obj.TryGetComponent<ShipHealth>(out ShipHealth health))
         {
-            if (other.gameObject.TryGetComponent<ShipHealth>(out ShipHealth health))health.TakeDamage(20.00f);
+            health.TakeDamage(currentDamage);
+            Debug.Log($"Impacto en barco. Daño infligido: {currentDamage}");
         }
 
-        if (other.gameObject.CompareTag("Crew"))
+        // Lógica de la Tripulación
+        else if (obj.CompareTag("Crew") && obj.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
-            {
-                Vector3 impulso = (other.transform.position - transform.position).normalized;
-                impulso.y = 0.5f;
-                rb.AddForce(impulso * 8f, ForceMode.Impulse);
-            }
+            Vector3 impulso = (other.transform.position - transform.position).normalized;
+            impulso.y = 0.5f;
+            rb.AddForce(impulso * 8f, ForceMode.Impulse);
         }
-        Debug.Log("Impacto - reproduciendo feedback");
+
+        // 4. Feedback visual y reciclaje (Esto se ejecuta para Agua, Barco y Tripulación)
         ImpactFeedBackManager.Instance?.PlayImpact(transform.position);
         StartCoroutine(DelayedReturnToPool());
     }

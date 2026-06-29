@@ -16,21 +16,14 @@ public class CardsDatabase : ScriptableObject
     [Title("Configuración de Habilidad")]
     public SkillCategory Category;
 
-    [Title("Modificadores Directos (Solo para StatBuff)")]
+    [Title("Modificador Simple (Solo para StatBuff)")]
     [ShowIf("Category", SkillCategory.StatBuff)]
-    [Tooltip("Recuperación")]
-    public int healthBonus;
+    public StatType statToBuff; // Eliges si la carta da Salud, Escudo o Soldados
 
     [ShowIf("Category", SkillCategory.StatBuff)]
-    [Tooltip("Blindaje")]
-    public int shieldBonus;
+    public int buffAmount; // Pones el número
 
-    [ShowIf("Category", SkillCategory.StatBuff)]
-    [Tooltip("Refuerzos")]
-    public int soldierBonus;
-
-    [Title("Configuración de Factory")]
+    [Title("Configuración de Factory (Solo para ComplexAbility)")]
     [ShowIf("Category", SkillCategory.ComplexHability)]
-    [Tooltip("ID exacto para el Switch de la Factory 'GatlingGun', 'Mortero', 'Bloqueo'")]
     public string abilityID;
 }
