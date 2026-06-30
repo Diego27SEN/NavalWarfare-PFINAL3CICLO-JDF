@@ -34,6 +34,11 @@ public class ScenesController : MonoBehaviour
         SceneManager.LoadScene("CreditsScene");
     }
 
+    public void Winning()
+    {
+        SceneManager.LoadScene("WinnerScene");
+    }
+
     public void Quitgame()
     {
         Application.Quit();
