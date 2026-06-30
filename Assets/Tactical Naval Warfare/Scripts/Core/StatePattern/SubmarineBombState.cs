@@ -58,22 +58,15 @@ public class SubmarineBombController : MonoBehaviour
             stateMachine.ChangeState(deadState);
     }
 
-    void OnTriggerEnter(Collider other)
+     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Mina tocó: " + other.gameObject.name + " tag: " + other.tag);
+        if (stateMachine.CurrentState != driftState) return;
 
-        if (other.CompareTag("Ship"))
+        ShipHealth health = other.GetComponentInParent<ShipHealth>();
+        if (health != null)
         {
-            Debug.Log("Es un barco!");
-
-            if (stateMachine.CurrentState == driftState)
-            {
-                Debug.Log("Explotando!");
-
-                if (other.TryGetComponent<ShipHealth>(out ShipHealth health))health.TakeDamage(damage);
-
-                stateMachine.ChangeState(explodeState);
-            }
+            health.TakeDamage(damage);
+            stateMachine.ChangeState(explodeState);
         }
     }
 

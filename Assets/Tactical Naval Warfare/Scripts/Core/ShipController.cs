@@ -55,6 +55,8 @@ public class ShipController : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (moveInput.y < 0) moveInput.y = 0;
+
         Vector3 moveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
 
         if (moveDirection == Vector3.zero)

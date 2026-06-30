@@ -65,6 +65,7 @@ public class ShootController : MonoBehaviour
         Rigidbody rb = ball.GetComponent<Rigidbody>(); //busca el componente Rigidbody de la bala
             if (rb == null) return;
 
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("CannonBall"),LayerMask.NameToLayer("Ship"),true);
         // Fisicas
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;

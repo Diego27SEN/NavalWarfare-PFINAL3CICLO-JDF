@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1315321289353091604}
   - component: {fileID: -9187900229193426813}
   - component: {fileID: 4805322830850752554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BallCannonPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CannonBall
   myPoolId: CannonBall
   lifeTime: 5
+  currentDamage: 20
   woodExplosionVFX: {fileID: 0}
   waterExplosionVFX: {fileID: 0}
 --- !u!114 &-9187900229193426813

@@ -35,12 +35,18 @@ public class CannonBall : MonoBehaviour
             Debug.Log($"Impacto en barco. Daño infligido: {currentDamage}");
         }
 
-        // Lógica de la Tripulación
-        else if (obj.CompareTag("Crew") && obj.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        else if (obj.CompareTag("Crew"))
         {
-            Vector3 impulso = (other.transform.position - transform.position).normalized;
+            // Sacar de la jerarquía del barco
+            obj.transform.SetParent(null);
+
+            // Agregar Rigidbody en el momento del impacto
+            Rigidbody crewRb = obj.AddComponent<Rigidbody>();
+            crewRb.linearVelocity = Vector3.zero;
+
+            Vector3 impulso = (obj.transform.position - transform.position).normalized;
             impulso.y = 0.5f;
-            rb.AddForce(impulso * 8f, ForceMode.Impulse);
+            crewRb.AddForce(impulso * 8f, ForceMode.Impulse);
         }
 
         // 4. Feedback visual y reciclaje (Esto se ejecuta para Agua, Barco y Tripulación)
