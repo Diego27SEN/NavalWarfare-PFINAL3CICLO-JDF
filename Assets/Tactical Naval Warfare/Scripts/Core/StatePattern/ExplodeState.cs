@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class ExplodeState : IState
 {
-    private SubmarineBombController submarineBomb;
+    private SubmarineBombState submarineBomb;
     private StateMachine sm;
     private float timer;
 
-    public ExplodeState(SubmarineBombController submarineBombController, StateMachine sm)
+    public ExplodeState(SubmarineBombState submarineBombState, StateMachine sm)
     {
-        this.submarineBomb = submarineBombController;
+        this.submarineBomb = submarineBombState;
         this.sm = sm;
     }
 

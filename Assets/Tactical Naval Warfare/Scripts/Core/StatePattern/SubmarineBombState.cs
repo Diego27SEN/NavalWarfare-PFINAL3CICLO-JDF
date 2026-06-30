@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Sirenix.OdinInspector;
 
-public class SubmarineBombController : MonoBehaviour
+public class SubmarineBombState : MonoBehaviour
 {
     [FoldoutGroup("Detection")]
     public float explosionRadius = 3f;
@@ -72,8 +72,6 @@ public class SubmarineBombController : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, driftRange);
     }

@@ -4,10 +4,10 @@ using UnityEngine;
 public class DeadState : IState
 {
     private StateMachine stateMachine;
-    private SubmarineBombController submarineBomb;
+    private SubmarineBombState submarineBomb;
     private float destroyDelay = 1f;
 
-    public DeadState(StateMachine stateMachine, SubmarineBombController submarineBomb)
+    public DeadState(StateMachine stateMachine, SubmarineBombState submarineBomb)
     {
         this.stateMachine = stateMachine;
         this.submarineBomb = submarineBomb;

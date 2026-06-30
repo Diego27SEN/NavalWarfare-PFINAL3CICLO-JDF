@@ -12,11 +12,6 @@ public class CannonBall : MonoBehaviour
     [Header("Damage Settings")]
     public float currentDamage = 20.00f; 
 
-    [Header("Particles")]
-    public GameObject woodExplosionVFX;
-    public GameObject waterExplosionVFX;
-
-
     private void OnEnable()
     {
         Invoke(nameof(ReturnToPool), lifeTime);

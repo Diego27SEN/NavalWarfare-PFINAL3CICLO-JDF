@@ -4,12 +4,12 @@ using UnityEngine.AI;
 
 public class DriftState : IState
 {
-    private SubmarineBombController submarineBomb;
+    private SubmarineBombState submarineBomb;
     private StateMachine sm;
     private NavMeshAgent agent;
     private float timer;
 
-    public DriftState(SubmarineBombController submarineBomb, StateMachine sm)
+    public DriftState(SubmarineBombState submarineBomb, StateMachine sm)
     {
         this.submarineBomb = submarineBomb;
         this.sm = sm;

@@ -1,69 +1,59 @@
-
 using UnityEngine;
 using UnityEngine.AI;
 
 public class SharkController : MonoBehaviour
 {
-    public float roamRadius = 100f;
-    public float waitTime = 2f;
+    [Header("config")]
+    public Transform centerPoint;
+    public float orbitRadius = 500f;
+    public float orbitSpeed = 20f; // grados por segundo
 
-    [SerializeField]private NavMeshAgent agent;
-    private float timer;
+    [Header("Combat")]
+    public float damage = 15f;
+
+    private NavMeshAgent agent;
+    private float currentAngle;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-    }
-
-    private void Start()
-    {
         agent.updateRotation = false;
-        SetRandomDestination();
-        SharkRotation();
+
+        orbitSpeed = 4f;
+        orbitRadius = 500f;
+        currentAngle = Random.Range(0f, 360f);
     }
 
     private void Update()
     {
-        if (!agent.pathPending && agent.remainingDistance <= 1f)
-        {
-          //  Debug.Log("Llegó al destino");
-
-            timer += Time.deltaTime;
-
-        }
-
-        if (timer >= waitTime)
-        {
-           // Debug.Log("Buscando nuevo destino");
-
-            SetRandomDestination();
-
-            timer = 0f;
-        }
-
+        OrbitAroundCenter();
     }
 
-    private void SharkRotation()
+    private void OrbitAroundCenter()
     {
-        if (agent.velocity.sqrMagnitude > 0.1f)
+        currentAngle += orbitSpeed * Time.deltaTime;
+
+        Quaternion rotation = Quaternion.Euler(0f, currentAngle, 0f);
+        Vector3 offset = rotation * Vector3.forward * orbitRadius;
+        Vector3 targetPosition = centerPoint.position + offset;
+
+        agent.Warp(targetPosition);
+        transform.rotation = rotation * Quaternion.Euler(0f, 90f, 0f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        ShipHealth health = other.GetComponentInParent<ShipHealth>();
+        if (health != null)
         {
-            Vector3 dir = agent.velocity.normalized;
-            Quaternion targetRot = Quaternion.LookRotation(dir);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 5f * Time.deltaTime);
+            health.TakeDamage(damage);
         }
     }
 
-    private void SetRandomDestination()
+    private void OnDrawGizmos()
     {
-        Vector3 randomPoint =
-            transform.position + Random.insideUnitSphere * roamRadius;
-
-        randomPoint.y = transform.position.y;
-
-        if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, roamRadius, NavMesh.AllAreas))
-        {
-              agent.SetDestination(hit.position);
-        }
-        
+        if (centerPoint == null) return;
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(centerPoint.position, orbitRadius);
     }
 }
