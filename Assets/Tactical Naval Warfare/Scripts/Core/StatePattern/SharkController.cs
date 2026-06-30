@@ -33,9 +33,9 @@ public class SharkController : MonoBehaviour
     {
         currentAngle += orbitSpeed * Time.deltaTime;
 
-        Quaternion rotation = Quaternion.Euler(0f, currentAngle, 0f);
-        Vector3 offset = rotation * Vector3.forward * orbitRadius;
-        Vector3 targetPosition = centerPoint.position + offset;
+        Quaternion rotation = Quaternion.Euler(0f, currentAngle, 0f); //rotación alrededor del eje Y
+        Vector3 offset = rotation * Vector3.forward * orbitRadius; //vector de desplazamiento desde el centro
+        Vector3 targetPosition = centerPoint.position + offset; //posición objetivo en la órbita
 
         agent.Warp(targetPosition);
         transform.rotation = rotation * Quaternion.Euler(0f, 90f, 0f);
