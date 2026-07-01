@@ -21,7 +21,7 @@ public class CardsDatabase : ScriptableObject
     public StatType statToBuff; // Eliges si la carta da Salud, Escudo o Soldados
 
     [ShowIf("Category", SkillCategory.StatBuff)]
-    public int buffAmount; // Pones el número
+    public int buffAmount;
 
     [Title("Configuración de Factory (Solo para ComplexAbility)")]
     [ShowIf("Category", SkillCategory.ComplexHability)]

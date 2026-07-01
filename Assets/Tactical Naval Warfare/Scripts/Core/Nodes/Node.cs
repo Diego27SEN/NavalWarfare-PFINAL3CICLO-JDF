@@ -14,7 +14,7 @@ namespace TacticalNavalWarfare.Collections.Graphs
             this.value = value;
         }
 
-        public void Connect(Node<T> node)//->bidireccional
+        public void Connect(Node<T> node)
         {
             if (!neighbors.Contains(node))
             {
@@ -24,7 +24,7 @@ namespace TacticalNavalWarfare.Collections.Graphs
             node.neighbors.Add(this);
        
         }
-        public void Disconnect(Node<T> node)//> bidireccional
+        public void Disconnect(Node<T> node)
         {
             if (neighbors.Contains(node))
                 neighbors.Remove(node);
