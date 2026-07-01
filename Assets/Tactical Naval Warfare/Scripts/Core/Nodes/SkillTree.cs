@@ -10,7 +10,6 @@ public class SkillTree : MonoBehaviour
         // Nodo raíz
         rootNode = new SkillNode<CardsDatabase>(startCard);
 
-        // Creamos el siguiente nodo y lo conectamos
         SkillNode<CardsDatabase> nextNode = new SkillNode<CardsDatabase>(nextCard);
         rootNode.AddChild(nextNode);
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class GatlingGunSkill : MonoBehaviour, ITemporaryWeapon
+public class GatlingGunSkill : BaseSkill
 {
     public float damageFixed = 2f;
     public float fireRate = 0.2f;
@@ -9,27 +9,24 @@ public class GatlingGunSkill : MonoBehaviour, ITemporaryWeapon
     public float impulseForce = 150f;
 
     private bool isShooting = false;
-    private ShootController cañonBase; 
-    public void Start()
+    private ShootController cañonBase;
+    protected override void ResetWeapon()
     {
+        base.ResetWeapon();
+
         cañonBase = GetComponent<ShootController>();
         Debug.Log("[Gatling Gun] Ametralladora lista para desatar el caos.");
     }
 
-    public void DisableWeapon()
+    public override void FireShot()
     {
-        Debug.Log("[Gatling Gun] Desmontada.");
-        Destroy(this);
-    }
+        // Si no hay munición, no hay cañón, o ya está disparando, ignoramos
+        if (currentBullets <= 0 || cañonBase == null || isShooting) return;
 
-    public void FireShot()
-    {
-        // Si pasa algo que nos impida disparar, salimos de inmediato.
-        if (isShooting) return;
-        if (cañonBase == null) return;
+        Debug.Log($"¡Ratatata! Disparando ráfaga. Ráfagas restantes: {currentBullets - 1}");
 
+        // Iniciamos la ráfaga
         StartCoroutine(MachineGunBurst());
-        Debug.Log("¡Ratatatata! Disparando Gatling.");
     }
     private IEnumerator MachineGunBurst()
     {
@@ -64,7 +61,14 @@ public class GatlingGunSkill : MonoBehaviour, ITemporaryWeapon
             yield return new WaitForSeconds(fireRate);
         }
 
-        yield return new WaitForSeconds(0.3f);
+       // Restar munición (1 ráfaga completa consume 1 de munición)
+        currentBullets--;
         isShooting = false;
+
+        // Si nos quedamos sin balas, llamamos al método DisableWeapon() del padre
+        if (currentBullets <= 0) 
+        {
+            DisableWeapon();
+        }
     }
 }

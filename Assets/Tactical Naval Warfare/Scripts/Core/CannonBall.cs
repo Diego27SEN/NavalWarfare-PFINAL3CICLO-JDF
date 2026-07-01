@@ -3,22 +3,19 @@ using MoreMountains.Feedbacks;
 using System.Collections;
 
 
-public class CannonBall : MonoBehaviour
+public class CannonBall : BaseProjectile, IPoolable
 {
-    [Header("Pool Configuration")]
-    public string myPoolId = "CannonBall";
-    public float lifeTime = 3.0f;
+    private float defaultDamage;
 
-    [Header("Damage Settings")]
-    public float currentDamage = 20.00f; 
-
-    private void OnEnable()
+    private void Awake()
     {
-        Invoke(nameof(ReturnToPool), lifeTime);
+        defaultDamage = currentDamage;
     }
-    private void OnCollisionEnter(Collision other)
+
+    // POLIMORFISMO (Override)
+    public override void OnImpact(Collision collision)
     {
-        GameObject obj = other.gameObject;
+        GameObject obj = collision.gameObject;
 
         // Si no es nada de lo que nos importa, ignoramos la colisión
         if (!obj.gameObject.CompareTag("Water") && !obj.gameObject.CompareTag("Ship") && !obj.gameObject.CompareTag("Crew")) return;
@@ -44,10 +41,49 @@ public class CannonBall : MonoBehaviour
             crewRb.AddForce(impulso * 8f, ForceMode.Impulse);
         }
 
-        // 4. Feedback visual y reciclaje (Esto se ejecuta para Agua, Barco y Tripulación)
+        // Feedback visual y reciclaje (Esto se ejecuta para Agua, Barco y Tripulación)
         ImpactFeedBackManager.Instance?.PlayImpact(transform.position);
         StartCoroutine(DelayedReturnToPool());
     }
+
+    // Conectamos con nuestro método polimórfico
+    private void OnCollisionEnter(Collision other)
+    {
+        OnImpact(other);
+    }
+
+    public void OnObjectSpawn()
+    {
+        // Restauramos el daño por si la ametralladora u otra arma lo había modificado
+        currentDamage = defaultDamage;
+
+        // Limpiamos la inercia física del disparo anterior
+        if (TryGetComponent<Rigidbody>(out Rigidbody rb))
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        Invoke(nameof(ReturnToPool), lifeTime);
+    }
+
+    // Implementamos el método de la interfaz
+    public void OnObjectDespawn()
+    {
+        CancelInvoke(nameof(ReturnToPool));
+    }
+
+    private void OnEnable()
+    {
+        OnObjectSpawn();
+    }
+
+    private void OnDisable()
+    {
+        OnObjectDespawn();
+    }
+
+    
     private IEnumerator DelayedReturnToPool()
     {
         // Congela la cámara inmediatamente
@@ -64,9 +100,5 @@ public class CannonBall : MonoBehaviour
         {
             PoolManager.Instance.ReturnObject(myPoolId, this.gameObject);
         }
-    }
-    private void OnDisable()
-    {
-        CancelInvoke(nameof(ReturnToPool));
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,6 +14,9 @@ public class ShipController : MonoBehaviour
 
     [Header("Turn System")]
     public bool InTurn = false;
+
+    [Header("Targeting System")]
+    public List<Transform> enemies; 
 
     [SerializeField] private PlayerInputSystem playerInputSystem;
 
@@ -99,5 +103,47 @@ public class ShipController : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         playerInputSystem.enabled = false;
         cannonController?.DisableCannon();
+    }
+
+    public void AttemptAttack()
+    {
+        // Validaciones
+        if (!InTurn) return;
+        if (enemies == null || enemies.Count == 0)
+        {
+            Debug.Log("No hay enemigos para atacar.");
+            return;
+        }
+
+        // Ordenamos enemigos
+        OrderEnemiesByDistance();
+
+        // Atacamos al primero (el más cercano)
+        Transform target = enemies[0];
+
+        if (cannonController != null)
+        {
+            cannonController.Fire(target);
+        }
+    }
+
+    private void OrderEnemiesByDistance()
+    {
+        int n = enemies.Count;
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                float dist1 = Vector3.Distance(transform.position, enemies[j].position);
+                float dist2 = Vector3.Distance(transform.position, enemies[j + 1].position);
+
+                if (dist1 > dist2) // Intercambio
+                {
+                    Transform temp = enemies[j];
+                    enemies[j] = enemies[j + 1];
+                    enemies[j + 1] = temp;
+                }
+            }
+        }
     }
 }

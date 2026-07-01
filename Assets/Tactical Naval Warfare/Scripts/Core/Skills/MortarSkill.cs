@@ -1,31 +1,25 @@
 using UnityEngine;
 
-public class MortarSkill : MonoBehaviour, ITemporaryWeapon
+public class MortarSkill : BaseSkill, ITemporaryWeapon
 {
     public float damageFixed = 60;
-    public int maxBullets = 3;
-    public int currentBullets;
 
     [Header("Físicas del Mortero")]
     public float upwardForce = 200f; // Fuerza hacia arriba
     public float forwardForce = 150f; // Fuerza hacia adelante
 
     private ShootController cañonBase;
-    void Start()
+
+    protected override void ResetWeapon()
     {
-        currentBullets = maxBullets;
+        base.ResetWeapon();
+
         cañonBase = GetComponent<ShootController>();
         Debug.Log($"[Mortero] Instalado. Municion: {currentBullets} | Daño destructivo: {damageFixed}");
     }
 
-    public void DisableWeapon()
+    public override void FireShot()
     {
-        Debug.Log("[Mortero] Desmontado.");
-        Destroy(this);
-    }
-    public void FireShot()
-    {
-        // Guardado
         if (currentBullets <= 0 || cañonBase == null) return;
 
         Debug.Log($"¡Booooom! Disparando Mortero. Balas restantes: {currentBullets - 1}");
@@ -34,7 +28,7 @@ public class MortarSkill : MonoBehaviour, ITemporaryWeapon
         GameObject bala = PoolManager.Instance?.GetObject(cañonBase.poolId, cañonBase.firePoint.position, cañonBase.firePoint.rotation);
         if (bala == null) return;
 
-        // Asignamos el daño especial solo si encontramos el componente
+        // Asignamos el daño especial
         if (bala.TryGetComponent<CannonBall>(out CannonBall scriptBala))
         {
             scriptBala.currentDamage = damageFixed;
@@ -50,8 +44,13 @@ public class MortarSkill : MonoBehaviour, ITemporaryWeapon
             rb.AddForce(direccionMortero, ForceMode.Impulse);
         }
 
-        //Restar munición y comprobar autodestrucción
+        // Restar munición
         currentBullets--;
-        if (currentBullets <= 0) DisableWeapon();
+
+        // Si nos quedamos sin balas, llamamos al método DisableWeapon() que heredamos del padre
+        if (currentBullets <= 0)
+        {
+            DisableWeapon();
+        }
     }
 }

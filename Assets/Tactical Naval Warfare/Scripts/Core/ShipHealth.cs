@@ -2,14 +2,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering;
 
-public class ShipHealth : MonoBehaviour
+public class ShipHealth : MonoBehaviour, IDamageable
 {
     [Header("Datos del Barco")]
     public ShipDatabase shipData;
     public TextMeshProUGUI healthText;
 
     [Header("Estado Actual")]
-    [SerializeField] public float currentHealth;
+    public float currentHealth;
     [SerializeField] private SoundManager soundManager;
 
 

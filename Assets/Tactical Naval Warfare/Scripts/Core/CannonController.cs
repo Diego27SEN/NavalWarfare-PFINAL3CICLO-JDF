@@ -16,6 +16,8 @@ public class CannonController : MonoBehaviour
     public float maxVerticalAngle = 20f;
     public bool invertVerticalAim = false;
 
+    [SerializeField] private BaseSkill activeWeapon;
+
     private bool isCannonActive = false;
     private Vector2 currentLookInput = Vector2.zero;
     private float rotationX = 0f;
@@ -98,6 +100,21 @@ public class CannonController : MonoBehaviour
         Cursor.visible = !isCannonActive;
     }
     #endregion
+
+    public void Fire(Transform target)
+    {
+        // Verificamos si tenemos un arma equipada
+        if (activeWeapon != null)
+        {
+            // Le decimos al arma que dispare
+            activeWeapon.FireShot();
+            Debug.Log("Disparando hacia: " + target.name);
+        }
+        else
+        {
+            Debug.LogError("CannonController: ¡No hay arma equipada para disparar!");
+        }
+    }
 
     #region Control de Turno
     public void EnableCannon()
