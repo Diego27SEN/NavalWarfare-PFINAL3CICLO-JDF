@@ -16,5 +16,5 @@ MonoBehaviour:
   EquippedCannon: {fileID: 11400000, guid: 2c97b53abfdc39f4ca9825a5247dbe31, type: 2}
   NameColor: Red
   color: {r: 1, g: 0.095608525, b: 0, a: 0}
-  Ship: {fileID: 0}
+  Ship: {fileID: 3507967250915596681, guid: d4efacad3089bb044832b3692af3ffe5, type: 3}
   hpMaximum: 400

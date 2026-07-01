@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: CardsDatabaseCommon1
   m_EditorClassIdentifier: Assembly-CSharp::CardsDatabase
   NameCart: Refuerzos
-  Description: "Agrega 1 soldado m\xE1s al tu Barco"
+  Description: "Agrega 1 soldado m\xE1s a tu Barco"
   CardType: 0
   cardIcon: {fileID: 0}
   Category: 0
-  healthBonus: 0
-  shieldBonus: 0
-  soldierBonus: 1
+  statToBuff: 0
+  buffAmount: 0
   abilityID: 

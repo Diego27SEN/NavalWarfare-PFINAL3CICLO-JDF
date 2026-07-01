@@ -164,6 +164,7 @@ MonoBehaviour:
   minVerticalAngle: -60
   maxVerticalAngle: 20
   invertVerticalAim: 0
+  activeWeapon: {fileID: 0}
 --- !u!114 &7234305834041966963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,60 +823,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7417264926918189365, guid: 52586cc156e7429478c98993b59684d1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7773332665198417091}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7900645854394743695, guid: 52586cc156e7429478c98993b59684d1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9109569732111797329}
-    - targetCorrespondingSourceObject: {fileID: 7900645854394743695, guid: 52586cc156e7429478c98993b59684d1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2729410534351379842}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52586cc156e7429478c98993b59684d1, type: 3}
 --- !u!4 &8100739807240189836 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7417264926918189365, guid: 52586cc156e7429478c98993b59684d1, type: 3}
   m_PrefabInstance: {fileID: 1622686509449008825}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8872174021330513206 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7900645854394743695, guid: 52586cc156e7429478c98993b59684d1, type: 3}
-  m_PrefabInstance: {fileID: 1622686509449008825}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &9109569732111797329
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8872174021330513206}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2838047407261934760, guid: 749005adeae5d094685c6b3357e6b794, type: 3}
---- !u!114 &2729410534351379842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8872174021330513206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a7f0e352b426b4aa480a39f9a1a379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
-  shipData: {fileID: 11400000, guid: 6cb34fd8f4550c04aa560720b159957a, type: 2}
-  currentHealth: 0
 --- !u!1001 &1693644187036957662
 PrefabInstance:
   m_ObjectHideFlags: 0
