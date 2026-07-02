@@ -1,0 +1,22 @@
+Bloque Fijo
+
+if (currentNode == null)                  1 (Comparación)
+TurnNode tempNode = currentNode;           1 (Asignación de puntero)
+int i = 0; (Parte del for)                  1 (Inicialización de variable)
+La primera evaluación i < turnTexts.Length  1 (Comparación inicial)
+Subtotal fijo = 1 + 1 + 1 + 1 = 4
+
+
+Bloque Repetitivo 
+turnTexts[i] != null      1 (Acceso al arreglo + comparación)
+&& tempNode != null       1 (Comparación lógica)
+&& tempNode.ship != null  1 (Acceso a propiedad + comparación)
+turnTexts[i].text = tempNode.ship.gameObject.name;  1 (Asignación pesada en memoria)
+Debug.Log(...);   1 (Invocación del método de consola)
+tempNode = tempNode.next;  1 (Actualización de puntero)
+i++ (Al final de la vuelta)  1 (Incremento matemático)
+i < turnTexts.Length (Para ver si vuelve a entrar)  1 (Comparación de control)
+
+Subtotal por vuelta = 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8
+
+T(n) = 8N + 4
