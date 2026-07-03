@@ -12,43 +12,50 @@ public class CannonBall : BaseProjectile, IPoolable
         defaultDamage = currentDamage;
     }
 
-    // POLIMORFISMO (Override)
     public override void OnImpact(Collision collision)
     {
-        GameObject obj = collision.gameObject;
+        GameObject obj = collision.collider.gameObject;
 
-        // Si no es nada de lo que nos importa, ignoramos la colisión
-        if (!obj.gameObject.CompareTag("Water") && !obj.gameObject.CompareTag("Ship") && !obj.gameObject.CompareTag("Crew")) return;
-
-        // Unimos el Tag y el GetComponent 
-        if (obj.CompareTag("Ship") && obj.TryGetComponent<ShipHealth>(out ShipHealth health))
+        // Crew primero
+        if (obj.CompareTag("Crew"))
         {
-            health.TakeDamage(currentDamage);
-            Debug.Log($"Impacto en barco. Daño infligido: {currentDamage}");
-        }
-
-        else if (obj.CompareTag("Crew"))
-        {
-            // Sacar de la jerarquía del barco
             obj.transform.SetParent(null);
 
-            // Agregar Rigidbody en el momento del impacto
-            Rigidbody crewRb = obj.AddComponent<Rigidbody>();
-            crewRb.linearVelocity = Vector3.zero;
+            // Solo agregar si no tiene ya uno
+            Rigidbody crewRb = obj.GetComponent<Rigidbody>();
+            if (crewRb == null)crewRb = obj.AddComponent<Rigidbody>();
 
+            crewRb.linearVelocity = Vector3.zero;
             Vector3 impulso = (obj.transform.position - transform.position).normalized;
             impulso.y = 0.5f;
             crewRb.AddForce(impulso * 8f, ForceMode.Impulse);
+            ImpactFeedBackManager.Instance?.PlayImpact(transform.position);
+            StartCoroutine(DelayedReturnToPool());
+            return;
         }
 
-        // Feedback visual y reciclaje (Esto se ejecuta para Agua, Barco y Tripulación)
-        ImpactFeedBackManager.Instance?.PlayImpact(transform.position);
-        StartCoroutine(DelayedReturnToPool());
+        // Agua
+        if (obj.CompareTag("Water"))
+        {
+            ImpactFeedBackManager.Instance?.PlayImpact(transform.position);
+            StartCoroutine(DelayedReturnToPool());
+            return;
+        }
+        // Barco
+        ShipHealth health = obj.GetComponentInParent<ShipHealth>();
+        if (health != null)
+        {
+            health.TakeDamage(currentDamage);
+            Debug.Log($"Impacto en barco. Daño infligido: {currentDamage}");
+            ImpactFeedBackManager.Instance?.PlayImpact(transform.position);
+            StartCoroutine(DelayedReturnToPool());
+        }
     }
 
     // Conectamos con nuestro método polimórfico
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log($"Bala tocó: {other.collider.gameObject.name} | Tag: {other.collider.gameObject.tag}");
         OnImpact(other);
     }
 

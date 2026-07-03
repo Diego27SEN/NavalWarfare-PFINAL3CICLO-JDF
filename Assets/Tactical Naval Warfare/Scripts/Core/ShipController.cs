@@ -32,6 +32,13 @@ public class ShipController : MonoBehaviour
 
         cannonController = GetComponentInChildren<CannonController>();
         playerInputSystem.enabled = false;
+
+        // Ignorar colisión entre casco y tripulantes
+        Physics.IgnoreLayerCollision(
+            LayerMask.NameToLayer("Ship"),
+            LayerMask.NameToLayer("Crew"),
+            true
+        );
     }
 
 
@@ -98,9 +105,9 @@ public class ShipController : MonoBehaviour
     public void EndTurn()
     {
         InTurn = false;
-        rb.isKinematic = true; // vuelve a kinematic al terminar
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;  // primero resetea
+        rb.angularVelocity = Vector3.zero; // luego kinematic
+        rb.isKinematic = true;
         playerInputSystem.enabled = false;
         cannonController?.DisableCannon();
     }
