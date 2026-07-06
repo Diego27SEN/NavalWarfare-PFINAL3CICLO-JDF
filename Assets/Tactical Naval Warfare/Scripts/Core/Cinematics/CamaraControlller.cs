@@ -1,8 +1,6 @@
 using Sirenix.OdinInspector;
 using Unity.Cinemachine;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.Splines;
 using System.Collections;
 
 public class CinematicController : MonoBehaviour
