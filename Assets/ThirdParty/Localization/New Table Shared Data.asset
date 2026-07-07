@@ -179,6 +179,10 @@ MonoBehaviour:
     m_Key: No Ammo
     m_Metadata:
       m_Items: []
+  - m_Id: 17301332014931968
+    m_Key: Winning
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

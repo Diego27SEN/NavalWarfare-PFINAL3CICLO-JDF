@@ -179,6 +179,10 @@ MonoBehaviour:
     m_Localized: You're out of shots
     m_Metadata:
       m_Items: []
+  - m_Id: 17301332014931968
+    m_Localized: 'The Winner is:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

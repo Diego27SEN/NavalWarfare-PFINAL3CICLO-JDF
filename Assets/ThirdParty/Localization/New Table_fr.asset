@@ -181,6 +181,10 @@ MonoBehaviour:
     m_Localized: Vous etes a court de munitions
     m_Metadata:
       m_Items: []
+  - m_Id: 17301332014931968
+    m_Localized: 'Le gagnant est:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
