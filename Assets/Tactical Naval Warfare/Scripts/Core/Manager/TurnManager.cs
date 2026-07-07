@@ -27,6 +27,9 @@ public class TurnManager : MonoBehaviour
     private bool gameStarted = false;
     private bool timerPaused = false;
 
+    private TurnNode firstNode; // NUEVO: guardamos referencia fija
+    private int roundCount = 0; // NUEVO
+
     private TurnNode currentNode;
     private InputSystem_Actions inputs;
     [SerializeField] private GameplayUI gameplayUI;
@@ -82,7 +85,7 @@ public class TurnManager : MonoBehaviour
 
     private void CreateCircularList()
     {
-        TurnNode firstNode = null;
+        TurnNode newFirstNode = null;
         TurnNode previousNode = null;
 
         for (int i = 0; i < ships.Length; i++)
@@ -90,14 +93,9 @@ public class TurnManager : MonoBehaviour
             if (ships[i] == null) continue;
 
             TurnNode newNode = new TurnNode(ships[i]);
-
             newNode.ship.gameObject.name = GetShipName(ships[i], i);
 
-            if (firstNode == null)
-            {
-                firstNode = newNode;
-            }
-
+            if (newFirstNode == null) newFirstNode = newNode;
             if (previousNode != null)
             {
                 previousNode.next = newNode;
@@ -106,15 +104,16 @@ public class TurnManager : MonoBehaviour
             previousNode = newNode;
         }
 
-        if (previousNode != null && firstNode != null)
+        if (previousNode != null && newFirstNode != null)
         {
-            previousNode.next = firstNode;
-            firstNode.previous = previousNode;
-            currentNode = firstNode;
+            previousNode.next = newFirstNode;
+            newFirstNode.previous = previousNode;
+            currentNode = newFirstNode;
+            firstNode = newFirstNode; //guardamos referencia al primer nodo
         }
     }
 
-    private void StartTurn()
+    public void StartTurn()
     {
         currentNode.ship.StartTurn();
         currentTime = turnDuration;
@@ -138,6 +137,20 @@ public class TurnManager : MonoBehaviour
         currentNode.ship.EndTurn();
         currentNode = currentNode.next;
         currentTurn++;
+
+        // NUEVO: detectar si completamos una vuelta
+        if (currentNode == firstNode)
+        {
+            roundCount++;
+            Debug.Log($"[TurnManager] Ronda completada. Total: {roundCount}");
+
+            if (roundCount % 2 == 0)
+            {
+                CardsEventManager.Instance.StartCardEvent(ships);
+                return; // el evento de cartas se encarga de llamar a StartTurn() cuando termine
+            }
+        }
+
         StartTurn();
     }
 
@@ -145,6 +158,12 @@ public class TurnManager : MonoBehaviour
     {
         gameplayCam.Follow = currentNode.ship.transform;
         gameplayCam.LookAt = currentNode.ship.transform;
+    }
+
+    public void FocusCameraOn(ShipController ship)
+    {
+        gameplayCam.Follow = ship.transform;
+        gameplayCam.LookAt = ship.transform;
     }
 
     public void PauseTimer()
