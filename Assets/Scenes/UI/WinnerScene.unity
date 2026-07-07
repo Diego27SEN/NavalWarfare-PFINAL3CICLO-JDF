@@ -8360,7 +8360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WinnerUI
   playerNamesSO: {fileID: 11400000, guid: af78d63006c70ad49b5db17717fab5f5, type: 2}
-  winnerText: {fileID: 0}
+  winnerText: {fileID: 1346050613}
 --- !u!1 &1557156696
 GameObject:
   m_ObjectHideFlags: 0
