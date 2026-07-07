@@ -10,6 +10,8 @@ public class PlayerNames : SerializedScriptableObject
 
     public Dictionary<ShipType, string> ShipNames => shipNames;
 
+    public ShipType WinnerShipType;
+
     public void SaveName(ShipType type, string name)
     {
         if (shipNames.ContainsKey(type))
@@ -28,5 +30,10 @@ public class PlayerNames : SerializedScriptableObject
             return name;
         }
         return null; // or return a default name if desired
+    }
+
+    public void SetWinner(ShipType type)
+    {
+        WinnerShipType = type;
     }
 }

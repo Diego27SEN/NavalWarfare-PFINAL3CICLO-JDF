@@ -1,11 +1,14 @@
-using UnityEngine;
-using Unity.Cinemachine;
-using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 using TMPro;
+using Unity.Cinemachine;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
 {
+    public static TurnManager Instance;
+
     [Title("Ships")]
     [SerializeField] private ShipController[] ships;
 
@@ -35,8 +38,10 @@ public class TurnManager : MonoBehaviour
     {
         return currentNode?.ship;
     }
+
     private void Awake()
     {
+        Instance = this;
         inputs = new InputSystem_Actions();
         BulletCameraController.bulletCam = BulletCam;
     }
@@ -90,7 +95,6 @@ public class TurnManager : MonoBehaviour
             if (ships[i] == null) continue;
 
             TurnNode newNode = new TurnNode(ships[i]);
-
             newNode.ship.gameObject.name = GetShipName(ships[i], i);
 
             if (firstNode == null)
@@ -114,8 +118,49 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+    public void RemoveShipFromTurnOrder(ShipController deadShip)
+    {
+        if (currentNode == null) return;
+
+        TurnNode tempNode = currentNode;
+        bool found = false;
+
+        for (int i = 0; i < ships.Length; i++)
+        {
+            if (tempNode.ship == deadShip)
+            {
+                found = true;
+                break;
+            }
+            tempNode = tempNode.next;
+        }
+
+        if (found)
+        {
+            Debug.Log($"[TurnManager] Eliminando a {deadShip.gameObject.name} del orden de turnos.");
+
+            if (tempNode.next == tempNode)
+            {
+                currentNode = null;
+                return;
+            }
+
+            tempNode.previous.next = tempNode.next;
+            tempNode.next.previous = tempNode.previous;
+
+            if (currentNode == tempNode)
+            {
+                currentNode = tempNode.previous;
+            }
+
+            UpdateTurnUIBoxes();
+        }
+    }
+
     private void StartTurn()
     {
+        if (currentNode == null || currentNode.ship == null) return;
+
         currentNode.ship.StartTurn();
         currentTime = turnDuration;
         ChangeCameraTarget();
@@ -135,14 +180,25 @@ public class TurnManager : MonoBehaviour
     [Button]
     public void NextTurn()
     {
-        currentNode.ship.EndTurn();
-        currentNode = currentNode.next;
+        if (currentNode != null && currentNode.ship != null)
+        {
+            currentNode.ship.EndTurn();
+        }
+
+        if (CheckWinner()) return;
+
+        if (currentNode != null)
+        {
+            currentNode = currentNode.next;
+        }
+
         currentTurn++;
         StartTurn();
     }
 
     private void ChangeCameraTarget()
     {
+        if (currentNode == null || currentNode.ship == null) return;
         gameplayCam.Follow = currentNode.ship.transform;
         gameplayCam.LookAt = currentNode.ship.transform;
     }
@@ -173,11 +229,18 @@ public class TurnManager : MonoBehaviour
 
         for (int i = 0; i < turnTexts.Length; i++)
         {
-            if (turnTexts[i] != null && tempNode != null && tempNode.ship != null)
+            if (turnTexts[i] != null)
             {
-                turnTexts[i].text = tempNode.ship.gameObject.name;
-                Debug.Log($"Vuelta {i} -> Objeto: {tempNode.ship.name} | Su tipo asignado es: {tempNode.ship.shipType}");
-                tempNode = tempNode.next;
+                if (tempNode != null && tempNode.ship != null && tempNode.ship.gameObject.activeSelf)
+                {
+                    turnTexts[i].text = tempNode.ship.gameObject.name;
+                    Debug.Log($"Vuelta {i} -> Objeto: {tempNode.ship.name} | Su tipo asignado es: {tempNode.ship.shipType}");
+                    tempNode = tempNode.next;
+                }
+                else
+                {
+                    turnTexts[i].text = "---";
+                }
             }
         }
     }
@@ -221,5 +284,32 @@ public class TurnManager : MonoBehaviour
             Debug.LogWarning($"[TurnManager] Ojo: No se encontro ShipHealth en {currentNode.ship.gameObject.name}");
             activeShipHealthText.text = "--- / ---";
         }
+    }
+
+    private bool CheckWinner()
+    {
+        int alive = 0;
+        ShipController winner = null;
+
+        foreach (ShipController ship in ships)
+        {
+            if (ship == null) continue;
+
+            ShipHealth health = ship.GetComponentInChildren<ShipHealth>();
+
+            if (health != null && health.GetCurrentHealth() > 0 && ship.gameObject.activeSelf)
+            {
+                alive++;
+                winner = ship;
+            }
+        }
+
+        if (alive == 1 && winner != null)
+        {
+            playerNamesSO.SetWinner(winner.shipType);
+            SceneManager.LoadScene("WinnerScene");
+            return true;
+        }
+        return false;
     }
 }

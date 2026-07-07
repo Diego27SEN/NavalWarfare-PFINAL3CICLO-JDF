@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.Rendering;
 
 public class ShipHealth : MonoBehaviour, IDamageable
 {
@@ -12,7 +11,6 @@ public class ShipHealth : MonoBehaviour, IDamageable
     public float currentHealth;
     [SerializeField] private SoundManager soundManager;
 
-
     void Start()
     {
         if (shipData != null)
@@ -23,7 +21,6 @@ public class ShipHealth : MonoBehaviour, IDamageable
         {
             currentHealth = 400f;
         }
-
     }
 
     public void TakeDamage(float damage)
@@ -34,7 +31,22 @@ public class ShipHealth : MonoBehaviour, IDamageable
         if (currentHealth <= 0)
         {
             Debug.Log($"¡El barco {gameObject.name} ha sido hundido!");
+
+            ShipController controller = GetComponentInParent<ShipController>();
+            if (controller != null && TurnManager.Instance != null)
+            {
+                TurnManager.Instance.RemoveShipFromTurnOrder(controller);
+            }
+
             gameObject.SetActive(false);
+
+            if (TurnManager.Instance != null)
+            {
+                if (TurnManager.Instance.GetBarcoActual() == controller)
+                {
+                    TurnManager.Instance.NextTurn();
+                }
+            }
         }
 
         if (soundManager != null)
