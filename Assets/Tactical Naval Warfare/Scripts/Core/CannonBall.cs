@@ -7,6 +7,10 @@ public class CannonBall : BaseProjectile, IPoolable
 {
     private float defaultDamage;
 
+    [Header("Feedbacks de Impacto")]
+    public MMFeedbacks onShipImpact;  // Para el barco (Partículas, shake, freeze)
+    public MMFeedbacks onWaterImpact; // Para el agua
+    public MMFeedbacks onCrewImpact;  // Para la tripulación
     private void Awake()
     {
         defaultDamage = currentDamage;
@@ -16,42 +20,105 @@ public class CannonBall : BaseProjectile, IPoolable
     {
         GameObject obj = collision.collider.gameObject;
 
-        // Crew primero
-        if (obj.CompareTag("Crew"))
+        // Control de seguridad físico
+        if (collision.contacts.Length == 0) return;
+
+        // Capturamos el punto exacto del impacto ANTES de que la bala rebote
+        Vector3 hitPoint = collision.contacts[0].point;
+        Vector3 hitNormal = collision.contacts[0].normal;
+
+      
+        // De esta forma la cámara se congela en su sitio y graba el impacto de forma estable
+        if (BulletCameraController.bulletCam != null)
+        {
+            BulletCameraController.bulletCam.Target.TrackingTarget = null;
+        }
+
+        if (collision.gameObject.CompareTag("Crew") || obj.CompareTag("Crew"))
         {
             obj.transform.SetParent(null);
 
-            // Solo agregar si no tiene ya uno
             Rigidbody crewRb = obj.GetComponent<Rigidbody>();
-            if (crewRb == null)crewRb = obj.AddComponent<Rigidbody>();
+            if (crewRb == null) crewRb = obj.AddComponent<Rigidbody>();
 
             crewRb.linearVelocity = Vector3.zero;
             Vector3 impulso = (obj.transform.position - transform.position).normalized;
             impulso.y = 0.5f;
             crewRb.AddForce(impulso * 8f, ForceMode.Impulse);
-            ImpactFeedBackManager.Instance?.PlayImpact(transform.position);
+
+            // Activamos las partículas en el punto exacto congelado
+            ActivateFeedback("CrewImpactsFeel", hitPoint, hitNormal);
+
             StartCoroutine(DelayedReturnToPool());
             return;
         }
 
-        // Agua
-        if (obj.CompareTag("Water"))
+        // 2. IMPACTO CON AGUA
+        if (collision.gameObject.CompareTag("Water") || obj.CompareTag("Water"))
         {
-            ImpactFeedBackManager.Instance?.PlayImpact(transform.position);
+            ActivateFeedback("WaterImpactsFeel", hitPoint, Vector3.up);
+
             StartCoroutine(DelayedReturnToPool());
             return;
         }
-        // Barco
+
+        // 3. IMPACTO CON BARCO
         ShipHealth health = obj.GetComponentInParent<ShipHealth>();
         if (health != null)
         {
             health.TakeDamage(currentDamage);
             Debug.Log($"Impacto en barco. Daño infligido: {currentDamage}");
-            ImpactFeedBackManager.Instance?.PlayImpact(transform.position);
+
+            ActivateFeedback("ShipImpactsFeel", hitPoint, hitNormal);
+
             StartCoroutine(DelayedReturnToPool());
         }
     }
 
+
+    private void ActivateFeedbackDirect(MMFeedbacks feedback, Vector3 position, Vector3 normal)
+    {
+        if (feedback != null)
+        {
+            // Forzamos a que se encienda por si acaso
+            feedback.gameObject.SetActive(true);
+
+            feedback.transform.position = position;
+            feedback.transform.forward = normal;
+            feedback.PlayFeedbacks();
+        }
+        else
+        {
+            
+            Debug.LogWarning("Falta asignar el Feedback en el Inspector de la Bala.");
+        }
+    }
+
+    private void ActivateFeedback(string feedbackObjectName, Vector3 position, Vector3 normal)
+    {
+        // Buscamos usando tus nombres exactos de la jerarquía
+        GameObject feelObject = GameObject.Find(feedbackObjectName);
+        if (feelObject != null)
+        {
+            feelObject.transform.position = position;
+            feelObject.transform.forward = normal;
+
+            // Si usas MMF_Player en vez de MMFeedbacks, cambia esto a MMF_Player
+            if (feelObject.TryGetComponent<MMF_Player>(out MMF_Player feedbacks))
+            {
+                feedbacks.PlayFeedbacks();
+            }
+            // O si usas la versión anterior:
+            else if (feelObject.TryGetComponent<MMFeedbacks>(out MMFeedbacks oldFeedbacks))
+            {
+                oldFeedbacks.PlayFeedbacks();
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"No se encontró el objeto de feedback: {feedbackObjectName}");
+        }
+    }
     // Conectamos con nuestro método polimórfico
     private void OnCollisionEnter(Collision other)
     {
