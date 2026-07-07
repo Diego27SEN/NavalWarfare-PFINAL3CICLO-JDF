@@ -525,7 +525,7 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   sfxSlider: {fileID: 0}
   musicTracks:
-  - {fileID: 8300000, guid: 5f8035682ccad7e4f8630d86adec862e, type: 3}
+  - {fileID: 8300000, guid: 7277f58702166374494f172295d9cdc0, type: 3}
   sfxClips: []
   extraClips: []
 --- !u!82 &626692517
@@ -1295,7 +1295,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 87.65
+  m_fontSize: 72.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2311,7 +2311,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63.55
+  m_fontSize: 52.15
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
