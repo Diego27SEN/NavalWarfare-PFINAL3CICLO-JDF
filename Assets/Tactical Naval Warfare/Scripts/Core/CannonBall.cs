@@ -43,8 +43,8 @@ public class CannonBall : BaseProjectile, IPoolable
 
             crewRb.linearVelocity = Vector3.zero;
             Vector3 impulso = (obj.transform.position - transform.position).normalized;
-            impulso.y = 0.5f;
-            crewRb.AddForce(impulso * 8f, ForceMode.Impulse);
+            impulso.y = 3f;
+            crewRb.AddForce(impulso * 12f, ForceMode.Impulse);
 
             // Activamos las partículas en el punto exacto congelado
             ActivateFeedback("CrewImpactsFeel", hitPoint, hitNormal);
