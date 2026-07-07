@@ -19,7 +19,7 @@ public class CannonBall : BaseProjectile, IPoolable
     public override void OnImpact(Collision collision)
     {
         GameObject obj = collision.collider.gameObject;
-
+        onShipImpact?.PlayFeedbacks();
         // Control de seguridad físico
         if (collision.contacts.Length == 0) return;
 
@@ -76,24 +76,7 @@ public class CannonBall : BaseProjectile, IPoolable
     }
 
 
-    private void ActivateFeedbackDirect(MMFeedbacks feedback, Vector3 position, Vector3 normal)
-    {
-        if (feedback != null)
-        {
-            // Forzamos a que se encienda por si acaso
-            feedback.gameObject.SetActive(true);
-
-            feedback.transform.position = position;
-            feedback.transform.forward = normal;
-            feedback.PlayFeedbacks();
-        }
-        else
-        {
-            
-            Debug.LogWarning("Falta asignar el Feedback en el Inspector de la Bala.");
-        }
-    }
-
+  
     private void ActivateFeedback(string feedbackObjectName, Vector3 position, Vector3 normal)
     {
         // Buscamos usando tus nombres exactos de la jerarquía
@@ -103,7 +86,6 @@ public class CannonBall : BaseProjectile, IPoolable
             feelObject.transform.position = position;
             feelObject.transform.forward = normal;
 
-            // Si usas MMF_Player en vez de MMFeedbacks, cambia esto a MMF_Player
             if (feelObject.TryGetComponent<MMF_Player>(out MMF_Player feedbacks))
             {
                 feedbacks.PlayFeedbacks();
