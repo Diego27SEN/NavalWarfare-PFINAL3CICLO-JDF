@@ -33,7 +33,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 75
+    globalScale: 2.5
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -86,7 +86,7 @@ ModelImporter:
     skeleton:
     - name: StumbleBlue 1(Clone)
       parentName: 
-      position: {x: 184.87695, y: 111.57842, z: -1124.205}
+      position: {x: 6.162566, y: 3.7192807, z: -37.473503}
       rotation: {x: 0.49664697, y: 0.5033307, z: 0.5033307, w: -0.49664697}
       scale: {x: 0.283618, y: 0.283618, z: 0.283618}
     armTwist: 0.5
@@ -96,7 +96,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 75
+    globalScale: 2.5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
