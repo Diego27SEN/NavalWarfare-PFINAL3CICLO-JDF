@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StumbleBlue Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8493901661613572751, guid: 827cf05b4bd592043bd51de8957cfe01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493901661613572751, guid: 827cf05b4bd592043bd51de8957cfe01, type: 3}
+      propertyPath: m_TagString
+      value: Crew
+      objectReference: {fileID: 0}
     - target: {fileID: 9127589333839353909, guid: 827cf05b4bd592043bd51de8957cfe01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
